@@ -15,16 +15,16 @@
         <div class="container">
             <h1> Editar programa  </h1>
             <br />
-            <form action="editar-programa" method="post"
-                  class="form-horizontal">
+            <form action="cem-programas?accion=modificar&confirmar=si"
+                  method="post" class="form-horizontal">
 
 
                 <c:out value="codigo" />
                 
                 Código
-                <input type="text" readonly="true" value="<c:out value="${pEditado.codigo}" />" />
+                <input type="text" readonly="true" value="<c:out value="${programaModificar.codigo}" />" />
                 Estado
-                <input type="text" name="estado" value="<c:out value="${pEditado.estado}" />" />
+                <input type="text" name="estado" value="<c:out value="${programaModificar.estado}" />" />
                 
                 
                 

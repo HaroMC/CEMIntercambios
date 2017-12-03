@@ -77,7 +77,7 @@ public class CemAlumnoServlet extends HttpServlet {
         Collections.sort(listadoAlumnos, new Comparator<Alumno>() {
             @Override
             public int compare(Alumno a1, Alumno a2) {
-                return a2.getRutPersona().compareTo(a1.getRutPersona());
+                return a1.getRutPersona().compareTo(a2.getRutPersona());
                 //return a1.getRutPersona().compareTo(a2.getRutPersona());
             }
         });

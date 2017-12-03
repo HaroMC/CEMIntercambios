@@ -20,10 +20,6 @@
         <servlet-name>RegistrarCuentaServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.RegistrarCuentaServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>EditarProgramaProceso</servlet-name>
-        <servlet-class>cem.intercambios.controlador.servlet.EditarProgramaProceso</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -43,10 +39,6 @@
     <servlet-mapping>
         <servlet-name>RegistrarCuentaServlet</servlet-name>
         <url-pattern>/registrar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditarProgramaProceso</servlet-name>
-        <url-pattern>/cem/editar-programa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

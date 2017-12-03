@@ -24,13 +24,13 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author HaroMC
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2017-12-01
  */
 public class CemProgramaServlet extends HttpServlet {
 
     private static final Logger LOGGER
-            = Logger.getLogger(IniciarSesionServlet.class.getName());
+            = Logger.getLogger(CemProgramaServlet.class.getName());
 
     private HttpSession sesion;
 
@@ -39,31 +39,21 @@ public class CemProgramaServlet extends HttpServlet {
 
     /**
      *
-     * @param request
-     * @param response
+     * @param req
+     * @param resp
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        //<editor-fold defaultstate="collapsed" desc="Caso : Listar">
         String mensaje;
-        sesion = request.getSession();
-
+        sesion = req.getSession();
         List<Programa> listadoProgramas = pf.findAll();
         if (listadoProgramas != null) {
-            // Inicio: Ordenamiento ascendente de programas por código.
-            Collections.sort(listadoProgramas,
-                    new Comparator<Programa>() {
-                @Override
-                public int compare(Programa p1, Programa p2) {
-                    return p1.getCodigo().intValue()
-                            - p2.getCodigo().intValue();
-                }
-            });
-            // Fin
+            ordenarLista(listadoProgramas);
             sesion.setAttribute("listadoProgramas", listadoProgramas);
             mensaje = "Visualización correcta de todos los programas.";
             LOGGER.info(mensaje);
@@ -72,84 +62,114 @@ public class CemProgramaServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        response.sendRedirect("administrar-programas.jsp");
+        resp.sendRedirect("administrar-programas.jsp");
+        //</editor-fold>
+
     }
 
     /**
      *
-     * @param request
-     * @param response
+     * @param req
+     * @param resp
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String mensaje, accion = request.getParameter("accion");
-        sesion = request.getSession();
+        String mensaje;
+        String accion = ((req.getParameter("accion") == null)
+                ? "" : req.getParameter("accion"));
+        sesion = req.getSession();
         Programa programaRegistrado;
 
         switch (accion) {
 
+            //<editor-fold defaultstate="collapsed" desc="Caso : Eliminar">
             case "eliminar":
                 pf.remove(pf.find(BigDecimal.valueOf(Long.parseLong(
-                        request.getParameter("codigo")
+                        req.getParameter("codigo")
                 ))));
                 mensaje = "Programa eliminado correctamente.";
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
-                response.sendRedirect("cem-programas");
+                resp.sendRedirect("cem-programas");
                 break;
+            //</editor-fold>
 
+            //<editor-fold defaultstate="collapsed" desc="Caso : Agregar">
             case "agregar":
-                programaRegistrado = definirPrograma(request);
+                programaRegistrado = definirPrograma(req);
+
                 if (programaRegistrado != null) {
                     pf.create(programaRegistrado);
                     mensaje = "Programa registrado correctamente.";
                     LOGGER.info(mensaje);
-                    request.setAttribute("mensajeEstado", mensaje);
+                    req.setAttribute("mensajeEstado", mensaje);
                 } else {
                     mensaje = "Se ha producido un error al registrar el "
                             + "programa.";
-                    request.setAttribute("mensajeEstado", mensaje);
+                    req.setAttribute("mensajeEstado", mensaje);
                     LOGGER.info(mensaje);
                 }
-                response.sendRedirect("cem-programas");
+
+                resp.sendRedirect("cem-programas");
                 break;
+            //</editor-fold>
 
+            //<editor-fold defaultstate="collapsed" desc="Caso : Modificar">
             case "modificar":
-                Programa programaEditado = pf.find(BigDecimal.valueOf(
-                        Long.parseLong(request.getParameter("codigo"))
-                ));
+                Programa programaModificar;
+                String confirmarModificacion
+                        = (req.getParameter("confirmar") == null
+                        ? "" : req.getParameter("confirmar"));
 
-                sesion.setAttribute("pEditado", programaEditado);
+                switch (confirmarModificacion) {
 
-                request.getRequestDispatcher("editar-programa.jsp")
-                        .forward(request, response);
+                    case "si":
+                        String estado = req.getParameter("estado");
+                        programaModificar = (Programa) sesion
+                                .getAttribute("programaModificar");
+                        programaModificar.setEstado(estado);
+                        pf.edit(programaModificar);
+                        sesion.removeAttribute("programaModificar");
+                        resp.sendRedirect("cem-programas");
+                        break;
 
+                    default:
+                        programaModificar = pf.find(BigDecimal.valueOf(
+                                Long.parseLong(req.getParameter("codigo"))
+                        ));
+                        sesion.setAttribute("programaModificar",
+                                programaModificar);
+                        resp.sendRedirect("editar-programa.jsp");
+                }
+                break;
+            //</editor-fold>
+
+            default:
+                resp.sendRedirect("cem-programas");
         }
-        //response.sendRedirect("cem-programas");
     }
 
     /**
      *
-     * @param request
+     * @param req
      * @return
      * @throws ServletException
      * @throws IOException
      */
-    private Programa definirPrograma(HttpServletRequest request)
+    private Programa definirPrograma(HttpServletRequest req)
             throws ServletException, IOException {
 
-        String nombrePrograma = request.getParameter("nombrePrograma");
-        String tipoDuracion = request.getParameter("tipoDuracion");
-        String valor = request.getParameter("valor");
+        String nombrePrograma = req.getParameter("nombrePrograma");
+        String tipoDuracion = req.getParameter("tipoDuracion");
+        String valor = req.getParameter("valor");
 
-        String asignaturaUno = request.getParameter("asignatura1");
-        String asignaturaDos = request.getParameter("asignatura2");
-        String asignaturaTres = request.getParameter("asignatura3");
+        String asignaturaUno = req.getParameter("asignatura1");
+        String asignaturaDos = req.getParameter("asignatura2");
+        String asignaturaTres = req.getParameter("asignatura3");
 
         DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendario = Calendar.getInstance();
@@ -225,6 +245,21 @@ public class CemProgramaServlet extends HttpServlet {
 
         // Definir asignaturas.
         return nuevoPrograma;
+    }
+
+    /**
+     * 
+     * @param listadoProgramas 
+     */
+    private void ordenarLista(List<Programa> listadoProgramas) {
+        Collections.sort(listadoProgramas,
+                new Comparator<Programa>() {
+            @Override
+            public int compare(Programa p1, Programa p2) {
+                return p1.getCodigo().intValue()
+                        - p2.getCodigo().intValue();
+            }
+        });
     }
 
 }

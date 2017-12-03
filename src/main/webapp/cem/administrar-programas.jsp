@@ -52,10 +52,11 @@
                                                 value="${p.fechaTermino}" />
                             </td>
 
-                            <td> <fmt:formatNumber type="currency"
-                                              currencySymbol="$"
-                                              value="${p.valor}"
-                                              currencyCode="CLP" />
+                            <td>
+                                <fmt:formatNumber type="currency"
+                                                  currencySymbol="$"
+                                                  value="${p.valor}"
+                                                  currencyCode="CLP" />
                             </td>
 
                             <td> <c:out value="${p.estado}" /> </td>
