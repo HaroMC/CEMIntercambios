@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="../WEB-INF/menu-registro.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,63 +18,72 @@
         <title> Registro de familias </title>
     </head>
     <body>
-        <div class="container-fluid">
-            <h1> Formulario de registro de familias </h1>
-            <br />
-            <form action="../registrar?tipo=alumno" method="post"
-                  class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> RUN </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="run" 
-                               placeholder="12345678-9" required="true">
-                    </div>
+
+        <div class="container well">
+
+            <!--TITULO DE FORMULARIO-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><p class="text-center">Formulario Registro Alumnos</p></h2>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Nombre de usuario
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control"
-                               name="nombreUsuario" 
-                               placeholder="Ingrese un nombre de usuario para identificarse en el sistema"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> Contraseña </label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control"
-                               name="clave1" 
-                               placeholder="Indique una contraseña para identificarse en el sistema"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Repita su contraseña
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control"
-                               name="clave2" 
-                               placeholder="Repita su contraseña para verificar que esté correcta"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> ${mensaje} </label>
-                    <div class="col-sm-5 control-label">
-                        <button type="submit" class="btn btn-default"
-                                onClick="comprobarClave()">
-                            Registrar cuenta
-                        </button>
-                    </div>
-                </div>
+            </div>
+            <br> <br />
+            <div class="col-md-6 col-md-offset-3">
+                <form action="../registrar?tipo=alumno" method="post"
+                      class="form-horizontal">
                     
-            </form>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"> RUN </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="run" 
+                                   placeholder="12345678-9" required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Nombre de usuario
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control"
+                                   name="nombreUsuario" 
+                                   placeholder="Ingrese un nombre de usuario"
+                                   required="true" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"> Contraseña </label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control"
+                                   name="clave1" 
+                                   placeholder="Indique una contraseña"
+                                   required="true" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Repita su contraseña
+                        </label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control"
+                                   name="clave2" 
+                                   placeholder="Repita su contraseña"
+                                   required="true" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"> ${mensaje} </label>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-primary"
+                                    onClick="comprobarClave()">
+                                Registrar cuenta
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <script>
             function comprobarClave() {
