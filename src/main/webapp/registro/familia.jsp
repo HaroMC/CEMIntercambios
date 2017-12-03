@@ -30,125 +30,136 @@
 
                 <form action="../registrar?tipo=familia" method="post" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="NombreJefe">
                             Nombre(s) del jefe de familia
                         </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control"
+                                   id="NombreJefe"
                                    name="nombreJefeFamilia" 
                                    placeholder="Indique su(s) nombre(s)"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> Apellido(s) </label>
+                        <label class="col-md-4 control-label" for="apellido"> Apellido(s) </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control"
+                                   id="apellido"
                                    name="apellidoJefeFamilia" 
                                    placeholder="Indique su(s) apellido(s)"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> RUN </label>
+                        <label class="col-md-4 control-label" for="runFami"> RUN </label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="run" 
+                            <input type="text" class="form-control" name="run" id="runFami" 
                                    placeholder="12345678-9" required="true">
                         </div>
                     </div>          
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="fechaNacimiento">
                             Fecha de nacimiento
                         </label>
                         <div class="col-md-8">
                             <input type="date" class="form-control"
+                                   id="fechaNacimiento"
                                    name="fechaNacimiento" 
                                    required="true"
                                    placeholder="Indique su fecha de nacimiento" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> Domicilio </label>
+                        <label class="col-md-4 control-label" for="domicilioResi"> Domicilio </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="domicilio" 
+                                   id="domicilioResi"
                                    placeholder="Calle de ubicación de la vivienda"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> Ciudad </label>
+                        <label class="col-md-4 control-label" for="ciudadResi"> Ciudad </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="ciudad" 
+                                   id="ciudadResi"
                                    placeholder="Ciudad de residencia"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> País </label>
+                        <label class="col-md-4 control-label" for="paisResi"> País </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="pais" 
+                                   id="paisResi"
                                    placeholder="País de residencia"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="mail">
                             Correo electrónico
                         </label>
                         <div class="col-md-8">
                             <input type="email" class="form-control" name="correo" 
+                                   id="mail"
                                    placeholder="nombre-correo@proveedor-correo.com"
                                    required="true" />
                         </div> 
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="teleContacto">
                             Teléfono de contacto
                         </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="telefono" 
+                                   id="teleContacto"
                                    placeholder="(+56) 2 2123 4567" required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="integrantes">
                             Cantidad de integrantes
                         </label>
                         <div class="col-md-8">
                             <input type="int" class="form-control"
-                                   name="cantidadIntegrantes" 
+                                   id="integrantes"
                                    placeholder="Número de integrantes de su grupo familiar"
                                    required="true" />
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="nombreUsu">
                             Nombre de usuario
                         </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control"
+                                   id="nombreUsu"
                                    name="nombreUsuario" 
-                                   placeholder="Ingrese un nombre de usuario para identificarse en el sistema"
+                                   placeholder="Ingrese un nombre de usuario"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> Contraseña </label>
+                        <label class="col-md-4 control-label" for="contra"> Contraseña </label>
                         <div class="col-md-8">
                             <input type="password" class="form-control"
+                                   id="contra"
                                    name="clave1" 
-                                   placeholder="Indique una contraseña para identificarse en el sistema"
+                                   placeholder="Indique una contraseña"
                                    required="true" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
+                        <label class="col-md-4 control-label" for="contraRepite">
                             Repita su contraseña
                         </label>
                         <div class="col-md-8">
                             <input type="password" class="form-control"
+                                   id="contraRepite"
                                    name="clave2" 
-                                   placeholder="Repita su contraseña para verificar que esté correcta"
+                                   placeholder="Repita su contraseña para verificar"
                                    required="true" />
                         </div>
                     </div>
