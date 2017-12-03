@@ -31,50 +31,48 @@ public class IniciarSesionServlet extends HttpServlet {
 
     /**
      *
-     * @param request
-     * @param response
+     * @param req
+     * @param resp
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 
     /**
      *
-     * @param request
-     * @param response
+     * @param req
+     * @param resp
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         String mensaje;
-        String nombreUsuario = request.getParameter("nombreUsuario");
-        String contrasena = request.getParameter("contrasena");
+        String nombreUsuario = req.getParameter("nombreUsuario");
+        String contrasena = req.getParameter("contrasena");
 
         try {
             Usuario usuarioActual = uf.validarIngreso(
                     nombreUsuario, uf.encriptar(contrasena)
             );
             if (usuarioActual != null) {
-                sesion = request.getSession(true);
+                sesion = req.getSession(true);
                 sesion.setAttribute("usuarioActual", usuarioActual);
                 mensaje = "Bienvenido(a) " + usuarioActual.getNombre();
                 sesion.setAttribute("mensajeBienvenida", mensaje);
                 LOGGER.info("Ingreso exitoso.");
-                redirecionarPerfil(response, usuarioActual.getPerfil());
+                redirecionarPerfil(resp, usuarioActual.getPerfil());
             } else {
                 mensaje = "Sus credenciales no son válidas.";
-                request.setAttribute("mensajeError", mensaje);
-                request.getRequestDispatcher("login.jsp")
-                        .forward(request, response);
+                req.setAttribute("mensajeError", mensaje);
+                req.getRequestDispatcher("login.jsp")
+                        .forward(req, resp);
             }
         } catch (NoSuchAlgorithmException ex) {
             LOGGER.log(Level.SEVERE, "Error en el inicio de sesión.", ex);
@@ -83,28 +81,28 @@ public class IniciarSesionServlet extends HttpServlet {
 
     /**
      *
-     * @param response
+     * @param resp
      * @param perfil
      * @throws ServletException
      * @throws IOException
      */
-    private void redirecionarPerfil(HttpServletResponse response, String perfil)
+    private void redirecionarPerfil(HttpServletResponse resp, String perfil)
             throws ServletException, IOException {
         switch (perfil) {
             case "Cem":
-                response.sendRedirect("cem/cem-programas");
+                resp.sendRedirect("cem/cem-programas");
                 break;
             case "Cel":
-                response.sendRedirect("cel/inicio.jsp");
+                resp.sendRedirect("cel/inicio.jsp");
                 break;
             case "Alumno":
-                response.sendRedirect("alumno/inicio.jsp");
+                resp.sendRedirect("alumno/inicio.jsp");
                 break;
             case "Familia":
-                response.sendRedirect("familia/inicio.jsp");
+                resp.sendRedirect("familia/inicio.jsp");
                 break;
             default:
-                response.sendRedirect("error/no-autorizado.jsp");
+                resp.sendRedirect("error/no-autorizado.jsp");
         }
     }
 

@@ -45,7 +45,10 @@
                     </a>
                     <a href="registro/familia.jsp" class="text-center new-account">
                         Si eres un representante familiar, regístrate aquí.
-                    </a>                         
+                    </a>
+                    <a href="pruebas" class="text-center new-account">
+                        Pruebas
+                    </a>
                 </div>
             </div>
         </div>

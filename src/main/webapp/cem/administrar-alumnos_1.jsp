@@ -17,7 +17,7 @@
             <h2>Alumnos registrados en el sistema</h2>      
             <p>Si necesitas buscar un Alumno en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput" type="text"
-                   placeholder="Fitrar por nombre del alumno">
+                   placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -35,7 +35,7 @@
                 <tbody id="myTable">
                     <c:forEach var="a" items="${listadoAlumnos}">
                         <tr>
-                            <td> <c:out value="${a.rutPersona}" /> </td>                                                        
+                            <td> <c:out value="${a.rutPersona}"/> </td>
                             <td> <c:out value="${a.persona.nombreCompleto}"/> </td>
                             <td> <c:out value="${a.persona.usuario.nombre}"/> </td>
                             <td> <c:out value="${a.persona.telefono}"/> </td>
@@ -75,8 +75,9 @@
                 </tbody>
             </table>
         </div>
+
         <div class="container">
-            <h2> Calificaciones en programas vigentes </h2>                
+            <h2>Notas por asignaturas segun programa</h2>                
             <p>Si necesitas buscar algo especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text"
                    placeholder="Escribe aca lo que buscas..">
@@ -84,33 +85,84 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Alumno</th>
-                        <th>Programa que cursa</th>
-                        <!--<th>Estado</th>-->
+                        <th>Nombre completo</th>
+                        <th>Programa</th>
+                        <th>Estado</th>
                         <th>Asignatura</th>
-                        <th>Nota #1</th>
-                        <th>Nota #2</th>
-                        <th>Nota #3</th>
-                        <th>Examen</th>
-                        <th>Promedio final</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Nota Final</th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="a" items="${listadoAsignaturas}">
-                        <tr>
-                            <td> <c:out value="${alumno}" /> </td>
-                            <td>  </td>  
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                        </tr>
-                    </c:forEach>
+                    <tr>
+                        <td>Cecilia Fernanda Moreno Lira</td>
+                        <td>Programa1</td>  
+                        <td>Terminado</td>
+                        <td>Asignatura 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 3</td> 
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cecilia Fernanda Moreno Lira</td>
+                        <td>Programa2</td>  
+                        <td>Cursando</td>
+                        <td>Asignatura 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 3</td> 
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>           
         </div>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        -->
     </body>
     <script>
         $(document).ready(function () {

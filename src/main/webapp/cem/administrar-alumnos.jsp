@@ -62,11 +62,11 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="#?accion=modificar"
+                                <form action="cem-alumnos?accion=ver_notas"
                                       method="post">
                                     <button type="submit"
                                             class="btn btn-primary center-block">
-                                        <i class="">Notas</i>
+                                        <i class=""> Notas </i>
                                     </button>
                                 </form>
                             </td>
@@ -87,82 +87,34 @@
                     <tr>
                         <th>Nombre completo</th>
                         <th>Programa</th>
-                        <th>Estado</th>
                         <th>Asignatura</th>
                         <th>Nota 1</th>
                         <th>Nota 2</th>
                         <th>Nota 3</th>
-                        <th>Nota Final</th>
+                        <th>Examen</th>
+                        <th>Promedio final</th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <tr>
-                        <td>Cecilia Fernanda Moreno Lira</td>
-                        <td>Programa1</td>  
-                        <td>Terminado</td>
-                        <td>Asignatura 1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 3</td> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Cecilia Fernanda Moreno Lira</td>
-                        <td>Programa2</td>  
-                        <td>Cursando</td>
-                        <td>Asignatura 1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 3</td> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <c:forEach var="a" items="${listadoAlumnos}">
+                        <tr>
+                            <td>
+                                <c:out value="${a.rutPersona.nombreCompleto}" />
+                            </td>
+                            <td>
+                                <c:out value="${a.calificacionList.codAsignatura}" />
+                            </td>
+                            <td>Terminado</td>
+                            <td>Asignatura 1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>           
         </div>
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-        -->
     </body>
     <script>
         $(document).ready(function () {

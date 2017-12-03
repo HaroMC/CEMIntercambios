@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CerrarSesionServlet extends HttpServlet {
 
     private static final Logger LOGGER
-            = Logger.getLogger(IniciarSesionServlet.class.getName());
+            = Logger.getLogger(CerrarSesionServlet.class.getName());
 
     /**
      * 
