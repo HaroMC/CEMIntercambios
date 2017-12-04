@@ -80,25 +80,35 @@
                     <c:forEach var="pi" items="${programasInscritos}" >
                         <tr>
                             <td>
-                                <c:out value="${pi.nombrePrograma}" />
+                                <c:out value="${pi.codPrograma.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${pi.cupos}" />
+                                <c:out value="${pi.codPrograma.cupos}" />
                             </td>
                             <td>
-                                <c:out value="${pi.fechaInicio}" />
+                                <c:out value="${pi.codPrograma.fechaInicio}" />
                             </td>
                             
                             <td>
-                                <c:out value="${pi.fechaTermino}" />
+                                <c:out value="${pi.codPrograma.fechaTermino}" />
                             </td>
                             <td>
-                                <c:if test="${pi.estado == 1}">
-                                    Sin Cel Asignado
-                                </c:if>
+                               <c:choose>
+                                    <c:when test="${pi.estado == 1}">
+                                        Postulando
+                                    </c:when>
+                                    <c:when test="${pi.estado == 2}">
+                                        Inscrito
+                                    </c:when>
+                                    <c:when test="${pi.estado == 3}">
+                                        Rechazado
+                                    </c:when>
+                                    <c:otherwise>
+                                        Definir
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                             <td>
-                                <input type="hidden" name="${pd.codigo}" />
                                 <button type="button" class="btn btn-primary">
                                     Postular
                                 </button>
