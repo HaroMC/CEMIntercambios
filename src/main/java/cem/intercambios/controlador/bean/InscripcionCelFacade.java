@@ -23,4 +23,10 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
         super(InscripcionCel.class);
     }
     
+    public List<InscripcionCel> programasInscritosCel(String rutPersona) {
+        return em.createNamedQuery("Programa.programasInscritosCel")
+                .setParameter("rutPersona", rutPersona)
+                .getResultList();
+    }
+    
 }
