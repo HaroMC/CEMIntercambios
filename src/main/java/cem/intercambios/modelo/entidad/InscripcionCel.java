@@ -25,8 +25,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
     , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
     , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
-        
-    , @NamedQuery(name = "InscripcionCel.buscarProgramasInscritos", query = "SELECT ic FROM InscripcionCel ic INNER JOIN CentroEstudiosLocal cel WHERE cel.rutPersona = :rutPersona AND ic.estado = :estado")
 })
 public class InscripcionCel implements Serializable {
 

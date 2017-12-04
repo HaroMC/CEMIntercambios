@@ -1,7 +1,6 @@
 package cem.intercambios.controlador.bean;
 
 import cem.intercambios.modelo.entidad.Programa;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,18 +27,8 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
     public ProgramaFacade() {
         super(Programa.class);
     }
-
-    public BigDecimal codigoAutoIncremental() {
-        try {
-            return em.createNamedQuery(
-                    "Programa.codigoAutoIncremental", BigDecimal.class)
-                    .getSingleResult();
-        } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
-            return null;
-        }
-    }
-
+    
+    /*
     public List<Programa> listarProgramasPorEstado(String estado) {
         try {
             return em.createNamedQuery("Programa.findByEstado", Programa.class)
@@ -50,16 +39,13 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
             return null;
         }
     }
+    */
 
-    /*public Programa find(BigDecimal codigo) {
-        try {
-            return em.createNamedQuery("Programa.findByCodigo", Programa.class)
-                    .setParameter("codigo", codigo)
-                    .getSingleResult();
-        } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
-            return null;
-        }
-    }*/
+    public List<Programa> programasInscritosCel(String rutPersona) {
+        return em.createNamedQuery("Programa.programasInscritosCel")
+                .setParameter("rutPersona", rutPersona)
+                .setParameter("estado", 2)
+                .getResultList();
+    }
 
 }
