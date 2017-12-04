@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${listadoProgramasAlumnos}" >
+                    <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
                             <td> <c:out value="${p.codigo}" /> </td>
                             <td> <c:out value="${p.nombre}" /> </td>

@@ -21,7 +21,7 @@
                         <a href="familia/home.jsp"> Perfil </a>
                     </li>                    
                     <li>
-                        <a href="Familia_antecedentes.jsp"> Antecedentes </a>
+                        <a href="antecedentes.jsp"> Antecedentes </a>
                     </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
