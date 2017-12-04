@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
+<%@include file="../WEB-INF/menu-cel.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,23 +17,24 @@
                 <thead>
                     <tr>
                         <th>Nombre del programa </th>
-                        <th>Asignatura</th>
+                        <th>Asignatura </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><button type="button" class="btn btn-primary">
-                                Selecccionar
-                            </button></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>             
+                    <c:forEach var="a" items="${programasInscritos}">
+                        <tr>
+                            <td><c:out value="${a.nombrePrograma}"/></td>
+                            <td> 
+                                <c:forEach var="b" items="${a.asignaturaList}">
+                                    <c:out value="${b.nombreAsignatura}"/>
+                                </c:forEach>
+                            </td>
+                            <td><button type="button" class="btn btn-primary">
+                                    Selecccionar
+                                </button></td>
+                        </tr>      
+                    </c:forEach>
                 </tbody>
             </table>
             <!--
