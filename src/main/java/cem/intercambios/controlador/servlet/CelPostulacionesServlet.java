@@ -37,7 +37,6 @@ public class CelPostulacionesServlet extends HttpServlet {
                     programasDisponibles);
         }
 
-        //List<Programa> programasInscritos = pf.programasInscritosCel(usuarioActual.getRutPersona());
         List<InscripcionCel> programasInscritos = icf.programasInscritosCel(
                 usuarioActual.getRutPersona());
         if (programasInscritos != null) {
