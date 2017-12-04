@@ -59,6 +59,69 @@
                 </tbody>
             </table>
         </div>
+        <br/>
+        <div class="container">
+            <h2>Programas a los que estas postulando </h2>      
+            <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
+            <input class="form-control" id="myInput3" type="text"
+                   placeholder="Escribe aca lo que buscas..">
+            <br>
+             <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th> Nombre </th>
+                        <th> Cantidad de Cupos </th>   
+                        <th> Fecha de inicio </th>
+                        <th> Fecha de termino </th>
+                        <th> Estado </th>
+                    </tr>
+                </thead>
+                <tbody id="myTable2">
+                    <c:forEach var="pi" items="${programasInscritos}" >
+                        <tr>
+                            <td>
+                                <c:out value="${pi.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${pi.cupos}" />
+                            </td>
+                            <td>
+                                <c:out value="${pi.fechaInicio}" />
+                            </td>
+                            
+                            <td>
+                                <c:out value="${pi.fechaTermino}" />
+                            </td>
+                            <td>
+                                <c:if test="${pi.estado == 1}">
+                                    Sin Cel Asignado
+                                </c:if>
+                            </td>
+                            <td>
+                                <input type="hidden" name="${pd.codigo}" />
+                                <button type="button" class="btn btn-primary">
+                                    Postular
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary">
+                Eliminar Postulación
+            </button>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
+            });
+        </script>
     </body>
     <script>
         $(document).ready(function () {
