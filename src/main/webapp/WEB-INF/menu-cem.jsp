@@ -65,7 +65,7 @@
                                 <a href="#"> Centros de estudio locales </a>
                             </li>
                             <li>
-                                <a href="#"> Alumnos </a>
+                                <a href="cem-postulaciones-alumnos"> Alumnos </a>
                             </li>
                         </ul>
                     </li>
