@@ -23,7 +23,7 @@
                     <li>
                         <a href="cel-programas"> Calificaciones </a>
                     </li>
-                    <li><a href="#"> Postulaciones </a></li>
+                    <li><a href="postulaciones"> Postulaciones </a></li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">

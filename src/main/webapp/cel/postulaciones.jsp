@@ -31,10 +31,10 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${programasDisponiblesCel}" >
+                    <c:forEach var="p" items="${programasDisponibles}" >
                         <tr>
                             <td>
-                                <c:out value="${p.nombre}" />
+                                <c:out value="${p.nombrePrograma}" />
                             </td>
                             <td>
                                 <c:out value="${p.fechaInicio}" />
@@ -43,7 +43,9 @@
                                 <c:out value="${p.fechaTermino}" />
                             </td>
                             <td>
-                                <c:out value="${p.estado}" />
+                                <c:if test="${p.estado == 1}">
+                                Sin Cel Asignado
+                                </c:if>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-primary">
