@@ -25,6 +25,7 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th> Rut </th>
                         <th> CEL </th>
                         <th> Programa </th>
                         <th> Fecha de postulación </th>
@@ -37,6 +38,7 @@
                 <tbody id="myTable2">
                     <c:forEach var="lpc" items="${listadoPostulacionesCel}" >
                         <tr>
+                            <td> <c:out value="${lpc.rutCel.persona.rut}" /> </td>
                             <td> <c:out value="${lpc.rutCel.persona.nombreCompleto}" /> </td>
                             <td> <c:out value="${lpc.codPrograma.nombrePrograma}" /> </td>
                             <td>
@@ -102,24 +104,24 @@
         </script>
         <script>
             function habilitar() {
-                $(document).ready(function () {
-                    $('#lEdit').click(function () {
-                        if ($('#estadoInsc').attr('disabled') === "true") {
-                            $('#estadoInsc').prop('disabled', false);
-                            $('#btn-aceptar').prop('disabled', false);
-                        }
-                    });
-                });
+                //$(document).ready(function () {
+                //$('#btn-editar').click(function () {
+                if ($('#estadoInsc').attr('disabled') === true) {
+                    $('#estadoInsc').prop('disabled', false);
+                    $('#btn-aceptar').prop('disabled', false);
+                }
+                //});
+                //});
             }
         </script>
         <script>
             function deshabilitar() {
-                $(document).ready(function () {
-                    $('#btn-aceptar').click(function () {
-                        $('#estadoInsc').prop('disabled', true);
-                        $('#btn-aceptar').prop('disabled', true);
-                    }
-                });
+                //$(document).ready(function () {
+                //$('#btn-aceptar').click(function () {
+                $('#estadoInsc').prop('disabled', true);
+                $('#btn-aceptar').prop('disabled', true);
+                //}
+                //});
             }
         </script>
     </body>

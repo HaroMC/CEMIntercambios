@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Programa.findByValor", query = "SELECT p FROM Programa p WHERE p.valor = :valor")
     , @NamedQuery(name = "Programa.findByEstado", query = "SELECT p FROM Programa p WHERE p.estado = :estado")
         
-    //, @NamedQuery(name = "Programa.codigoAutoIncremental", query = "SELECT MAX(p.codigo) + 1 FROM Programa p")
+    , @NamedQuery(name = "Programa.programasInscritosCel", query = "SELECT p FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona AND i.estado = :estado")
 })
 public class Programa implements Serializable {
     
