@@ -1,11 +1,6 @@
-<%-- 
-    Document   : administrar-postulaciones-alumnos
-    Created on : 03-12-2017, 23:57:49
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ include file="../WEB-INF/menu-cem.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/menu-cem.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,20 +33,20 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${listadoPostulacionesAlumnos}" >
+                    <c:forEach var="ia" items="${inscrpcionesAlumnos}" >
                         <tr>
-                            <td> <c:out value="${p.codigo}" /> </td>
+                            <td> <c:out value="${ia.codigo}" /> </td>
 
                             <td>
                                 <fmt:formatDate dateStyle="long" type="date"
-                                                value="${p.fechaInscripcion}" />
+                                                value="${ia.fechaInscripcion}" />
                             </td>
 
                             <td> <c:choose>
-                                    <c:when test="${p.estado == 1}">
+                                    <c:when test="${ia.estado == 1}">
                                         Postulando
                                     </c:when>
-                                    <c:when test="${p.estado == 2}">
+                                    <c:when test="${ia.estado == 2}">
                                         Inscrito
                                     </c:when>                                   
                                     <c:otherwise>
@@ -60,10 +55,10 @@
                                 </c:choose>                           
                             </td>
                             <td>                               
-                                    <button type="submit"
-                                            class="btn btn-primary center-block">
-                                        <i>Aceptar</i>
-                                    </button>                              
+                                <button type="submit"
+                                        class="btn btn-primary center-block">
+                                    <i>Aceptar</i>
+                                </button>                              
                             </td>                      
                         </tr>
                     </c:forEach>

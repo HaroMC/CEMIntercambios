@@ -21,12 +21,8 @@
         <servlet-class>cem.intercambios.controlador.servlet.RegistrarCuentaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CemPostulacionAlumno</servlet-name>
-        <servlet-class>cem.intercambios.controlador.servlet.CemPostulacionAlumno</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CemPostulacionCelServlet</servlet-name>
-        <servlet-class>cem.intercambios.controlador.servlet.CemPostulacionCelServlet</servlet-class>
+        <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.CemInscripcionAlumnoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CemFamiliaServlet</servlet-name>
@@ -35,6 +31,10 @@
     <servlet>
         <servlet-name>CelProgramaServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.CelProgramaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CemInscripcionCelServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.CemInscripcionCelServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
@@ -57,20 +57,20 @@
         <url-pattern>/registrar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CemPostulacionAlumno</servlet-name>
-        <url-pattern>/cem/cem-postulaciones-alumnos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemPostulacionCelServlet</servlet-name>
-        <url-pattern>/cem/cem-postulaciones-cels</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CemFamiliaServlet</servlet-name>
         <url-pattern>/cem/cem-administrar-familias</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CelProgramaServlet</servlet-name>
         <url-pattern>/cel/cel-programas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemInscripcionCelServlet</servlet-name>
+        <url-pattern>/cem/inscripciones-cel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
+        <url-pattern>/cem/inscripciones-alumnos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

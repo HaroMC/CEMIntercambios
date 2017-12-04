@@ -10,7 +10,7 @@
     <body>
         <div class="row">
             <div class="col-sm-3 col-md-4">                  
-                <img id="logoUsuario" src="/img/logo_alumnos.jpg"
+                <img id="logoUsuario" src="../res/img/logo_alumnos.jpg"
                      style="width:30%; margin-left:70%" >
             </div>
             <div class="col-sm-3 col-md-4">

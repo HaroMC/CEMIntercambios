@@ -28,27 +28,35 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class InscripcionAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields
+    //consider using these annotations to enforce field validation
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
+    
     @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private Alumno rutAlumno;
+    
     @JoinColumn(name = "RUT_FAMILIA", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private FamiliaAnfitriona rutFamilia;
+    
     @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Programa codPrograma;
