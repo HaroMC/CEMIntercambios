@@ -14,7 +14,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
+                    <a class="navbar-brand" href="#"> WebSiteName </a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
@@ -23,7 +23,9 @@
                     <li>
                         <a href="cel-programas"> Calificaciones </a>
                     </li>
-                    <li><a href="postulaciones"> Postulaciones </a></li>
+                    <li>
+                        <a href="./postulaciones/inscripciones"> Postulaciones </a>
+                    </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">

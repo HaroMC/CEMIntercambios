@@ -25,26 +25,10 @@ public class CelProgramaServlet extends HttpServlet {
 
         sesion = req.getSession();
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
-
-        String accion = ((req.getParameter("accion") == null)
-                ? "" : req.getParameter("accion"));
-
-        //switch (accion) {
-
-            //case "ver_programas_inscritos":
-                List<Programa> programasInscritos = pf.programasInscritosCel(
-                        usuarioActual.getRutPersona());
-                sesion.setAttribute("programasInscritos", programasInscritos);
-                resp.sendRedirect("calificaciones.jsp");
-                //break;
-
-            //case "ver_programas_disponibles":
-                //break;
-
-            //default:
-                //resp.sendRedirect("inicio.jsp");
-                
-        //}
+        List<Programa> programasInscritos = pf.programasInscritosCel(
+                usuarioActual.getRutPersona());
+        sesion.setAttribute("programasInscritos", programasInscritos);
+        resp.sendRedirect("calificaciones.jsp");
     }
 
     @Override
