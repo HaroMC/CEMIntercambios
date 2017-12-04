@@ -4,7 +4,7 @@
     Author     : Bugueño
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <%@include file="../WEB-INF/menu-cel.jsp" %>
 <!DOCTYPE html>
 <html>
