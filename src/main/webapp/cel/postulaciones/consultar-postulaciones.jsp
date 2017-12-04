@@ -38,10 +38,12 @@
                                 <c:out value="${pd.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${pd.fechaInicio}" />
+                                <fmt:formatDate dateStyle="long" type="date"
+                                                value="${pd.fechaInicio}" />
                             </td>
                             <td>
-                                <c:out value="${pd.fechaTermino}" />
+                                <fmt:formatDate dateStyle="long" type="date"
+                                                value="${pd.fechaTermino}" />
                             </td>
                             <td>
                                 <c:if test="${pd.estado == 1}">
@@ -49,7 +51,6 @@
                                 </c:if>
                             </td>
                             <td>
-                                <input type="hidden" name="${pd.codigo}" />
                                 <button type="button" class="btn btn-primary">
                                     Postular
                                 </button>
@@ -61,12 +62,17 @@
         </div>
         <br/>
         <div class="container">
-            <h2>Programas a los que estas postulando </h2>      
-            <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
+            <h2>
+                Programas a los que estas postulando
+            </h2>      
+            <p>
+                Si necesitas buscar un programa a los cuales has postulado
+                hazlo aqui:
+            </p>
             <input class="form-control" id="myInput3" type="text"
                    placeholder="Escribe aca lo que buscas..">
             <br>
-             <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th> Nombre </th>
@@ -86,14 +92,15 @@
                                 <c:out value="${pi.codPrograma.cupos}" />
                             </td>
                             <td>
-                                <c:out value="${pi.codPrograma.fechaInicio}" />
-                            </td>
-                            
-                            <td>
-                                <c:out value="${pi.codPrograma.fechaTermino}" />
+                                <fmt:formatDate dateStyle="long" type="date"
+                                                value="${pi.codPrograma.fechaInicio}" />
                             </td>
                             <td>
-                               <c:choose>
+                                <fmt:formatDate dateStyle="long" type="date"
+                                                value="${pi.codPrograma.fechaTermino}" />
+                            </td>
+                            <td>
+                                <c:choose>
                                     <c:when test="${pi.estado == 1}">
                                         Postulando
                                     </c:when>
@@ -121,7 +128,6 @@
                 Eliminar Postulación
             </button>
         </div>
-
         <script>
             $(document).ready(function () {
                 $("#myInput").on("keyup", function () {
