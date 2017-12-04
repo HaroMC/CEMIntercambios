@@ -16,9 +16,6 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Centro de Estudios Montreal con logo bonito :V </a>
                 </div>
-                <ul class="nav navbar-nav">
-                                     
-                </ul>               
             </div>
         </nav>
     </body>

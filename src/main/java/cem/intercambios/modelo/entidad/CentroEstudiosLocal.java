@@ -28,19 +28,23 @@ import javax.xml.bind.annotation.XmlTransient;
 public class CentroEstudiosLocal implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "RUT_PERSONA")
     private String rutPersona;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTA_ACREDITADO")
     private short estaAcreditado;
+    
     @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutCel")
     private List<InscripcionCel> inscripcionCelList;
 

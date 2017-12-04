@@ -24,28 +24,38 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "InscripcionCel.findAll", query = "SELECT i FROM InscripcionCel i")
     , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
     , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")})
+    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
+        
+    , @NamedQuery(name = "InscripcionCel.buscarProgramasInscritos", query = "SELECT ic FROM InscripcionCel ic INNER JOIN CentroEstudiosLocal cel WHERE cel.rutPersona = :rutPersona AND ic.estado = :estado")
+})
 public class InscripcionCel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
+    
     @JoinColumn(name = "RUT_CEL", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private CentroEstudiosLocal rutCel;
+    
     @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Programa codPrograma;
