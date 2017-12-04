@@ -80,7 +80,6 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-
                             <td>
                                 <form action="cem-programas?accion=modificar"
                                       method="post">
@@ -92,7 +91,6 @@
                                     </button>
                                 </form>
                             </td>
-
                             <td>
                                 <form action="cem-programas?accion=eliminar"
                                       method="post">
@@ -104,7 +102,6 @@
                                     </button>
                                 </form>
                             </td>
-
                         </tr>
                     </c:forEach>
                 </tbody>

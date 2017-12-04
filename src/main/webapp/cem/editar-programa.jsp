@@ -23,7 +23,7 @@
                 <form action="cem-programas?accion=modificar&confirmar=si"
                       method="post"
                       class="form-horizontal">
-
+                    
                     <div class="form-group">
                         <label class="col-md-4 control-label"> Código </label>
                         <div class="col-md-8">
@@ -62,8 +62,8 @@
                             Cupos
                         </label>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" name="cupos"
-                                   required="true" pattern="[0-9]*"
+                            <input type="number" class="form-control"
+                                   name="cupos" required="true" pattern="[0-9]*"
                                    inputmode="numeric" min="1" max="40"
                                    value="<c:out value="${pEditar.cupos}"/>">
                         </div>
@@ -76,8 +76,8 @@
                         <div class="col-md-8">
                             <input type="number" class="form-control" name="valor"
                                    required="true" pattern="[0-9]*"
-                                   inputmode="numeric" min="0"
-                                   value="<c:out value="${pEditar.fechaTermino}"/>">
+                                   inputmode="numeric" min="0" max="10000000"
+                                   value="<c:out value="${pEditar.valor}"/>">
                         </div>
                     </div>
 
@@ -87,23 +87,52 @@
                         </label>
                         <div class="col-md-8">
                             <select name="estado" required="true">
-                                
                                 <c:choose>
-                                    
+                                    <c:when test="${pEditar.estado == 2}">
+                                        <option value="1"> Sin CEL asignado </option>
+                                        <option value="2" selected> Disponible </option>
+                                        <option value="3"> Sin cupos </option>
+                                        <option value="4"> Iniciado </option>
+                                        <option value="5"> Finalizado </option>
+                                    </c:when>
+                                    <c:when test="${pEditar.estado == 3}">
+                                        <option value="1"> Sin CEL asignado </option>
+                                        <option value="2"> Disponible </option>
+                                        <option value="3" selected> Sin cupos </option>
+                                        <option value="4"> Iniciado </option>
+                                        <option value="5"> Finalizado </option>
+                                    </c:when>
+                                    <c:when test="${pEditar.estado == 4}">
+                                        <option value="1"> Sin CEL asignado </option>
+                                        <option value="2"> Disponible </option>
+                                        <option value="3"> Sin cupos </option>
+                                        <option value="4" selected> Iniciado </option>
+                                        <option value="5"> Finalizado </option>
+                                    </c:when>
+                                    <c:when test="${pEditar.estado == 5}">
+                                        <option value="1"> Sin CEL asignado </option>
+                                        <option value="2"> Disponible </option>
+                                        <option value="3"> Sin cupos </option>
+                                        <option value="4"> Iniciado </option>
+                                        <option value="5" selected> Finalizado </option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="1" selected> Sin CEL asignado </option>
+                                        <option value="2"> Disponible </option>
+                                        <option value="3"> Sin cupos </option>
+                                        <option value="4"> Iniciado </option>
+                                        <option value="5"> Finalizado </option>
+                                    </c:otherwise>
                                 </c:choose>
-                                
-                                <option value="normal"> Normal </option>
-                                <option value="corto"> Corto </option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> ${mensaje} </label>
+                        <label class="col-md-4 control-label"> ${mensajeEstado} </label>
                         <div class="col-md-8">
-                            <button type="submit" class="btn btn-primary"
-                                    onClick="comprobarClave()">
-                                Registrar cuenta
+                            <button type="submit" class="btn btn-primary">
+                                Confirmar modificación
                             </button>
                         </div>
                     </div>

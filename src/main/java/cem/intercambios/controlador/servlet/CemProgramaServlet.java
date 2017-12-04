@@ -3,7 +3,6 @@ package cem.intercambios.controlador.servlet;
 import cem.intercambios.controlador.bean.ProgramaFacade;
 import cem.intercambios.modelo.entidad.Programa;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -107,7 +106,7 @@ public class CemProgramaServlet extends HttpServlet {
 
             //<editor-fold defaultstate="collapsed" desc="Caso : Modificar">
             case "modificar":
-                Programa programaModificar;
+                Programa pEditar;
                 String confirmarModificacion
                         = (req.getParameter("confirmar") == null
                         ? "" : req.getParameter("confirmar"));
@@ -115,28 +114,25 @@ public class CemProgramaServlet extends HttpServlet {
                 switch (confirmarModificacion) {
 
                     case "si":
-                        
-                        String estado = req.getParameter("estado");
-                        
-                        /*programaModificar = (Programa) sesion
-                                .getAttribute("programaModificar");
-                        
-                        programaModificar.setEstado(estado);
-                        
-                        pf.edit(programaModificar);*/
-                        
-                        sesion.removeAttribute("programaModificar");
-                        
+                        pEditar = (Programa) sesion.getAttribute("pEditar");
+                        pEditar.setNombrePrograma(
+                                req.getParameter("nombrePrograma"));
+                        pEditar.setCupos(
+                                Long.parseLong(req.getParameter("cupos")));
+                        pEditar.setValor(
+                                Long.parseLong(req.getParameter("valor")));
+                        pEditar.setEstado(
+                                Short.parseShort(req.getParameter("estado")));
+                        pEditar = definirFechas(pEditar,
+                                req.getParameter("tipoDuracion"));
+                        pf.edit(pEditar);
+                        sesion.removeAttribute("pEditar");
                         resp.sendRedirect("cem-programas");
-                        
                         break;
 
                     default:
-                        programaModificar = pf.find(BigDecimal.valueOf(
-                                Long.parseLong(req.getParameter("codigo"))
-                        ));
-                        sesion.setAttribute("programaModificar",
-                                programaModificar);
+                        pEditar = pf.find(req.getParameter("codigo"));
+                        sesion.setAttribute("pEditar", pEditar);
                         resp.sendRedirect("editar-programa.jsp");
                 }
                 break;
@@ -145,6 +141,59 @@ public class CemProgramaServlet extends HttpServlet {
             default:
                 resp.sendRedirect("cem-programas");
         }
+    }
+
+    private Programa definirFechas(Programa programa, String tipoDuracion) {
+
+        DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendario = Calendar.getInstance();
+        int dia, mes, ano;
+        Date fechaInicio, fechaTermino;
+
+        switch (tipoDuracion.toLowerCase()) {
+
+            // Desde el 10 de Agosto al 10 de Octubre.
+            case "normal":
+                try {
+                    if (calendario.get(Calendar.MONTH) >= Calendar.AUGUST) {
+                        ano = calendario.get(Calendar.YEAR) + 1;
+                    } else {
+                        ano = calendario.get(Calendar.YEAR);
+                    }
+                    dia = 10;
+                    mes = Calendar.AUGUST + 1;
+                    fechaInicio = formatoFecha.parse(
+                            ano + "-" + mes + "-" + dia);
+                    mes = Calendar.OCTOBER + 1;
+                    fechaTermino = formatoFecha.parse(
+                            ano + "-" + mes + "-" + dia);
+                    programa.setFechaInicio(fechaInicio);
+                    programa.setFechaTermino(fechaTermino);
+                } catch (ParseException ex) {
+                    LOGGER.log(Level.SEVERE,
+                            "Error en el parseo de la fecha actual.", ex);
+                }
+                break;
+
+            // Desde el 15 de Enero al 15 de Febrero.
+            case "corto":
+                try {
+                    dia = 15;
+                    mes = Calendar.JANUARY + 1;
+                    ano = calendario.get(Calendar.YEAR) + 1;
+                    fechaInicio = formatoFecha.parse(
+                            ano + "-" + mes + "-" + dia);
+                    mes = Calendar.FEBRUARY + 1;
+                    fechaTermino = formatoFecha.parse(
+                            ano + "-" + mes + "-" + dia);
+                    programa.setFechaInicio(fechaInicio);
+                    programa.setFechaTermino(fechaTermino);
+                } catch (ParseException ex) {
+                    LOGGER.log(Level.SEVERE,
+                            "Error en el parseo de la fecha actual.", ex);
+                }
+        }
+        return programa;
     }
 
     private Programa definirPrograma(HttpServletRequest req)
@@ -159,92 +208,26 @@ public class CemProgramaServlet extends HttpServlet {
         String asignaturaDos = req.getParameter("asignatura2");
         String asignaturaTres = req.getParameter("asignatura3");
 
-        DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendario = Calendar.getInstance();
+        Programa nuevoPrograma = new Programa(
+                // Definir un código correctamente!!
+                "PRO-".concat(Integer.toString(pf.count() + 1)),
+                nombrePrograma,
+                Long.parseLong(valor),
+                Long.parseLong(cupos),
+                (short) 1
+        );
 
-        Programa nuevoPrograma = null;
-
-        int dia, mes, ano;
-        Date fechaInicio, fechaTermino;
-
-        switch (tipoDuracion.toLowerCase()) {
-
-            case "normal": // Desde el 10 de Agosto al 10 de Octubre.
-                try {
-                    nuevoPrograma = new Programa(
-                            "PRO-".concat(Integer.toString(pf.count() + 1)),
-                            nombrePrograma,
-                            Long.parseLong(valor),
-                            Long.parseLong(cupos),
-                            (short) 1
-                    );
-
-                    if (calendario.get(Calendar.MONTH) >= Calendar.AUGUST) {
-                        ano = calendario.get(Calendar.YEAR) + 1;
-                    } else {
-                        ano = calendario.get(Calendar.YEAR);
-                    }
-
-                    dia = 10;
-                    mes = Calendar.AUGUST + 1;
-                    fechaInicio = formatoFecha.parse(
-                            ano + "-" + mes + "-" + dia);
-
-                    mes = Calendar.OCTOBER + 1;
-                    fechaTermino = formatoFecha.parse(
-                            ano + "-" + mes + "-" + dia);
-
-                    nuevoPrograma.setFechaInicio(fechaInicio);
-                    nuevoPrograma.setFechaTermino(fechaTermino);
-
-                } catch (ParseException ex) {
-                    LOGGER.log(Level.SEVERE,
-                            "Error en el parseo de la fecha actual.", ex);
-                }
-                break;
-
-            case "corto": // Desde el 15 de Enero al 15 de Febrero.
-                try {
-                    nuevoPrograma = new Programa(
-                            "PRO-".concat(Integer.toString(pf.count() + 1)),
-                            nombrePrograma,
-                            Long.parseLong(valor),
-                            Long.parseLong(cupos),
-                            (short) 1
-                    );
-
-                    dia = 15;
-                    mes = Calendar.JANUARY + 1;
-                    ano = calendario.get(Calendar.YEAR) + 1;
-
-                    fechaInicio = formatoFecha.parse(
-                            ano + "-" + mes + "-" + dia);
-
-                    mes = Calendar.FEBRUARY + 1;
-                    fechaTermino = formatoFecha.parse(
-                            ano + "-" + mes + "-" + dia);
-
-                    nuevoPrograma.setFechaInicio(fechaInicio);
-                    nuevoPrograma.setFechaTermino(fechaTermino);
-
-                } catch (ParseException ex) {
-                    LOGGER.log(Level.SEVERE,
-                            "Error en el parseo de la fecha actual.", ex);
-                }
-        }
-
-        // Definir asignaturas.
+        nuevoPrograma = definirFechas(nuevoPrograma, tipoDuracion);
         return nuevoPrograma;
     }
 
     private void ordenarLista(List<Programa> listadoProgramas) {
-        Collections.sort(listadoProgramas,
-                new Comparator<Programa>() {
+        Collections.sort(listadoProgramas, new Comparator<Programa>() {
             @Override
             public int compare(Programa p1, Programa p2) {
                 return p1.getCodigo().compareTo(p2.getCodigo());
             }
         });
     }
-
+    
 }

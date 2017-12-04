@@ -37,11 +37,6 @@
                         Duración
                     </label>
                     <div class="col-sm-5">
-                        <!--
-                        <input type="date" class="form-control"
-                               name="fechaTermino" 
-                               required="">
-                        -->
                         <select name="tipoDuracion" required="true">
                             <option value="normal"> Normal </option>
                             <option value="corto"> Corto </option>
