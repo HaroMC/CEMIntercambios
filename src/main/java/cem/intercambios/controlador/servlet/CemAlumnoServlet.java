@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @since 2017-12-01
  */
 public class CemAlumnoServlet extends HttpServlet {
-
+    
     private static final Logger LOGGER
             = Logger.getLogger(IniciarSesionServlet.class.getName());
 

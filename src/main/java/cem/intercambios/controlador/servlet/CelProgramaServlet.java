@@ -13,33 +13,44 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class CelProgramaServlet extends HttpServlet {
-    
+
     @EJB
     private ProgramaFacade pf;
-    
+
     private HttpSession sesion;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        
+
         sesion = req.getSession();
-        
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
-        
-        List<Programa> programasInscritos = pf.programasInscritosCel(
-                usuarioActual.getRutPersona());
-        
-        sesion.setAttribute("programasInscritos", programasInscritos);
-        
-        resp.sendRedirect("calificaciones.jsp");
+
+        String accion = ((req.getParameter("accion") == null)
+                ? "" : req.getParameter("accion"));
+
+        //switch (accion) {
+
+            //case "ver_programas_inscritos":
+                List<Programa> programasInscritos = pf.programasInscritosCel(
+                        usuarioActual.getRutPersona());
+                sesion.setAttribute("programasInscritos", programasInscritos);
+                resp.sendRedirect("calificaciones.jsp");
+                //break;
+
+            //case "ver_programas_disponibles":
+                //break;
+
+            //default:
+                //resp.sendRedirect("inicio.jsp");
+                
+        //}
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-       
+
     }
 
 }

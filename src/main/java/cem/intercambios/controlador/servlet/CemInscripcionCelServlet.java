@@ -76,8 +76,8 @@ public class CemInscripcionCelServlet extends HttpServlet {
                                 Long.parseLong(req.getParameter("codigo"))
                         ));
                         sesion.setAttribute("inscripcion", inscripcionEditar);
-                        sesion.setAttribute("tipo", "cel");
-                        resp.sendRedirect("ver-detalles-postulacion.jsp");
+                        sesion.setAttribute("tipo", "CEL");
+                        resp.sendRedirect("ver-detalles.jsp");
                 }
                 break;
         }

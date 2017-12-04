@@ -23,7 +23,7 @@
                 <form action="cem-programas?accion=modificar&confirmar=si"
                       method="post"
                       class="form-horizontal">
-                    
+
                     <div class="form-group">
                         <label class="col-md-4 control-label"> Código </label>
                         <div class="col-md-8">
@@ -129,10 +129,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> ${mensajeEstado} </label>
+                        <label class="col-md-4 control-label">
+                            <c:out value="${mensajeEstado}" />
+                        </label>
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-primary">
-                                Confirmar modificación
+                                Confirmar cambios
                             </button>
                         </div>
                     </div>

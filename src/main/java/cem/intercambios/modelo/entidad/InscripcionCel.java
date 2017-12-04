@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "InscripcionCel.findAll", query = "SELECT i FROM InscripcionCel i")
     , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
+    , @NamedQuery(name = "InscripcionCel.findByFechaPostulacion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaPostulacion = :fechaPostulacion")
     , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
     , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
 })
@@ -38,6 +39,12 @@ public class InscripcionCel implements Serializable {
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "FECHA_POSTULACION")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaPostulacion;
     
     @Basic(optional = false)
     @NotNull
@@ -65,8 +72,10 @@ public class InscripcionCel implements Serializable {
         this.codigo = codigo;
     }
 
-    public InscripcionCel(BigDecimal codigo, Date fechaInscripcion, short estado) {
+    public InscripcionCel(BigDecimal codigo, Date fechaPostulacion,
+            Date fechaInscripcion, short estado) {
         this.codigo = codigo;
+        this.fechaPostulacion = fechaPostulacion;
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
     }
@@ -79,10 +88,18 @@ public class InscripcionCel implements Serializable {
         this.codigo = codigo;
     }
 
+    public Date getFechaPostulacion() {
+        return fechaPostulacion;
+    }
+    
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
 
+    public void setFechaPostulacion(Date fechaPostulacion) {
+        this.fechaPostulacion = fechaPostulacion;
+    }
+    
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }

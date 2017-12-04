@@ -29,6 +29,7 @@
             <div class="col-md-6 col-md-offset-3">
 
                 <form action="../registrar?tipo=familia" method="post" class="form-horizontal">
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="NombreJefe">
                             Nombre(s) del jefe de familia
@@ -41,6 +42,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="apellido"> Apellido(s) </label>
                         <div class="col-md-8">
@@ -51,13 +53,15 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="runFami"> RUN </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="run" id="runFami" 
                                    placeholder="12345678-9" required="true">
                         </div>
-                    </div>          
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="fechaNacimiento">
                             Fecha de nacimiento
@@ -70,6 +74,7 @@
                                    placeholder="Indique su fecha de nacimiento" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="domicilioResi"> Domicilio </label>
                         <div class="col-md-8">
@@ -79,6 +84,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="ciudadResi"> Ciudad </label>
                         <div class="col-md-8">
@@ -88,6 +94,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="paisResi"> País </label>
                         <div class="col-md-8">
@@ -97,6 +104,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="mail">
                             Correo electrónico
@@ -108,6 +116,7 @@
                                    required="true" />
                         </div> 
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="teleContacto">
                             Teléfono de contacto
@@ -118,6 +127,7 @@
                                    placeholder="(+56) 2 2123 4567" required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="integrantes">
                             Cantidad de integrantes
@@ -128,7 +138,8 @@
                                    placeholder="Número de integrantes de su grupo familiar"
                                    required="true" />
                         </div>
-                    </div> 
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="nombreUsu">
                             Nombre de usuario
@@ -141,6 +152,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="contra"> Contraseña </label>
                         <div class="col-md-8">
@@ -151,6 +163,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="contraRepite">
                             Repita su contraseña
@@ -163,6 +176,7 @@
                                    required="true" />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 control-label"> ${mensaje} </label>
                         <div class="col-md-8">
@@ -172,6 +186,7 @@
                             </button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

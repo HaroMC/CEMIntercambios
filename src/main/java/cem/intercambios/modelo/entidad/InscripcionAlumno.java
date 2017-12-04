@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "InscripcionAlumno.findAll", query = "SELECT i FROM InscripcionAlumno i")
     , @NamedQuery(name = "InscripcionAlumno.findByCodigo", query = "SELECT i FROM InscripcionAlumno i WHERE i.codigo = :codigo")
+    , @NamedQuery(name = "InscripcionAlumno.findByFechaPostulacion", query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaPostulacion = :fechaPostulacion")
     , @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion", query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaInscripcion = :fechaInscripcion")
     , @NamedQuery(name = "InscripcionAlumno.findByEstado", query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")})
 public class InscripcionAlumno implements Serializable {
@@ -37,6 +38,12 @@ public class InscripcionAlumno implements Serializable {
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "FECHA_POSTULACION")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaPostulacion;
     
     @Basic(optional = false)
     @NotNull
@@ -68,8 +75,10 @@ public class InscripcionAlumno implements Serializable {
         this.codigo = codigo;
     }
 
-    public InscripcionAlumno(BigDecimal codigo, Date fechaInscripcion, short estado) {
+    public InscripcionAlumno(BigDecimal codigo, Date fechaPostulacion,
+            Date fechaInscripcion, short estado) {
         this.codigo = codigo;
+        this.fechaPostulacion = fechaPostulacion;
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
     }
@@ -82,10 +91,18 @@ public class InscripcionAlumno implements Serializable {
         this.codigo = codigo;
     }
 
+    public Date getFechaPostulacion() {
+        return fechaPostulacion;
+    }
+    
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
 
+    public void setFechaPostulacion(Date fechaPostulacion) {
+        this.fechaPostulacion = fechaPostulacion;
+    }
+    
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }

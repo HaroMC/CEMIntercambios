@@ -36,6 +36,10 @@
         <servlet-name>CemInscripcionCelServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.CemInscripcionCelServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CelInscripcionesServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.CelInscripcionesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
         <url-pattern>/cem/inscripciones-alumnos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CelInscripcionesServlet</servlet-name>
+        <url-pattern>/cel/postulaciones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
