@@ -62,10 +62,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#"> Centros de estudio locales </a>
+                                <a href="cem-postulaciones-cels"> Centros de estudio locales </a>
                             </li>
                             <li>
-                                <a href="#"> Alumnos </a>
+                                <a href="cem-postulaciones-alumnos"> Alumnos </a>
                             </li>
                         </ul>
                     </li>
