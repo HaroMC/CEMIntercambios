@@ -48,4 +48,11 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
                 .getResultList();
     }
 
+
+    public List<Programa> findByEstado(short estado) {
+        return em.createNamedQuery("Programa.findByEstado")
+                .setParameter("estado", estado)
+                .getResultList();
+    }
+
 }
