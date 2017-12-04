@@ -59,6 +59,79 @@
                 </tbody>
             </table>
         </div>
+        <br/>
+        <div class="container">
+            <h2>Programas a los que estas postulando </h2>      
+            <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
+            <input class="form-control" id="myInput3" type="text"
+                   placeholder="Escribe aca lo que buscas..">
+            <br>
+             <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th> Nombre </th>
+                        <th> Cantidad de Cupos </th>   
+                        <th> Fecha de inicio </th>
+                        <th> Fecha de termino </th>
+                        <th> Estado </th>
+                    </tr>
+                </thead>
+                <tbody id="myTable2">
+                    <c:forEach var="pi" items="${programasInscritos}" >
+                        <tr>
+                            <td>
+                                <c:out value="${pi.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${pi.codPrograma.cupos}" />
+                            </td>
+                            <td>
+                                <c:out value="${pi.codPrograma.fechaInicio}" />
+                            </td>
+                            
+                            <td>
+                                <c:out value="${pi.codPrograma.fechaTermino}" />
+                            </td>
+                            <td>
+                               <c:choose>
+                                    <c:when test="${pi.estado == 1}">
+                                        Postulando
+                                    </c:when>
+                                    <c:when test="${pi.estado == 2}">
+                                        Inscrito
+                                    </c:when>
+                                    <c:when test="${pi.estado == 3}">
+                                        Rechazado
+                                    </c:when>
+                                    <c:otherwise>
+                                        Definir
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">
+                                    Postular
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary">
+                Eliminar Postulación
+            </button>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
+            });
+        </script>
     </body>
     <script>
         $(document).ready(function () {
