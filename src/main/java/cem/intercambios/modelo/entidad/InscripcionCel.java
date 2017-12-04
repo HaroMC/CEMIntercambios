@@ -46,8 +46,8 @@ public class InscripcionCel implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPostulacion;
     
-    @Basic(optional = false)
-    @NotNull
+    //@Basic(optional = false)
+    //@NotNull
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
