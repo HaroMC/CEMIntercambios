@@ -26,7 +26,7 @@
                     <c:forEach var="a" items="${programasInscritos}">
                         <tr>
                             <td><c:out value="${a.nombrePrograma}"/></td>
-                            <td> 
+                            <td>
                                 <c:forEach var="b" items="${a.asignaturaList}">
                                     <c:out value="${b.nombreAsignatura}"/> <br />
                                 </c:forEach>
