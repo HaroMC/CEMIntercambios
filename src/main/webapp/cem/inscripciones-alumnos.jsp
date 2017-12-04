@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="ia" items="${inscrpcionesAlumnos}" >
+                    <c:forEach var="ia" items="${inscripcionesAlumnos}" >
                         <tr>
                             <td> <c:out value="${ia.codigo}" /> </td>
 
