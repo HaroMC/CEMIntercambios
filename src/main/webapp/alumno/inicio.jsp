@@ -23,7 +23,7 @@
         </div>
         <br/>
         <div class="container">
-            <h3>Para colocar una calificacion selecciona un programa</h3>      
+            <h3>Selecciona un programa</h3>      
             <p>Filtra tu busqueda aqui:</p>
             <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">
