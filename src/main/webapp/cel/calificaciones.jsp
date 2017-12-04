@@ -1,10 +1,5 @@
-<%-- 
-    Document   : calificaciones
-    Created on : 04-12-2017, 2:09:05
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -21,9 +21,9 @@
                         <a href="cel/home.jsp"> Home </a>
                     </li>
                     <li>
-                        <a href="CEL_calificaciones.jsp"> Calificaciones </a>
+                        <a href="cel-programas"> Calificaciones </a>
                     </li>
-                    <li><a href="cel-programas"> Postulaciones </a></li>
+                    <li><a href="#"> Postulaciones </a></li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">

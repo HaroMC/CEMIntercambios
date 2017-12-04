@@ -33,8 +33,8 @@
         <servlet-class>cem.intercambios.controlador.servlet.CemFamiliaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CelCalificacionServlet</servlet-name>
-        <servlet-class>cem.intercambios.controlador.servlet.CelCalificacionServlet</servlet-class>
+        <servlet-name>CelProgramaServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.CelProgramaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
@@ -69,8 +69,8 @@
         <url-pattern>/cem/cem-administrar-familias</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CelCalificacionServlet</servlet-name>
-        <url-pattern>/cel/cel-calificaciones</url-pattern>
+        <servlet-name>CelProgramaServlet</servlet-name>
+        <url-pattern>/cel/cel-programas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
