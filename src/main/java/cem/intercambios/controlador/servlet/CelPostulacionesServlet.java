@@ -2,6 +2,7 @@ package cem.intercambios.controlador.servlet;
 
 import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
+import cem.intercambios.modelo.entidad.InscripcionCel;
 import cem.intercambios.modelo.entidad.Programa;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
@@ -36,7 +37,8 @@ public class CelPostulacionesServlet extends HttpServlet {
                     programasDisponibles);
         }
 
-        List<Programa> programasInscritos = pf.programasInscritosCel(
+        //List<Programa> programasInscritos = pf.programasInscritosCel(usuarioActual.getRutPersona());
+        List<InscripcionCel> programasInscritos = icf.programasInscritosCel(
                 usuarioActual.getRutPersona());
         if (programasInscritos != null) {
             sesion.setAttribute("programasInscritos",
