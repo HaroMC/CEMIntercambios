@@ -63,7 +63,7 @@
         <div class="container">
             <h2>Programas a los que estas postulando </h2>      
             <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
-            <input class="form-control" id="myInput3" type="text"
+            <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">
             <br>
              <table class="table table-bordered table-striped">
@@ -76,7 +76,7 @@
                         <th> Estado </th>
                     </tr>
                 </thead>
-                <tbody id="myTable2">
+                <tbody id="myTable">
                     <c:forEach var="pi" items="${programasInscritos}" >
                         <tr>
                             <td>
@@ -107,12 +107,7 @@
                                         Definir
                                     </c:otherwise>
                                 </c:choose>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary">
-                                    Postular
-                                </button>
-                            </td>
+                            </td>                          
                         </tr>
                     </c:forEach>
                 </tbody>
