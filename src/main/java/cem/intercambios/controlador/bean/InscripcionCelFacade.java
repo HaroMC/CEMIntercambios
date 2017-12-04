@@ -22,5 +22,5 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
     public InscripcionCelFacade() {
         super(InscripcionCel.class);
     }
-
+    
 }
