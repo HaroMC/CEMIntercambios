@@ -37,8 +37,8 @@
         <servlet-class>cem.intercambios.controlador.servlet.CemInscripcionCelServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CelInscripcionesServlet</servlet-name>
-        <servlet-class>cem.intercambios.controlador.servlet.CelInscripcionesServlet</servlet-class>
+        <servlet-name>CelPostulacionesServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.CelPostulacionesServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AlumnoPostulacionesServlet</servlet-name>
@@ -81,8 +81,8 @@
         <url-pattern>/cem/inscripciones-alumnos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CelInscripcionesServlet</servlet-name>
-        <url-pattern>/cel/postulaciones</url-pattern>
+        <servlet-name>CelPostulacionesServlet</servlet-name>
+        <url-pattern>/cel/postulaciones/inscripciones</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AlumnoPostulacionesServlet</servlet-name>
