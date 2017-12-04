@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -22,10 +17,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "CERTIFICADO")
 @XmlRootElement
@@ -109,7 +100,7 @@ public class Certificado implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Certificado[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Certificado[ codigo=" + codigo + " ]";
     }
     
 }

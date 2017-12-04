@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -23,10 +18,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "FAMILIA_ANFITRIONA")
 @XmlRootElement
@@ -38,28 +29,35 @@ import javax.xml.bind.annotation.XmlTransient;
 public class FamiliaAnfitriona implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "RUT_PERSONA")
     private String rutPersona;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "CANTIDAD_INTEGRANTES")
     private short cantidadIntegrantes;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "ESTADO")
     private String estado;
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
+    
+    @JoinColumn(name = "RUT_PERSONA",
+            referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutFamilia")
-    private List<PostulacionesAlumnos> postulacionesAlumnosList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutFamilia")
     private List<Antecedente> antecedenteList;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutFamilia")
+    private List<InscripcionAlumno> inscripcionAlumnoList;
 
     public FamiliaAnfitriona() {
     }
@@ -68,7 +66,8 @@ public class FamiliaAnfitriona implements Serializable {
         this.rutPersona = rutPersona;
     }
 
-    public FamiliaAnfitriona(String rutPersona, short cantidadIntegrantes, String estado) {
+    public FamiliaAnfitriona(String rutPersona, short cantidadIntegrantes,
+            String estado) {
         this.rutPersona = rutPersona;
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
@@ -107,21 +106,21 @@ public class FamiliaAnfitriona implements Serializable {
     }
 
     @XmlTransient
-    public List<PostulacionesAlumnos> getPostulacionesAlumnosList() {
-        return postulacionesAlumnosList;
-    }
-
-    public void setPostulacionesAlumnosList(List<PostulacionesAlumnos> postulacionesAlumnosList) {
-        this.postulacionesAlumnosList = postulacionesAlumnosList;
-    }
-
-    @XmlTransient
     public List<Antecedente> getAntecedenteList() {
         return antecedenteList;
     }
 
     public void setAntecedenteList(List<Antecedente> antecedenteList) {
         this.antecedenteList = antecedenteList;
+    }
+
+    @XmlTransient
+    public List<InscripcionAlumno> getInscripcionAlumnoList() {
+        return inscripcionAlumnoList;
+    }
+
+    public void setInscripcionAlumnoList(List<InscripcionAlumno> inscripcionAlumnoList) {
+        this.inscripcionAlumnoList = inscripcionAlumnoList;
     }
 
     @Override
@@ -146,7 +145,7 @@ public class FamiliaAnfitriona implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.FamiliaAnfitriona[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.FamiliaAnfitriona[ rutPersona=" + rutPersona + " ]";
     }
     
 }

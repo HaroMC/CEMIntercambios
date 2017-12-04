@@ -11,8 +11,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ProgramaFacade
-        extends AbstractFacade<Programa> {
+public class ProgramaFacade extends AbstractFacade<Programa> {
 
     private static final Logger LOGGER
             = Logger.getLogger(ProgramaFacade.class.getName());
@@ -52,7 +51,7 @@ public class ProgramaFacade
         }
     }
 
-    public Programa find(BigDecimal codigo) {
+    /*public Programa find(BigDecimal codigo) {
         try {
             return em.createNamedQuery("Programa.findByCodigo", Programa.class)
                     .setParameter("codigo", codigo)
@@ -61,6 +60,6 @@ public class ProgramaFacade
             LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
             return null;
         }
-    }
+    }*/
 
 }

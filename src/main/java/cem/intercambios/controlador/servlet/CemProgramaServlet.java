@@ -37,13 +37,6 @@ public class CemProgramaServlet extends HttpServlet {
     @EJB
     private ProgramaFacade pf;
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -67,13 +60,6 @@ public class CemProgramaServlet extends HttpServlet {
 
     }
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -88,9 +74,10 @@ public class CemProgramaServlet extends HttpServlet {
 
             //<editor-fold defaultstate="collapsed" desc="Caso : Eliminar">
             case "eliminar":
-                pf.remove(pf.find(BigDecimal.valueOf(Long.parseLong(
+                /*pf.remove(pf.find(BigDecimal.valueOf(Long.parseLong(
                         req.getParameter("codigo")
-                ))));
+                ))));*/
+                pf.remove(pf.find(req.getParameter("codigo")));
                 mensaje = "Programa eliminado correctamente.";
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
@@ -128,13 +115,20 @@ public class CemProgramaServlet extends HttpServlet {
                 switch (confirmarModificacion) {
 
                     case "si":
+                        
                         String estado = req.getParameter("estado");
-                        programaModificar = (Programa) sesion
+                        
+                        /*programaModificar = (Programa) sesion
                                 .getAttribute("programaModificar");
+                        
                         programaModificar.setEstado(estado);
-                        pf.edit(programaModificar);
+                        
+                        pf.edit(programaModificar);*/
+                        
                         sesion.removeAttribute("programaModificar");
+                        
                         resp.sendRedirect("cem-programas");
+                        
                         break;
 
                     default:
@@ -153,19 +147,13 @@ public class CemProgramaServlet extends HttpServlet {
         }
     }
 
-    /**
-     *
-     * @param req
-     * @return
-     * @throws ServletException
-     * @throws IOException
-     */
     private Programa definirPrograma(HttpServletRequest req)
             throws ServletException, IOException {
 
         String nombrePrograma = req.getParameter("nombrePrograma");
         String tipoDuracion = req.getParameter("tipoDuracion");
         String valor = req.getParameter("valor");
+        String cupos = req.getParameter("cupos");
 
         String asignaturaUno = req.getParameter("asignatura1");
         String asignaturaDos = req.getParameter("asignatura2");
@@ -184,10 +172,11 @@ public class CemProgramaServlet extends HttpServlet {
             case "normal": // Desde el 10 de Agosto al 10 de Octubre.
                 try {
                     nuevoPrograma = new Programa(
-                            pf.codigoAutoIncremental(),
+                            "PRO-".concat(Integer.toString(pf.count() + 1)),
                             nombrePrograma,
-                            Integer.parseInt(valor),
-                            "Sin CEL asignado"
+                            Long.parseLong(valor),
+                            Long.parseLong(cupos),
+                            (short) 1
                     );
 
                     if (calendario.get(Calendar.MONTH) >= Calendar.AUGUST) {
@@ -217,10 +206,11 @@ public class CemProgramaServlet extends HttpServlet {
             case "corto": // Desde el 15 de Enero al 15 de Febrero.
                 try {
                     nuevoPrograma = new Programa(
-                            pf.codigoAutoIncremental(),
+                            "PRO-".concat(Integer.toString(pf.count() + 1)),
                             nombrePrograma,
-                            Integer.parseInt(valor),
-                            "Sin CEL asignado"
+                            Long.parseLong(valor),
+                            Long.parseLong(cupos),
+                            (short) 1
                     );
 
                     dia = 15;
@@ -247,17 +237,12 @@ public class CemProgramaServlet extends HttpServlet {
         return nuevoPrograma;
     }
 
-    /**
-     * 
-     * @param listadoProgramas 
-     */
     private void ordenarLista(List<Programa> listadoProgramas) {
         Collections.sort(listadoProgramas,
                 new Comparator<Programa>() {
             @Override
             public int compare(Programa p1, Programa p2) {
-                return p1.getCodigo().intValue()
-                        - p2.getCodigo().intValue();
+                return p1.getCodigo().compareTo(p2.getCodigo());
             }
         });
     }

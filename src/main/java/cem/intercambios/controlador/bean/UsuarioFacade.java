@@ -12,11 +12,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class UsuarioFacade
-        extends AbstractFacade<Usuario> {
+public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     private static final Logger LOGGER
-            = Logger.getLogger(UsuarioFacade.class.getName());
+            = Logger.getLogger(AlumnoFacade.class.getName());
 
     @PersistenceContext(unitName
             = "cem.intercambios_CEMIntercambios_war_1.0.0.SnapshotPU")
@@ -66,7 +65,7 @@ public class UsuarioFacade
         try {
             return em.createNamedQuery("Usuario.validarIngreso",
                     Usuario.class)
-                    .setParameter("nombre", nombreUsuario)
+                    .setParameter("nombreUsuario", nombreUsuario)
                     .setParameter("contrasena", contrasena)
                     .getSingleResult();
         } catch (NoResultException ex) {

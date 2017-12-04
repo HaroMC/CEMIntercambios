@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -23,17 +18,13 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "CENTRO_ESTUDIOS_LOCAL")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CentroEstudiosLocal.findAll", query = "SELECT c FROM CentroEstudiosLocal c")
     , @NamedQuery(name = "CentroEstudiosLocal.findByRutPersona", query = "SELECT c FROM CentroEstudiosLocal c WHERE c.rutPersona = :rutPersona")
-    , @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditada", query = "SELECT c FROM CentroEstudiosLocal c WHERE c.estaAcreditada = :estaAcreditada")})
+    , @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditado", query = "SELECT c FROM CentroEstudiosLocal c WHERE c.estaAcreditado = :estaAcreditado")})
 public class CentroEstudiosLocal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,13 +36,13 @@ public class CentroEstudiosLocal implements Serializable {
     private String rutPersona;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ESTA_ACREDITADA")
-    private short estaAcreditada;
+    @Column(name = "ESTA_ACREDITADO")
+    private short estaAcreditado;
     @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutCel")
-    private List<PostulacionesCel> postulacionesCelList;
+    private List<InscripcionCel> inscripcionCelList;
 
     public CentroEstudiosLocal() {
     }
@@ -60,9 +51,9 @@ public class CentroEstudiosLocal implements Serializable {
         this.rutPersona = rutPersona;
     }
 
-    public CentroEstudiosLocal(String rutPersona, short estaAcreditada) {
+    public CentroEstudiosLocal(String rutPersona, short estaAcreditado) {
         this.rutPersona = rutPersona;
-        this.estaAcreditada = estaAcreditada;
+        this.estaAcreditado = estaAcreditado;
     }
 
     public String getRutPersona() {
@@ -73,12 +64,12 @@ public class CentroEstudiosLocal implements Serializable {
         this.rutPersona = rutPersona;
     }
 
-    public short getEstaAcreditada() {
-        return estaAcreditada;
+    public short getEstaAcreditado() {
+        return estaAcreditado;
     }
 
-    public void setEstaAcreditada(short estaAcreditada) {
-        this.estaAcreditada = estaAcreditada;
+    public void setEstaAcreditado(short estaAcreditado) {
+        this.estaAcreditado = estaAcreditado;
     }
 
     public Persona getPersona() {
@@ -90,12 +81,12 @@ public class CentroEstudiosLocal implements Serializable {
     }
 
     @XmlTransient
-    public List<PostulacionesCel> getPostulacionesCelList() {
-        return postulacionesCelList;
+    public List<InscripcionCel> getInscripcionCelList() {
+        return inscripcionCelList;
     }
 
-    public void setPostulacionesCelList(List<PostulacionesCel> postulacionesCelList) {
-        this.postulacionesCelList = postulacionesCelList;
+    public void setInscripcionCelList(List<InscripcionCel> inscripcionCelList) {
+        this.inscripcionCelList = inscripcionCelList;
     }
 
     @Override
@@ -120,7 +111,7 @@ public class CentroEstudiosLocal implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.CentroEstudiosLocal[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.CentroEstudiosLocal[ rutPersona=" + rutPersona + " ]";
     }
     
 }

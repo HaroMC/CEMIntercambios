@@ -73,19 +73,25 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                     req.getParameter("pais"),
                                     req.getParameter("correo"),
                                     req.getParameter("telefono"),
-                                    "Familia",
+                                    //"Familia",
                                     new FamiliaAnfitriona(
                                             rut,
                                             Short.parseShort(req.getParameter(
                                                     "integrantes")),
                                             estado
                                     ),
+                                    
                                     new Usuario(
-                                            uf.codigoAutoIncremental(),
+                                            /*uf.codigoAutoIncremental(),
                                             req.getParameter("nombreUsuario"),
                                             req.getParameter("clave1"),
                                             fechaRegistro,
                                             req.getParameter("rut"),
+                                            "Familia"*/
+                                            rut,
+                                            req.getParameter("nombreUsuario"),
+                                            req.getParameter("clave1"),
+                                            fechaRegistro,
                                             "Familia"
                                     )
                             );

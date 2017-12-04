@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -22,39 +17,40 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "CALIFICACION")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Calificacion.findAll", query = "SELECT c FROM Calificacion c")
     , @NamedQuery(name = "Calificacion.findByCodigo", query = "SELECT c FROM Calificacion c WHERE c.codigo = :codigo")
-    , @NamedQuery(name = "Calificacion.findByFechaCalificacion", query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")
-    , @NamedQuery(name = "Calificacion.findByNota", query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")})
+    , @NamedQuery(name = "Calificacion.findByNota", query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")
+    , @NamedQuery(name = "Calificacion.findByFechaCalificacion", query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")})
 public class Calificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "NOTA")
+    private BigDecimal nota;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_CALIFICACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCalificacion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "NOTA")
-    private BigDecimal nota;
+    
     @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private Alumno rutAlumno;
+    
     @JoinColumn(name = "COD_ASIGNATURA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Asignatura codAsignatura;
@@ -66,10 +62,10 @@ public class Calificacion implements Serializable {
         this.codigo = codigo;
     }
 
-    public Calificacion(BigDecimal codigo, Date fechaCalificacion, BigDecimal nota) {
+    public Calificacion(BigDecimal codigo, BigDecimal nota, Date fechaCalificacion) {
         this.codigo = codigo;
-        this.fechaCalificacion = fechaCalificacion;
         this.nota = nota;
+        this.fechaCalificacion = fechaCalificacion;
     }
 
     public BigDecimal getCodigo() {
@@ -80,20 +76,20 @@ public class Calificacion implements Serializable {
         this.codigo = codigo;
     }
 
-    public Date getFechaCalificacion() {
-        return fechaCalificacion;
-    }
-
-    public void setFechaCalificacion(Date fechaCalificacion) {
-        this.fechaCalificacion = fechaCalificacion;
-    }
-
     public BigDecimal getNota() {
         return nota;
     }
 
     public void setNota(BigDecimal nota) {
         this.nota = nota;
+    }
+
+    public Date getFechaCalificacion() {
+        return fechaCalificacion;
+    }
+
+    public void setFechaCalificacion(Date fechaCalificacion) {
+        this.fechaCalificacion = fechaCalificacion;
     }
 
     public Alumno getRutAlumno() {
@@ -134,7 +130,7 @@ public class Calificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Calificacion[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Calificacion[ codigo=" + codigo + " ]";
     }
     
 }

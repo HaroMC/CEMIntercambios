@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -27,10 +22,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "ALUMNO")
 @XmlRootElement
@@ -39,44 +30,53 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Alumno.findByRutPersona", query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona")
     , @NamedQuery(name = "Alumno.findByNumeroMatricula", query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula")
     , @NamedQuery(name = "Alumno.findByFechaMatricula", query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula")
-    , @NamedQuery(name = "Alumno.findByEsMoroso", query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")
-        
-    , @NamedQuery(name = "Alumno.buscarNotas", query = "SELECT per.nombreCompleto, pro.nombre, asi.nombreAsignatura, cal.nota "
-            + "FROM Alumno alu INNER JOIN alu.persona per INNER JOIN alu.calificacionList cal INNER JOIN cal.codAsignatura asi "
-            + "INNER JOIN asi.programaList pro INNER JOIN pro.postulacionesAlumnosList poa WHERE poa.estado = :estadoPostulacion "
-            + "AND per.rut = :rutAlumno")
-})
+    , @NamedQuery(name = "Alumno.findByNombreCarrera", query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera")
+    , @NamedQuery(name = "Alumno.findByEsMoroso", query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")})
 public class Alumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "RUT_PERSONA")
     private String rutPersona;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "NUMERO_MATRICULA")
     private BigInteger numeroMatricula;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_MATRICULA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaMatricula;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "NOMBRE_CARRERA")
+    private String nombreCarrera;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "ES_MOROSO")
     private short esMoroso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
-    private List<PostulacionesAlumnos> postulacionesAlumnosList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
     private List<Calificacion> calificacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
     private List<Certificado> certificadoList;
+    
     @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
+    private List<InscripcionAlumno> inscripcionAlumnoList;
 
     public Alumno() {
     }
@@ -85,10 +85,11 @@ public class Alumno implements Serializable {
         this.rutPersona = rutPersona;
     }
 
-    public Alumno(String rutPersona, BigInteger numeroMatricula, Date fechaMatricula, short esMoroso) {
+    public Alumno(String rutPersona, BigInteger numeroMatricula, Date fechaMatricula, String nombreCarrera, short esMoroso) {
         this.rutPersona = rutPersona;
         this.numeroMatricula = numeroMatricula;
         this.fechaMatricula = fechaMatricula;
+        this.nombreCarrera = nombreCarrera;
         this.esMoroso = esMoroso;
     }
 
@@ -116,21 +117,20 @@ public class Alumno implements Serializable {
         this.fechaMatricula = fechaMatricula;
     }
 
+    public String getNombreCarrera() {
+        return nombreCarrera;
+    }
+
+    public void setNombreCarrera(String nombreCarrera) {
+        this.nombreCarrera = nombreCarrera;
+    }
+
     public short getEsMoroso() {
         return esMoroso;
     }
 
     public void setEsMoroso(short esMoroso) {
         this.esMoroso = esMoroso;
-    }
-
-    @XmlTransient
-    public List<PostulacionesAlumnos> getPostulacionesAlumnosList() {
-        return postulacionesAlumnosList;
-    }
-
-    public void setPostulacionesAlumnosList(List<PostulacionesAlumnos> postulacionesAlumnosList) {
-        this.postulacionesAlumnosList = postulacionesAlumnosList;
     }
 
     @XmlTransient
@@ -159,6 +159,15 @@ public class Alumno implements Serializable {
         this.persona = persona;
     }
 
+    @XmlTransient
+    public List<InscripcionAlumno> getInscripcionAlumnoList() {
+        return inscripcionAlumnoList;
+    }
+
+    public void setInscripcionAlumnoList(List<InscripcionAlumno> inscripcionAlumnoList) {
+        this.inscripcionAlumnoList = inscripcionAlumnoList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -181,7 +190,7 @@ public class Alumno implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Alumno[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.Alumno[ rutPersona=" + rutPersona + " ]";
     }
     
 }

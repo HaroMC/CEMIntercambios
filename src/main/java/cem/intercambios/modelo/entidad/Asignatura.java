@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -24,10 +18,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "ASIGNATURA")
 @XmlRootElement
@@ -35,17 +25,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Asignatura.findAll", query = "SELECT a FROM Asignatura a")
     , @NamedQuery(name = "Asignatura.findByCodigo", query = "SELECT a FROM Asignatura a WHERE a.codigo = :codigo")
     , @NamedQuery(name = "Asignatura.findByNombreAsignatura", query = "SELECT a FROM Asignatura a WHERE a.nombreAsignatura = :nombreAsignatura")
-    , @NamedQuery(name = "Asignatura.findByDescripcion", query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")
-    , @NamedQuery(name = "Asignatura.findByCupos", query = "SELECT a FROM Asignatura a WHERE a.cupos = :cupos")})
+    , @NamedQuery(name = "Asignatura.findByDescripcion", query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")})
 public class Asignatura implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 30)
     @Column(name = "CODIGO")
-    private BigDecimal codigo;
+    private String codigo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -54,33 +43,32 @@ public class Asignatura implements Serializable {
     @Size(max = 250)
     @Column(name = "DESCRIPCION")
     private String descripcion;
-    @Column(name = "CUPOS")
-    private Long cupos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codAsignatura")
     private List<Calificacion> calificacionList;
-    @OneToMany(mappedBy = "codAsignatura")
-    private List<Programa> programaList;
     @JoinColumn(name = "RUT_DOCENTE", referencedColumnName = "RUT_PERSONA")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Docente rutDocente;
+    @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
+    @ManyToOne(optional = false)
+    private Programa codPrograma;
 
     public Asignatura() {
     }
 
-    public Asignatura(BigDecimal codigo) {
+    public Asignatura(String codigo) {
         this.codigo = codigo;
     }
 
-    public Asignatura(BigDecimal codigo, String nombreAsignatura) {
+    public Asignatura(String codigo, String nombreAsignatura) {
         this.codigo = codigo;
         this.nombreAsignatura = nombreAsignatura;
     }
 
-    public BigDecimal getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(BigDecimal codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -100,14 +88,6 @@ public class Asignatura implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Long getCupos() {
-        return cupos;
-    }
-
-    public void setCupos(Long cupos) {
-        this.cupos = cupos;
-    }
-
     @XmlTransient
     public List<Calificacion> getCalificacionList() {
         return calificacionList;
@@ -117,21 +97,20 @@ public class Asignatura implements Serializable {
         this.calificacionList = calificacionList;
     }
 
-    @XmlTransient
-    public List<Programa> getProgramaList() {
-        return programaList;
-    }
-
-    public void setProgramaList(List<Programa> programaList) {
-        this.programaList = programaList;
-    }
-
     public Docente getRutDocente() {
         return rutDocente;
     }
 
     public void setRutDocente(Docente rutDocente) {
         this.rutDocente = rutDocente;
+    }
+
+    public Programa getCodPrograma() {
+        return codPrograma;
+    }
+
+    public void setCodPrograma(Programa codPrograma) {
+        this.codPrograma = codPrograma;
     }
 
     @Override
@@ -156,7 +135,7 @@ public class Asignatura implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Asignatura[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Asignatura[ codigo=" + codigo + " ]";
     }
     
 }

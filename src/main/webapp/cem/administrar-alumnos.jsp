@@ -37,7 +37,7 @@
                         <tr>
                             <td> <c:out value="${a.rutPersona}"/> </td>
                             <td> <c:out value="${a.persona.nombreCompleto}"/> </td>
-                            <td> <c:out value="${a.persona.usuario.nombre}"/> </td>
+                            <td> <c:out value="${a.persona.usuario.nombreUsuario}"/> </td>
                             <td> <c:out value="${a.persona.telefono}"/> </td>
                             <td> <c:out value="${a.persona.correo}"/> </td>
                             <td>
@@ -96,22 +96,6 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="a" items="${listadoAlumnos}">
-                        <tr>
-                            <td>
-                                <c:out value="${a.rutPersona.nombreCompleto}" />
-                            </td>
-                            <td>
-                                <c:out value="${a.calificacionList.codAsignatura}" />
-                            </td>
-                            <td>Terminado</td>
-                            <td>Asignatura 1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </c:forEach>
                 </tbody>
             </table>           
         </div>

@@ -1,12 +1,12 @@
 package cem.intercambios.controlador.bean;
 
-import cem.intercambios.modelo.entidad.Persona;
+import cem.intercambios.modelo.entidad.InscripcionCel;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class PersonaFacade extends AbstractFacade<Persona> {
+public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
 
     @PersistenceContext(unitName = "cem.intercambios_CEMIntercambios_war_1.0.0.SnapshotPU")
     private EntityManager em;
@@ -16,8 +16,8 @@ public class PersonaFacade extends AbstractFacade<Persona> {
         return em;
     }
 
-    public PersonaFacade() {
-        super(Persona.class);
+    public InscripcionCelFacade() {
+        super(InscripcionCel.class);
     }
     
 }

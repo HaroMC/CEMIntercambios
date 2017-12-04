@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,17 +17,12 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "DOCENTE")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d")
     , @NamedQuery(name = "Docente.findByRutPersona", query = "SELECT d FROM Docente d WHERE d.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Docente.findByEstado", query = "SELECT d FROM Docente d WHERE d.estado = :estado")
     , @NamedQuery(name = "Docente.findByObservaciones", query = "SELECT d FROM Docente d WHERE d.observaciones = :observaciones")})
 public class Docente implements Serializable {
 
@@ -44,13 +33,10 @@ public class Docente implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "RUT_PERSONA")
     private String rutPersona;
-    @Size(max = 30)
-    @Column(name = "ESTADO")
-    private String estado;
-    @Size(max = 250)
+    @Size(max = 255)
     @Column(name = "OBSERVACIONES")
     private String observaciones;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutDocente")
+    @OneToMany(mappedBy = "rutDocente")
     private List<Asignatura> asignaturaList;
     @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
@@ -69,14 +55,6 @@ public class Docente implements Serializable {
 
     public void setRutPersona(String rutPersona) {
         this.rutPersona = rutPersona;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public String getObservaciones() {
@@ -126,7 +104,7 @@ public class Docente implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Docente[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.Docente[ rutPersona=" + rutPersona + " ]";
     }
     
 }

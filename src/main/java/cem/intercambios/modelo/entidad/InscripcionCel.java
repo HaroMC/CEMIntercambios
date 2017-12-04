@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -20,22 +15,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
-@Table(name = "POSTULACIONES_CEL")
+@Table(name = "INSCRIPCION_CEL")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PostulacionesCel.findAll", query = "SELECT p FROM PostulacionesCel p")
-    , @NamedQuery(name = "PostulacionesCel.findByCodigo", query = "SELECT p FROM PostulacionesCel p WHERE p.codigo = :codigo")
-    , @NamedQuery(name = "PostulacionesCel.findByFechaInscripcion", query = "SELECT p FROM PostulacionesCel p WHERE p.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "PostulacionesCel.findByEstado", query = "SELECT p FROM PostulacionesCel p WHERE p.estado = :estado")})
-public class PostulacionesCel implements Serializable {
+    @NamedQuery(name = "InscripcionCel.findAll", query = "SELECT i FROM InscripcionCel i")
+    , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
+    , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
+    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")})
+public class InscripcionCel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -51,9 +41,8 @@ public class PostulacionesCel implements Serializable {
     private Date fechaInscripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
     @Column(name = "ESTADO")
-    private String estado;
+    private short estado;
     @JoinColumn(name = "RUT_CEL", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private CentroEstudiosLocal rutCel;
@@ -61,14 +50,14 @@ public class PostulacionesCel implements Serializable {
     @ManyToOne(optional = false)
     private Programa codPrograma;
 
-    public PostulacionesCel() {
+    public InscripcionCel() {
     }
 
-    public PostulacionesCel(BigDecimal codigo) {
+    public InscripcionCel(BigDecimal codigo) {
         this.codigo = codigo;
     }
 
-    public PostulacionesCel(BigDecimal codigo, Date fechaInscripcion, String estado) {
+    public InscripcionCel(BigDecimal codigo, Date fechaInscripcion, short estado) {
         this.codigo = codigo;
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
@@ -90,11 +79,11 @@ public class PostulacionesCel implements Serializable {
         this.fechaInscripcion = fechaInscripcion;
     }
 
-    public String getEstado() {
+    public short getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(short estado) {
         this.estado = estado;
     }
 
@@ -124,10 +113,10 @@ public class PostulacionesCel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PostulacionesCel)) {
+        if (!(object instanceof InscripcionCel)) {
             return false;
         }
-        PostulacionesCel other = (PostulacionesCel) object;
+        InscripcionCel other = (InscripcionCel) object;
         if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
@@ -136,7 +125,7 @@ public class PostulacionesCel implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.PostulacionesCel[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.InscripcionCel[ codigo=" + codigo + " ]";
     }
     
 }

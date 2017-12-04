@@ -7,24 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author HaroMC
- * @version 1.0.0
- * @since 2017-12-01
- */
 public class CerrarSesionServlet extends HttpServlet {
 
     private static final Logger LOGGER
             = Logger.getLogger(CerrarSesionServlet.class.getName());
 
-    /**
-     * 
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException 
-     */
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)

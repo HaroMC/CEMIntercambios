@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -22,10 +17,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "PERSONA")
 @XmlRootElement
@@ -38,59 +29,66 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Persona.findByCiudad", query = "SELECT p FROM Persona p WHERE p.ciudad = :ciudad")
     , @NamedQuery(name = "Persona.findByPais", query = "SELECT p FROM Persona p WHERE p.pais = :pais")
     , @NamedQuery(name = "Persona.findByCorreo", query = "SELECT p FROM Persona p WHERE p.correo = :correo")
-    , @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono")
-    , @NamedQuery(name = "Persona.findByTipo", query = "SELECT p FROM Persona p WHERE p.tipo = :tipo")})
+    , @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono")})
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "RUT")
     private String rut;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "NOMBRE_COMPLETO")
     private String nombreCompleto;
+    
     @Column(name = "FECHA_NACIMIENTO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaNacimiento;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "DOMICILIO")
     private String domicilio;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "CIUDAD")
     private String ciudad;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "PAIS")
     private String pais;
+    
     @Size(max = 50)
     @Column(name = "CORREO")
     private String correo;
+    
     @Size(max = 25)
     @Column(name = "TELEFONO")
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "TIPO")
-    private String tipo;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private FamiliaAnfitriona familiaAnfitriona;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private CentroEstudiosLocal centroEstudiosLocal;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private Alumno alumno;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "rutPersona")
+    
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private Usuario usuario;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private Docente docente;
 
@@ -102,18 +100,17 @@ public class Persona implements Serializable {
     }
 
     public Persona(String rut, String nombreCompleto, String domicilio,
-            String ciudad, String pais, String tipo) {
+            String ciudad, String pais) {
         this.rut = rut;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
         this.ciudad = ciudad;
         this.pais = pais;
-        this.tipo = tipo;
     }
-    
+
     public Persona(String rut, String nombreCompleto, Date fechaNacimiento,
             String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo, FamiliaAnfitriona familiaAnfitriona,
+            String telefono, FamiliaAnfitriona familiaAnfitriona,
             Usuario usuario) {
         this.rut = rut;
         this.nombreCompleto = nombreCompleto;
@@ -123,7 +120,6 @@ public class Persona implements Serializable {
         this.pais = pais;
         this.correo = correo;
         this.telefono = telefono;
-        this.tipo = tipo;
         this.familiaAnfitriona = familiaAnfitriona;
         this.usuario = usuario;
     }
@@ -192,14 +188,6 @@ public class Persona implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public FamiliaAnfitriona getFamiliaAnfitriona() {
         return familiaAnfitriona;
     }
@@ -262,7 +250,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Persona[ rut=" + rut + " ]";
+        return "cem.intercambios.modelo.entidad.Persona[ rut=" + rut + " ]";
     }
     
 }

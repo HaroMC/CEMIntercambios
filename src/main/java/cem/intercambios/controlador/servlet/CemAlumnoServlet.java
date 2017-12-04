@@ -38,6 +38,7 @@ public class CemAlumnoServlet extends HttpServlet {
         sesion = request.getSession();
         String mensaje;
         List<Alumno> listadoAlumnos = af.findAll();
+        
         if (listadoAlumnos != null) {
             ordenarLista(listadoAlumnos);
             sesion.setAttribute("listadoAlumnos", listadoAlumnos);
@@ -78,7 +79,6 @@ public class CemAlumnoServlet extends HttpServlet {
             @Override
             public int compare(Alumno a1, Alumno a2) {
                 return a1.getRutPersona().compareTo(a2.getRutPersona());
-                //return a1.getRutPersona().compareTo(a2.getRutPersona());
             }
         });
     }

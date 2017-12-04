@@ -29,6 +29,8 @@
                         <th>Nombre</th>
                         <th>Fecha de salida</th>
                         <th>Fecha de retorno</th>
+                        <th>Total de cupos</th>
+                        <th>Cupos restantes</th>
                         <th>Valor</th>
                         <th>Estado</th>
                         <th>Modificar</th>
@@ -39,27 +41,45 @@
                     <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
                             <td> <c:out value="${p.codigo}" /> </td>
-
-                            <td> <c:out value="${p.nombre}" /> </td>
-
+                            <td> <c:out value="${p.nombrePrograma}" /> </td>
                             <td>
                                 <fmt:formatDate dateStyle="long" type="date"
                                                 value="${p.fechaInicio}" />
                             </td>
-
                             <td>
                                 <fmt:formatDate dateStyle="long" type="date"
                                                 value="${p.fechaTermino}" />
                             </td>
-
+                            <td> <c:out value="${p.cupos}" /> </td>
+                            <td> - </td>
                             <td>
                                 <fmt:formatNumber type="currency"
                                                   currencySymbol="$"
                                                   value="${p.valor}"
                                                   currencyCode="CLP" />
                             </td>
-
-                            <td> <c:out value="${p.estado}" /> </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${p.estado == 1}">
+                                        Sin CEL asignado
+                                    </c:when>
+                                    <c:when test="${p.estado == 2}">
+                                        Disponible
+                                    </c:when>
+                                    <c:when test="${p.estado == 3}">
+                                        Sin cupos
+                                    </c:when>
+                                    <c:when test="${p.estado == 4}">
+                                        Iniciado
+                                    </c:when>
+                                    <c:when test="${p.estado == 5}">
+                                        Terminado
+                                    </c:when>
+                                    <c:otherwise>
+                                        Definir
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
 
                             <td>
                                 <form action="cem-programas?accion=modificar"

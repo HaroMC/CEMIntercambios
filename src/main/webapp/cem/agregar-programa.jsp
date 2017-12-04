@@ -45,19 +45,31 @@
                         <select name="tipoDuracion" required="true">
                             <option value="normal"> Normal </option>
                             <option value="corto"> Corto </option>
-                        </select> 
+                        </select>
                     </div>
                 </div>
-
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        Cupos
+                    </label>
+                    <div class="col-sm-5">
+                        <input type="number" class="form-control" name="cupos" 
+                               placeholder="Ingrese la cantidad de cupos disponibles"
+                               required="true" pattern="[0-9]*"
+                               inputmode="numeric" min="1" max="40">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Valor
                     </label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="valor" 
+                        <input type="number" class="form-control" name="valor" 
                                placeholder="Ingrese el valor del programa"
-                               required="true">
+                               required="true" pattern="[0-9]*"
+                               inputmode="numeric" min="0">
                     </div>
                 </div>
 

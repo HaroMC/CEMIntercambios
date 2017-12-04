@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
@@ -20,22 +15,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
-@Table(name = "POSTULACIONES_ALUMNOS")
+@Table(name = "INSCRIPCION_ALUMNO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PostulacionesAlumnos.findAll", query = "SELECT p FROM PostulacionesAlumnos p")
-    , @NamedQuery(name = "PostulacionesAlumnos.findByCodigo", query = "SELECT p FROM PostulacionesAlumnos p WHERE p.codigo = :codigo")
-    , @NamedQuery(name = "PostulacionesAlumnos.findByFechaInscripcion", query = "SELECT p FROM PostulacionesAlumnos p WHERE p.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "PostulacionesAlumnos.findByEstado", query = "SELECT p FROM PostulacionesAlumnos p WHERE p.estado = :estado")})
-public class PostulacionesAlumnos implements Serializable {
+    @NamedQuery(name = "InscripcionAlumno.findAll", query = "SELECT i FROM InscripcionAlumno i")
+    , @NamedQuery(name = "InscripcionAlumno.findByCodigo", query = "SELECT i FROM InscripcionAlumno i WHERE i.codigo = :codigo")
+    , @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion", query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaInscripcion = :fechaInscripcion")
+    , @NamedQuery(name = "InscripcionAlumno.findByEstado", query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")})
+public class InscripcionAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -51,9 +41,8 @@ public class PostulacionesAlumnos implements Serializable {
     private Date fechaInscripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
     @Column(name = "ESTADO")
-    private String estado;
+    private short estado;
     @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private Alumno rutAlumno;
@@ -64,14 +53,14 @@ public class PostulacionesAlumnos implements Serializable {
     @ManyToOne(optional = false)
     private Programa codPrograma;
 
-    public PostulacionesAlumnos() {
+    public InscripcionAlumno() {
     }
 
-    public PostulacionesAlumnos(BigDecimal codigo) {
+    public InscripcionAlumno(BigDecimal codigo) {
         this.codigo = codigo;
     }
 
-    public PostulacionesAlumnos(BigDecimal codigo, Date fechaInscripcion, String estado) {
+    public InscripcionAlumno(BigDecimal codigo, Date fechaInscripcion, short estado) {
         this.codigo = codigo;
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
@@ -93,11 +82,11 @@ public class PostulacionesAlumnos implements Serializable {
         this.fechaInscripcion = fechaInscripcion;
     }
 
-    public String getEstado() {
+    public short getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(short estado) {
         this.estado = estado;
     }
 
@@ -135,10 +124,10 @@ public class PostulacionesAlumnos implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PostulacionesAlumnos)) {
+        if (!(object instanceof InscripcionAlumno)) {
             return false;
         }
-        PostulacionesAlumnos other = (PostulacionesAlumnos) object;
+        InscripcionAlumno other = (InscripcionAlumno) object;
         if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
@@ -147,7 +136,7 @@ public class PostulacionesAlumnos implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.PostulacionesAlumnos[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.InscripcionAlumno[ codigo=" + codigo + " ]";
     }
     
 }

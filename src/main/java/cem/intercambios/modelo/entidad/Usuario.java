@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,95 +17,91 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author HaroMC
- */
 @Entity
 @Table(name = "USUARIO")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByCodigo", query = "SELECT u FROM Usuario u WHERE u.codigo = :codigo")
-    , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
+    , @NamedQuery(name = "Usuario.findByRutPersona", query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
+    , @NamedQuery(name = "Usuario.findByNombreUsuario", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
     , @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")
     , @NamedQuery(name = "Usuario.findByFechaRegistro", query = "SELECT u FROM Usuario u WHERE u.fechaRegistro = :fechaRegistro")
     , @NamedQuery(name = "Usuario.findByPerfil", query = "SELECT u FROM Usuario u WHERE u.perfil = :perfil")
-        
-    , @NamedQuery(name = "Usuario.validarIngreso", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre AND u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuario.buscarCuentaPorRut", query = "SELECT u FROM Usuario u INNER JOIN u.rutPersona p WHERE p.rut = :rutPersona")
-    , @NamedQuery(name = "Usuario.codigoAutoIncremental", query = "SELECT MAX(u.codigo) + 1 FROM Usuario u")
+
+    , @NamedQuery(name = "Usuario.validarIngreso", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasena = :contrasena")
+    , @NamedQuery(name = "Usuario.buscarCuentaPorRut", query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
+    //, @NamedQuery(name = "Usuario.codigoAutoIncremental", query = "SELECT MAX(u.codigo) + 1 FROM Usuario u")
 })
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "CODIGO")
-    private BigDecimal codigo;
+    @Size(min = 1, max = 20)
+    @Column(name = "RUT_PERSONA")
+    private String rutPersona;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
-    @Column(name = "NOMBRE")
-    private String nombre;
+    @Column(name = "NOMBRE_USUARIO")
+    private String nombreUsuario;
+    
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 40)
+    @Size(min = 1, max = 127)
     @Column(name = "CONTRASENA")
     private String contrasena;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "PERFIL")
     private String perfil;
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT")
+    
+    @JoinColumn(name = "RUT_PERSONA",
+            referencedColumnName = "RUT", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private Persona rutPersona;
+    private Persona persona;
 
     public Usuario() {
     }
 
-    public Usuario(BigDecimal codigo) {
-        this.codigo = codigo;
+    public Usuario(String rutPersona) {
+        this.rutPersona = rutPersona;
     }
 
-    public Usuario(BigDecimal codigo, String nombre, String contrasena, Date fechaRegistro, String perfil) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.contrasena = contrasena;
-        this.fechaRegistro = fechaRegistro;
-        this.perfil = perfil;
-    }
-    
-    public Usuario(BigDecimal codigo, String nombre, String contrasena, Date fechaRegistro, String rut, String perfil) {
-        this.codigo = codigo;
-        this.nombre = nombre;
+    public Usuario(String rutPersona, String nombreUsuario, String contrasena,
+            Date fechaRegistro, String perfil) {
+        this.rutPersona = rutPersona;
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.fechaRegistro = fechaRegistro;
         this.perfil = perfil;
     }
 
-    public BigDecimal getCodigo() {
-        return codigo;
+    public String getRutPersona() {
+        return rutPersona;
     }
 
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
+    public void setRutPersona(String rutPersona) {
+        this.rutPersona = rutPersona;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContrasena() {
@@ -138,18 +128,18 @@ public class Usuario implements Serializable {
         this.perfil = perfil;
     }
 
-    public Persona getRutPersona() {
-        return rutPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setRutPersona(Persona rutPersona) {
-        this.rutPersona = rutPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigo != null ? codigo.hashCode() : 0);
+        hash += (rutPersona != null ? rutPersona.hashCode() : 0);
         return hash;
     }
 
@@ -160,7 +150,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
         return true;
@@ -168,7 +158,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "cem.intercambios.Usuario[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Usuario[ rutPersona=" + rutPersona + " ]";
     }
     
 }

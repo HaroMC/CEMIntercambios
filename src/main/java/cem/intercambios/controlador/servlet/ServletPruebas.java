@@ -39,12 +39,12 @@ public class ServletPruebas extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
                 
-        Alumno notasAlumno = af.buscarNotas(
+        /*Alumno notasAlumno = af.buscarNotas(
                 "Inscrito", req.getParameter("rut"));
         
         sesion.setAttribute("alumnos", notasAlumno);
         
-        resp.sendRedirect("consultar-notas-test.jsp");
+        resp.sendRedirect("consultar-notas-test.jsp");*/
         //req.getRequestDispatcher("consultar-notas-test.jsp").forward(req, resp);
         
     }

@@ -29,26 +29,12 @@ public class IniciarSesionServlet extends HttpServlet {
     @EJB
     private UsuarioFacade uf;
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -58,13 +44,13 @@ public class IniciarSesionServlet extends HttpServlet {
         String contrasena = req.getParameter("contrasena");
 
         try {
-            Usuario usuarioActual = uf.validarIngreso(
-                    nombreUsuario, uf.encriptar(contrasena)
-            );
+            Usuario usuarioActual = uf.validarIngreso(nombreUsuario, uf.encriptar(contrasena));
             if (usuarioActual != null) {
                 sesion = req.getSession(true);
                 sesion.setAttribute("usuarioActual", usuarioActual);
-                mensaje = "Bienvenido(a) " + usuarioActual.getNombre();
+                
+                mensaje = "Bienvenido(a) " + usuarioActual.getNombreUsuario();
+                
                 sesion.setAttribute("mensajeBienvenida", mensaje);
                 LOGGER.info("Ingreso exitoso.");
                 redirecionarPerfil(resp, usuarioActual.getPerfil());
@@ -79,13 +65,6 @@ public class IniciarSesionServlet extends HttpServlet {
         }
     }
 
-    /**
-     *
-     * @param resp
-     * @param perfil
-     * @throws ServletException
-     * @throws IOException
-     */
     private void redirecionarPerfil(HttpServletResponse resp, String perfil)
             throws ServletException, IOException {
         switch (perfil) {
