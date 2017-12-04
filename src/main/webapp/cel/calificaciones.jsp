@@ -11,7 +11,8 @@
         <div class="container">
             <h2>Para colocar una calificacion selecciona un programa</h2>      
             <p>Filtra tu busqueda aqui:</p>
-            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
+            <input class="form-control" id="myInput" type="text"
+                   placeholder="Escribe aca lo que buscas..">
             <br>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -27,12 +28,14 @@
                             <td><c:out value="${a.nombrePrograma}"/></td>
                             <td> 
                                 <c:forEach var="b" items="${a.asignaturaList}">
-                                    <c:out value="${b.nombreAsignatura}"/>
+                                    <c:out value="${b.nombreAsignatura}"/> <br />
                                 </c:forEach>
                             </td>
-                            <td><button type="button" class="btn btn-primary">
+                            <td>
+                                <button type="button" class="btn btn-primary">
                                     Selecccionar
-                                </button></td>
+                                </button>
+                            </td>
                         </tr>      
                     </c:forEach>
                 </tbody>
