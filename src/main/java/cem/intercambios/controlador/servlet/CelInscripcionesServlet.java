@@ -22,7 +22,6 @@ public class CelInscripcionesServlet extends HttpServlet {
     @EJB
     private InscripcionCel icf;
     
-        
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
