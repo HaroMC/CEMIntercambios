@@ -44,13 +44,14 @@ public class IniciarSesionServlet extends HttpServlet {
         String contrasena = req.getParameter("contrasena");
 
         try {
-            Usuario usuarioActual = uf.validarIngreso(nombreUsuario, uf.encriptar(contrasena));
+            Usuario usuarioActual = uf.validarIngreso(nombreUsuario,
+                    uf.encriptar(contrasena));
             if (usuarioActual != null) {
                 sesion = req.getSession(true);
                 sesion.setAttribute("usuarioActual", usuarioActual);
-                
+
                 mensaje = "Bienvenido(a) " + usuarioActual.getNombreUsuario();
-                
+
                 sesion.setAttribute("mensajeBienvenida", mensaje);
                 LOGGER.info("Ingreso exitoso.");
                 redirecionarPerfil(resp, usuarioActual.getPerfil());

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class CemInscripcionAlumnoServlet extends HttpServlet {
 
     private static final Logger LOGGER
-            = Logger.getLogger(IniciarSesionServlet.class.getName());
+            = Logger.getLogger(CemInscripcionAlumnoServlet.class.getName());
 
     private HttpSession sesion;
 

@@ -7,6 +7,7 @@ import cem.intercambios.modelo.entidad.FamiliaAnfitriona;
 import cem.intercambios.modelo.entidad.InscripcionCel;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpSession;
 
 public class AlumnoPostulacionesServlet extends HttpServlet {
 
+    private static final Logger LOGGER
+            = Logger.getLogger(AlumnoPostulacionesServlet.class.getName());
+    
     @EJB
     private ProgramaFacade pf;
 

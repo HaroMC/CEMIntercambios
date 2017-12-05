@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @since 2017-12-01
  */
 public class CemAlumnoServlet extends HttpServlet {
-    
+
     private static final Logger LOGGER
             = Logger.getLogger(IniciarSesionServlet.class.getName());
 
@@ -31,14 +31,13 @@ public class CemAlumnoServlet extends HttpServlet {
     private AlumnoFacade af;
 
     @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        sesion = request.getSession();
+        sesion = req.getSession();
         String mensaje;
         List<Alumno> listadoAlumnos = af.findAll();
-        
+
         if (listadoAlumnos != null) {
             ordenarLista(listadoAlumnos);
             sesion.setAttribute("listadoAlumnos", listadoAlumnos);
@@ -49,29 +48,28 @@ public class CemAlumnoServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        response.sendRedirect("administrar-alumnos.jsp");
+        resp.sendRedirect("administrar-alumnos.jsp");
     }
 
     @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        
-        String mensaje, accion = request.getParameter("accion");
-        sesion = request.getSession();
-                
+
+        String mensaje, accion = req.getParameter("accion");
+        sesion = req.getSession();
+
         switch (accion) {
 
             case "eliminar":
-                af.remove(af.find(request.getParameter("rut")));
+                af.remove(af.find(req.getParameter("rut")));
                 mensaje = "Programa eliminado correctamente.";
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
                 break;
-                
+
             case "modificar":
         }
-        response.sendRedirect("cem-alumnos");
+        resp.sendRedirect("cem-alumnos");
     }
 
     private void ordenarLista(List<Alumno> listadoAlumnos) {
