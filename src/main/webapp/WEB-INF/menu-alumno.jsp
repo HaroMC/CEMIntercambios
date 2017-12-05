@@ -24,7 +24,12 @@
                     <li>
                         <a href="alumno-postulaciones"> Postulaciones </a>
                     </li>
-                    
+                    <li>
+                        <a href="seleccionar-familia.jsp"> seleccion familia </a>
+                    </li>
+                     <li>
+                        <a href="acuerdo.jsp"> acuerdo </a>
+                    </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">
