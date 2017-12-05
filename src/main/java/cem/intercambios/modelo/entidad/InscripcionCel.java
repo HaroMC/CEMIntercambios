@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
     , @NamedQuery(name = "InscripcionCel.findByFechaPostulacion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaPostulacion = :fechaPostulacion")
     , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
-        
+    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")       
     , @NamedQuery(name = "InscripcionCel.programasInscritosCel", query = "SELECT i FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona")
     , @NamedQuery(name = "InscripcionCel.codigoAutoIncremental", query = "SELECT MAX(i.codigo) + 1 FROM InscripcionCel i")
 })
