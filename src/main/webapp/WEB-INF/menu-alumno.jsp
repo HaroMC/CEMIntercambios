@@ -21,7 +21,10 @@
                         <a href="alumno/home.jsp"> Perfil </a>
                     </li>                    
                     <li>
-                        <a href="alumnos-programas"> Postulaciones </a>
+                        <a href="postulaciones.jsp"> Postulaciones </a>
+                    </li>
+                    <li>
+                        <a href="seleccionFamilia.jsp"> seleccion familias </a>
                     </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
