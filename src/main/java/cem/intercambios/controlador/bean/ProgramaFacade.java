@@ -27,7 +27,7 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
     public ProgramaFacade() {
         super(Programa.class);
     }
-    
+
     public List<Programa> programasInscritosCel(String rutPersona) {
         try {
             return em.createNamedQuery("Programa.programasInscritosCel")
@@ -35,6 +35,10 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
                     .setParameter("estado", 2)
                     .getResultList();
         } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + ProgramaFacade.class.getName() + "\n"
+                    + "Método: (List<Programa>) programasInscritosCel",
+                    ex);
             return null;
         }
     }
@@ -45,17 +49,25 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
                     .setParameter("estado", estado)
                     .getResultList();
         } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + ProgramaFacade.class.getName() + "\n"
+                    + "Método: (List<Programa>) findByEstado",
+                    ex);
             return null;
         }
     }
-        
+
     public List<Programa> programasDisponiblesSinPostular(String rutCel) {
         try {
-            return em.createNamedQuery("Programa.programasDisponiblesSinPostular")
+            return em.createNamedQuery(
+                    "Programa.programasDisponiblesSinPostular")
                     .setParameter("rutCel", rutCel)
                     .getResultList();
-        }
-        catch (NoResultException ex) {
+        } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + ProgramaFacade.class.getName() + "\n"
+                    + "Método: List<Programa> programasDisponiblesSinPostular",
+                    ex);
             return null;
         }
     }

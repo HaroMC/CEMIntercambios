@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     private static final Logger LOGGER
-            = Logger.getLogger(AlumnoFacade.class.getName());
+            = Logger.getLogger(UsuarioFacade.class.getName());
 
     @PersistenceContext(unitName
             = "cem.intercambios_CEMIntercambios_war_1.0.0.SnapshotPU")
@@ -63,13 +63,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
      */
     public Usuario validarIngreso(String nombreUsuario, String contrasena) {
         try {
-            return em.createNamedQuery("Usuario.validarIngreso",
-                    Usuario.class)
+            return em.createNamedQuery("Usuario.validarIngreso", Usuario.class)
                     .setParameter("nombreUsuario", nombreUsuario)
                     .setParameter("contrasena", contrasena)
                     .getSingleResult();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + UsuarioFacade.class.getName() + "\n"
+                    + "Método: (Usuario) validarIngreso",
+                    ex);
             return null;
         }
     }
@@ -88,7 +90,10 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
                     .setParameter("rutPersona", rut)
                     .getSingleResult();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + UsuarioFacade.class.getName() + "\n"
+                    + "Método: (Usuario) buscarCuentaPorRut",
+                    ex);
             return null;
         }
     }
@@ -99,11 +104,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
      */
     public BigDecimal codigoAutoIncremental() {
         try {
-            return em.createNamedQuery(
-                    "Usuario.codigoAutoIncremental", BigDecimal.class)
-                    .getSingleResult();
+            return em.createNamedQuery("Usuario.codigoAutoIncremental",
+                    BigDecimal.class).getSingleResult();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + UsuarioFacade.class.getName() + "\n"
+                    + "Método: (BigDecimal) codigoAutoIncremental",
+                    ex);
             return null;
         }
     }
