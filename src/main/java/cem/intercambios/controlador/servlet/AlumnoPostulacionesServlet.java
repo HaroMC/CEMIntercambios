@@ -37,7 +37,7 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
         
         if (listadoPrograma != null) {
             sesion.setAttribute("listadoPrograma", listadoPrograma);
-            mensaje = "Visualización correcta de todos los alumnos.";
+            //mensaje = "Visualización correcta de todos los alumnos.";
         } else {
             mensaje = "No se encontraron registros.";
             sesion.setAttribute("mensajeEstado", mensaje);

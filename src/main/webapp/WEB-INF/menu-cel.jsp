@@ -19,13 +19,13 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="cel/home.jsp"> Home </a>
+                        <a href="inicio.jsp"> Home </a>
                     </li>
                     <li>
                         <a href="cel-programas"> Calificaciones </a>
                     </li>
                     <li>
-                        <a href="./postulaciones/inscripciones"> Postulaciones </a>
+                        <a href="inscripciones"> Postulaciones </a>
                     </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"

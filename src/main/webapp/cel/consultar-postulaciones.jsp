@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../../WEB-INF/menu-cel.jsp" %>
+<%@ include file="../WEB-INF/menu-cel.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <h2> Programas dispnibles para postular </h2>      
+            <h2> Programas dispnibles para postular </h2>
             <p>
                 Si necesitas buscar un programa específico, puedes hacerlo
                 desde aquí
@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th> Nombre </th>
-                        <th> Fecha de inicio </th>   
+                        <th> Fecha de inicio </th>
                         <th> Fecha de término </th>
                         <th> Estado </th>
                     </tr>
@@ -64,7 +64,7 @@
         <div class="container">
             <h2>
                 Programas a los que estas postulando
-            </h2>      
+            </h2>
             <p>
                 Si necesitas buscar un programa a los cuales has postulado
                 hazlo aqui:
@@ -80,7 +80,7 @@
                         <th> Fecha de inicio </th>
                         <th> Fecha de termino </th>
                         <th> Estado </th>
-                        <th></th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -120,10 +120,10 @@
                                 <c:if test="${pi.estado == 1}">
                                     <form method="post" action="">
                                         <input type="hidden" name="codigo"
-                                           value="<c:out value="${pi.codigo}" />" />
-                                    <button type="submit" class="btn btn-primary">
-                                    Eliminar Postulación
-                                </button>
+                                               value="<c:out value="${pi.codigo}" />" />
+                                        <button type="submit" class="btn btn-primary">
+                                            Eliminar Postulación
+                                        </button>
                                     </form>
                                 </c:if>
                             </td>
