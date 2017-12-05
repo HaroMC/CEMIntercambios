@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <h2> Programas dispnibles para postular </h2>
+            <h2> Programas disponibles para postular </h2>
             <p>
                 Si necesitas buscar un programa específico, puedes hacerlo
                 desde aquí
@@ -51,9 +51,13 @@
                                 </c:if>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary">
-                                    Postular
-                                </button>
+                                <form method="post" action="inscripciones?accion=postular">
+                                    <input type="hidden" name="codigoPrograma"
+                                           value="${pd.codigo}" />
+                                    <button type="submit" class="btn btn-primary">
+                                        Postular
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>
@@ -118,11 +122,11 @@
                             </td>    
                             <td>
                                 <c:if test="${pi.estado == 1}">
-                                    <form method="post" action="">
-                                        <input type="hidden" name="codigo"
-                                               value="<c:out value="${pi.codigo}" />" />
+                                    <form method="post" action="inscripciones?accion=cancelar_postulacion">
+                                        <input type="hidden" name="codigoPostulacion"
+                                               value="${pi.codigo}" />
                                         <button type="submit" class="btn btn-primary">
-                                            Eliminar Postulación
+                                            Cancelar postulación
                                         </button>
                                     </form>
                                 </c:if>
@@ -143,16 +147,16 @@
                 });
             });
         </script>
-    </body>
-    <script>
-        $(document).ready(function () {
-            $("#myInput3").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myTable3 tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase()
-                            .indexOf(value) > -1);
+        <script>
+            $(document).ready(function () {
+                $("#myInput3").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable3 tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase()
+                                .indexOf(value) > -1);
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    </body>
 </html>

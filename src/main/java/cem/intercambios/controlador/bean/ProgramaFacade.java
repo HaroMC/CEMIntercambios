@@ -27,7 +27,7 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
     public ProgramaFacade() {
         super(Programa.class);
     }
-    
+
     /*
     public List<Programa> listarProgramasPorEstado(String estado) {
         try {
@@ -39,20 +39,39 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
             return null;
         }
     }
-    */
-
+     */
     public List<Programa> programasInscritosCel(String rutPersona) {
-        return em.createNamedQuery("Programa.programasInscritosCel")
-                .setParameter("rutPersona", rutPersona)
-                .setParameter("estado", 2)
-                .getResultList();
+        try {
+            return em.createNamedQuery("Programa.programasInscritosCel")
+                    .setParameter("rutPersona", rutPersona)
+                    .setParameter("estado", 2)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 
-
     public List<Programa> findByEstado(short estado) {
-        return em.createNamedQuery("Programa.findByEstado")
-                .setParameter("estado", estado)
-                .getResultList();
+        try {
+            return em.createNamedQuery("Programa.findByEstado")
+                    .setParameter("estado", estado)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    
+    
+
+    public Programa findByCodigo(String codigo) {
+        try {
+            return em.createNamedQuery("Programa.findByCodigo", Programa.class)
+                    .setParameter("codigo", codigo)
+                    .getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 
 }
