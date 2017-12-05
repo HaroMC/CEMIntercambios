@@ -27,19 +27,7 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
     public ProgramaFacade() {
         super(Programa.class);
     }
-
-    /*
-    public List<Programa> listarProgramasPorEstado(String estado) {
-        try {
-            return em.createNamedQuery("Programa.findByEstado", Programa.class)
-                    .setParameter("estado", estado)
-                    .getResultList();
-        } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultado.", ex);
-            return null;
-        }
-    }
-     */
+    
     public List<Programa> programasInscritosCel(String rutPersona) {
         try {
             return em.createNamedQuery("Programa.programasInscritosCel")
@@ -60,21 +48,7 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
             return null;
         }
     }
-    
-    
-    
-
-    public Programa findByCodigo(String codigo) {
-        try {
-            return em.createNamedQuery("Programa.findByCodigo", Programa.class)
-                    .setParameter("codigo", codigo)
-                    .getSingleResult();
-        } catch (NoResultException ex) {
-            return null;
-        }
-    }
-    
-    
+        
     public List<Programa> programasDisponiblesSinPostular(String rutCel) {
         try {
             return em.createNamedQuery("Programa.programasDisponiblesSinPostular")

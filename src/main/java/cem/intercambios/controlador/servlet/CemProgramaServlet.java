@@ -220,7 +220,27 @@ public class CemProgramaServlet extends HttpServlet {
         nuevoPrograma = definirFechas(nuevoPrograma, tipoDuracion);
         return nuevoPrograma;
     }
-
+    
+    
+    private String definirCodigo(String nombrePrograma) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        String[] palabras = nombrePrograma.split(" ");
+        
+        sb.append("PR").append("-");
+        
+        for (String palabra : palabras) {
+            
+            sb.append(palabra.charAt(0));
+            
+        }
+        
+        return "";
+    }
+    
+    
+    
     private void ordenarLista(List<Programa> listadoProgramas) {
         Collections.sort(listadoProgramas, new Comparator<Programa>() {
             @Override
