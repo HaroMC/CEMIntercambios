@@ -74,7 +74,7 @@
                         <input type="text" class="form-control"
                                name="nombreAsignatura" 
                                placeholder="Ingrese el nombre de la asignatura"
-                               required="true">
+                               >
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                         <input type="text" class="form-control"
                                name="nombreAsignatura2" 
                                placeholder="Ingrese el nombre de la asignatura"
-                               required="true">
+                               >
                     </div>
                 </div>
 
