@@ -73,8 +73,7 @@
                     <div class="col-sm-5">
                         <input type="text" class="form-control"
                                name="nombreAsignatura" 
-                               placeholder="Ingrese el nombre de la asignatura"
-                               >
+                               placeholder="Ingrese el nombre de la asignatura">
                     </div>
                 </div>
 

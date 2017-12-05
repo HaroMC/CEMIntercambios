@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
         
     , @NamedQuery(name = "InscripcionCel.programasInscritosCel", query = "SELECT i FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona")
+    , @NamedQuery(name = "InscripcionCel.codigoAutoIncremental", query = "SELECT MAX(i.codigo) + 1 FROM InscripcionCel i")
 })
 public class InscripcionCel implements Serializable {
 
@@ -74,6 +75,15 @@ public class InscripcionCel implements Serializable {
         this.codigo = codigo;
     }
 
+    public InscripcionCel(BigDecimal codigo, Date fechaPostulacion,
+            Programa codPrograma, CentroEstudiosLocal rutCel, short estado) {
+        this.codigo = codigo;
+        this.fechaPostulacion = fechaPostulacion;
+        this.codPrograma = codPrograma;
+        this.rutCel = rutCel;
+        this.estado = estado;
+    }
+    
     public InscripcionCel(BigDecimal codigo, Date fechaPostulacion,
             Date fechaInscripcion, short estado) {
         this.codigo = codigo;
