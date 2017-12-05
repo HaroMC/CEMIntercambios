@@ -31,62 +31,73 @@
                 <form action="cem-programas?accion=agregar" method="post"
                       class="form-horizontal">
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">
-                            Nombre del programa
-                        </label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control"
-                                   name="nombrePrograma" 
-                                   placeholder="Ingrese el nombre del programa"
-                                   required="true" />
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">
-                            Duración
-                        </label>
-                        <div class="col-md-8">
-                            <label class="form-control">
-                                <select name="tipoDuracion" required="true">
-                                    <option value="normal"> Normal </option>
-                                    <option value="corto"> Corto </option>
-                                </select>
+                    <fieldset>
+                        <legend> Detalles del programa </legend>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                Nombre del programa
                             </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control"
+                                       name="nombrePrograma" 
+                                       placeholder="Ingrese el nombre del programa"
+                                       required="true" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">
-                            Cupos
-                        </label>
-                        <div class="col-md-8">
-                            <input type="number" min="1" max="40" name="cupos" 
-                                   placeholder="Ingrese la cantidad de cupos disponibles"
-                                   required="true" pattern="[0-9]*" required="true"
-                                   class="form-control" inputmode="numeric" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                Duración
+                            </label>
+                            <div class="col-md-8">
+                                <select name="tipoDuracion" required="true"
+                                        class="selectpicker form-control">
+                                    <optgroup label="Desde 10/08 al 10/10">
+                                        <option value="normal">
+                                            Normal
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="Desde 15/01 al 15/02">
+                                        <option value="corto">
+                                            Corto
+                                        </option>
+                                    </optgroup>
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">
-                            Valor
-                        </label>
-                        <div class="col-md-8">
-                            <input type="number" class="form-control" name="valor" 
-                                   placeholder="Ingrese el valor del programa"
-                                   required="true" pattern="[0-9]*"
-                                   inputmode="numeric" min="0" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                Cupos
+                            </label>
+                            <div class="col-md-8">
+                                <input type="number" min="1" max="40" name="cupos" 
+                                       placeholder="Ingrese la cantidad de cupos disponibles"
+                                       required="true" pattern="[0-9]*" required="true"
+                                       class="form-control" inputmode="numeric" />
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                Valor
+                            </label>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="valor" 
+                                       placeholder="Ingrese el valor del programa"
+                                       required="true" pattern="[0-9]*"
+                                       inputmode="numeric" min="0" />
+                            </div>
+                        </div>
+                    </fieldset>
 
                     <fieldset>
                         <legend> Asignaturas requeridas </legend>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Nombre de la asignatura #1
+                                Asignatura # 1
                             </label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control"
@@ -97,7 +108,7 @@
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Nombre de la asignatura #2
+                                Asignatura # 2
                             </label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control"
@@ -108,7 +119,7 @@
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Nombre de la asignatura #3
+                                Asignatura # 3
                             </label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control"
@@ -119,10 +130,10 @@
                     </fieldset>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">
+                        <label class="col-md-4 control-label">
                             ${mensajeEstado}
                         </label>
-                        <div class="col-sm-5 control-label">
+                        <div class="col-md-8">
                             <button type="submit" class="btn btn-default">
                                 Agregar
                             </button>

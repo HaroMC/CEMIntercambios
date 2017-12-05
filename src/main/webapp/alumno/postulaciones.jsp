@@ -11,7 +11,8 @@
         <div class="container">
             <h2>Programas a los cuales puede postular </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
-            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
+            <input class="form-control" id="myInput2" type="text"
+                   placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -26,17 +27,32 @@
                 <tbody id="myTable2">
                     <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
-                            <td> <c:out value="${p.codPrograma.codigo}" /> </td>
-                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
-                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
-                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
                             <td>
-                                <form method="post" action="alumno-postulaciones?accion=seleccionar_familia">
-                                    <input type="hidden" name="pais" value="${p.rutCel.persona.pais}" />
-                                    <input type="hidden" name="codigoPrograma" value="${p.codPrograma.codigo}" />
+                                <c:out value="${p.codPrograma.codigo}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <form method="get" action="alumno-postulaciones">
+                                    
+                                    <input type="hidden" name="accion"
+                                           value="${fn:escapeXml("seleccionar_familia")}" />
+                                    <input type="hidden" name="pais"
+                                           value="${fn:escapeXml(p.rutCel.persona.pais)}" />
+                                    <input type="hidden" name="codigoPrograma"
+                                           value="${fn:escapeXml(p.codPrograma.codigo)}" />
+                                    
                                     <button type="submit" class="btn btn-primary">
                                         Postular
                                     </button>
+                                    
                                 </form>
                             </td>
                         </tr>
@@ -49,7 +65,8 @@
                 $("#myInput2").on("keyup", function () {
                     var value = $(this).val().toLowerCase();
                     $("#myTable2 tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                        $(this).toggle($(this).text().toLowerCase()
+                                .indexOf(value) > -1);
                     });
                 });
             });

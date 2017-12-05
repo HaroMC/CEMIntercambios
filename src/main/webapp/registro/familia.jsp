@@ -20,15 +20,23 @@
     <body>
 
         <div class="container well">
+            
             <div class="row">
                 <div class="col-md-12">
-                    <h2><p class="text-center">Formulario Registro Familias</p></h2>
+                    <h2>
+                        <p class="text-center">
+                            Formulario Registro Familias
+                        </p>
+                    </h2>
                 </div>
             </div>
+            
             <br> <br />
+            
             <div class="col-md-6 col-md-offset-3">
 
-                <form action="../registrar?tipo=familia" method="post" class="form-horizontal">
+                <form action="../registrar?tipo=familia" method="post"
+                      class="form-horizontal">
 
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="NombreJefe">
