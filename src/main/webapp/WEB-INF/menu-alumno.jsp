@@ -18,13 +18,10 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="alumno/home.jsp"> Perfil </a>
+                        <a href="../alumno/inicio.jsp"> Perfil </a>
                     </li>                    
                     <li>
-                        <a href="postulaciones.jsp"> Postulaciones </a>
-                    </li>
-                    <li>
-                        <a href="../alumno/seleccionFamilia.jsp"> seleccion familias </a>
+                        <a href="alumno-postulaciones"> Postulaciones </a>
                     </li>
                     
                 </ul>

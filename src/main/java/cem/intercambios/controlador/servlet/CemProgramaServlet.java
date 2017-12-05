@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -223,6 +224,10 @@ public class CemProgramaServlet extends HttpServlet {
     
     
     private String definirCodigo(String nombrePrograma) {
+        
+        int random = ThreadLocalRandom.current().nextInt(1, 100000);
+        
+        int largo;
         
         StringBuilder sb = new StringBuilder();
         

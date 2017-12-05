@@ -25,15 +25,29 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
     }
 
     public List<InscripcionCel> programasInscritosCel(String rutPersona) {
-        return em.createNamedQuery("InscripcionCel.programasInscritosCel")
-                .setParameter("rutPersona", rutPersona)
-                .getResultList();
+        try {
+            return em.createNamedQuery("InscripcionCel.programasInscritosCel")
+                    .setParameter("rutPersona", rutPersona)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 
     public BigDecimal codigoAutoIncremental() {
         try {
             return em.createNamedQuery("InscripcionCel.codigoAutoIncremental",
                     BigDecimal.class).getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+
+    public List<InscripcionCel> findByEstado(short estado) {
+        try {
+            return em.createNamedQuery("InscripcionCel.findByEstado")
+                    .setParameter("estado", estado)
+                    .getResultList();
         } catch (NoResultException ex) {
             return null;
         }

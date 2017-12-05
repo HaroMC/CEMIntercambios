@@ -1,11 +1,6 @@
-<%-- 
-    Document   : postulaciones
-    Created on : 04-12-2017, 15:26:54
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ include file="../WEB-INF/menu-alumno.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/menu-alumno.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +8,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <div class="container">
+        <div class="container">
             <h2>Programas a los cuales puede postular </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
@@ -21,10 +16,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Codigo</th>
+                        <th>Código</th>
                         <th>Nombre</th>
                         <th>Precio</th>
-                        <th>Pais</th>
+                        <th>País</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -32,23 +27,22 @@
                     <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
                             <td> <c:out value="${p.codPrograma.codigo}" /> </td>
-                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
-                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
-                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
+                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
+                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
+                            <td> <c:out value="${p.codPrograma.nombrePrograma}" /> </td>
                             <td>
-                                <form method="post" action="seleccionFamilia.jsp">
-                                    <c:set var="pais" value="${p.rutCel.persona.pais}" scope="session"/>
-                                    <c:set var="codigoProgra" value="${p.codPrograma.codigo}" scope="session"/>
-                                <button type="button" class="btn btn-primary">
-                                    Postular
-                                </button>
+                                <form method="post" action="alumno-postulaciones?accion=seleccionar_familia">
+                                    <input type="hidden" name="pais" value="${p.rutCel.persona.pais}" />
+                                    <input type="hidden" name="codigoPrograma" value="${p.codPrograma.codigo}" />
+                                    <button type="submit" class="btn btn-primary">
+                                        Postular
+                                    </button>
                                 </form>
                             </td>
-                    </tr>
-                </c:forEach>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
-
         </div>
         <script>
             $(document).ready(function () {
@@ -60,6 +54,5 @@
                 });
             });
         </script>
-
     </body>
 </html>

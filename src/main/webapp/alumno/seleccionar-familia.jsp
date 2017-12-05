@@ -1,11 +1,6 @@
-<%-- 
-    Document   : seleccionFamilia
-    Created on : 04-12-2017, 22:25:47
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ include file="../WEB-INF/menu-alumno.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/menu-alumno.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <h2>Seleccione una familia con la cual quedarse  </h2>     
+            <h2>Seleccione una familia con la cual quedarse  </h2>
             <h6>esta lista es segun el pais al cual pertenece el cel, quien impartira el curso seleccionado</h6>
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
@@ -23,16 +18,32 @@
                 <thead>
                     <tr>
                         <th>Codigo</th>
-                        <th>Nombre</th>  
-                        <th></th>
+                        <th>Nombre del representante familiar</th>  
+                        <th>País de residencia</th>
+                        <th>Ciudad</th>
+                        <th>Domicilio</th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${listadoProgramas}" >
+                    <c:forEach var="lf" items="${listadoFamilias}" >
                         <tr>
-                            <td> <c:out value="${p.codigo}" /> </td>
-                            <td> <c:out value="${p.nombre}" /> </td>
-                            <td><button type="button" class="btn btn-primary">Postular</button></td>
+                            <td>
+                                <c:out value="${lf.rutPersona}" />
+                            </td>
+                            <td>
+                                <c:out value="${lf.persona.nombreCompleto}" />
+                            </td>
+                            <td>
+                                <c:out value="${lf.persona.ciudad}" />
+                            </td>
+                            <td>
+                                <c:out value="${lf.persona.domicilio}" />
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">
+                                    Postular
+                                </button>
+                            </td>
                     </tr>
                 </c:forEach>
                 </tbody>
