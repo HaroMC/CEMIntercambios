@@ -70,4 +70,18 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
         }
     }
 
+    public List<InscripcionCel> programasDisponiblesPorPaisConFamilias() {
+        try {
+            return em.createNamedQuery(
+                    "InscripcionCel.programasDisponiblesPorPaisConFamilias")
+                    .getResultList();
+        } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + InscripcionCel.class.getName() + "\n"
+                    + "Método: (List<InscripcionCel>) "
+                    + "programasDisponiblesPorPaisConFamilias",
+                    ex);
+            return null;
+        }
+    }
 }

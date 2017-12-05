@@ -19,7 +19,7 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
 
     private static final Logger LOGGER
             = Logger.getLogger(AlumnoPostulacionesServlet.class.getName());
-    
+
     @EJB
     private ProgramaFacade pf;
 
@@ -30,49 +30,67 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
     private FamiliaAnfitrionaFacade faf;
 
     private HttpSession sesion;
-
+    
+    //<editor-fold defaultstate="collapsed" desc=" GET ">
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        sesion = req.getSession();
-        List<InscripcionCel> listadoProgramas = icf.findByEstado((short) 2);
-
-        if (listadoProgramas != null) {
-            sesion.setAttribute("listadoProgramas", listadoProgramas);
+        
+        obtenerSesionActiva(req, resp);
+        String accion = ((req.getParameter("accion") == null)
+                ? "" : req.getParameter("accion"));
+        
+        switch (accion) {
+            
+            case "seleccionar_familia":
+                String pais = req.getParameter("pais");
+                List<FamiliaAnfitriona> listadoFamilias
+                        = faf.familiasPorPais(pais);
+                if (listadoFamilias != null) {
+                    sesion.setAttribute("listadoFamilias", listadoFamilias);
+                }
+                req.getRequestDispatcher("seleccionar-familia.jsp")
+                        .forward(req, resp);
+                break;
+                
+            default:
+                List<InscripcionCel> listadoProgramas
+                        = icf.programasDisponiblesPorPaisConFamilias();
+                if (listadoProgramas != null) {
+                    sesion.setAttribute("listadoProgramas", listadoProgramas);
+                }
+                resp.sendRedirect("postulaciones.jsp");
         }
-
-        resp.sendRedirect("postulaciones.jsp");
     }
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" POST ">
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        sesion = req.getSession();
-        String accion = ((req.getParameter("accion") == null)
-                ? "" : req.getParameter("accion"));
-
-        switch (accion) {
-
-            case "seleccionar_familia":
-
-                String pais = req.getParameter("pais");
-
-                List<FamiliaAnfitriona> listadoFamilias
-                        = faf.familiasPorPais(pais);
-
-                if (listadoFamilias != null) {
-                    sesion.setAttribute("listadoFamilias", listadoFamilias);
-                }
-
-                resp.sendRedirect("seleccionar-familia.jsp");
-                break;
-
-            default:
-                resp.sendRedirect("postulaciones.jsp");
+        obtenerSesionActiva(req, resp);        
+        switch (verificarAccion(req)) {
+            
+            case "confirmar_postulacion":
+            
         }
+        
+    }
+    //</editor-fold>
 
+    private void obtenerSesionActiva(HttpServletRequest req,
+            HttpServletResponse resp)
+            throws ServletException, IOException {
+        sesion = req.getSession();
+        if (sesion == null) {
+            resp.sendRedirect("../error/no-autorizado.jsp");
+        }
+    }
+    
+    private String verificarAccion(HttpServletRequest req) {
+        return ((req.getParameter("accion") == null)
+                ? "" : req.getParameter("accion"));
     }
 
 }

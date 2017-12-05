@@ -25,77 +25,87 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Programa.findAll",
             query = "SELECT p FROM Programa p")
-    , @NamedQuery(name = "Programa.findByCodigo",
+    ,
+    @NamedQuery(name = "Programa.findByCodigo",
             query = "SELECT p FROM Programa p WHERE p.codigo = :codigo")
-    , @NamedQuery(name = "Programa.findByNombrePrograma",
+    ,
+    @NamedQuery(name = "Programa.findByNombrePrograma",
             query = "SELECT p FROM Programa p WHERE p.nombrePrograma = :nombrePrograma")
-    , @NamedQuery(name = "Programa.findByFechaInicio",
+    ,
+    @NamedQuery(name = "Programa.findByFechaInicio",
             query = "SELECT p FROM Programa p WHERE p.fechaInicio = :fechaInicio")
-    , @NamedQuery(name = "Programa.findByFechaTermino",
+    ,
+    @NamedQuery(name = "Programa.findByFechaTermino",
             query = "SELECT p FROM Programa p WHERE p.fechaTermino = :fechaTermino")
-    , @NamedQuery(name = "Programa.findByCupos",
+    ,
+    @NamedQuery(name = "Programa.findByCupos",
             query = "SELECT p FROM Programa p WHERE p.cupos = :cupos")
-    , @NamedQuery(name = "Programa.findByValor",
+    ,
+    @NamedQuery(name = "Programa.findByValor",
             query = "SELECT p FROM Programa p WHERE p.valor = :valor")
-    , @NamedQuery(name = "Programa.findByEstado",
+    ,
+    @NamedQuery(name = "Programa.findByEstado",
             query = "SELECT p FROM Programa p WHERE p.estado = :estado")
-    , @NamedQuery(name = "Programa.programasInscritosCel",
+    ,
+    @NamedQuery(name = "Programa.programasInscritosCel",
             query = "SELECT p FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona AND i.estado = :estado")
-    , @NamedQuery(name = "Programa.programasDisponiblesSinPostular",
+    ,
+    @NamedQuery(name = "Programa.programasDisponiblesSinPostular",
             query = "SELECT p FROM Programa p LEFT JOIN p.inscripcionCelList ic1 WHERE p.estado = 1 AND p.codigo NOT IN ( SELECT ic2.codPrograma.codigo FROM InscripcionCel ic2 WHERE ic2.rutCel.rutPersona = :rutCel )")
-    , @NamedQuery(name = "Programa.ultimoCodigo",
+    ,
+    @NamedQuery(name = "Programa.ultimoCodigo",
             query = "SELECT MAX(p.codigo) FROM Programa p")
 })
 public class Programa implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "CODIGO")
     private String codigo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "NOMBRE_PROGRAMA")
     private String nombrePrograma;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_INICIO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_TERMINO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaTermino;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "CUPOS")
     private long cupos;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "VALOR")
     private long valor;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
     private List<Asignatura> asignaturaList;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
     private List<InscripcionAlumno> inscripcionAlumnoList;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
     private List<InscripcionCel> inscripcionCelList;
 
@@ -117,7 +127,7 @@ public class Programa implements Serializable {
 
     public Programa(String codigo, String nombrePrograma, Date fechaInicio,
             Date fechaTermino, long cupos, short estado) {
-        
+
         this.codigo = codigo;
         this.nombrePrograma = nombrePrograma;
         this.fechaInicio = fechaInicio;
@@ -129,7 +139,7 @@ public class Programa implements Serializable {
     public String getCodigo() {
         return codigo;
     }
-    
+
     public String getNombrePrograma() {
         return nombrePrograma;
     }
@@ -234,5 +244,5 @@ public class Programa implements Serializable {
         return "cem.intercambios.modelo.entidad.Programa[ codigo="
                 + codigo + " ]";
     }
-    
+
 }

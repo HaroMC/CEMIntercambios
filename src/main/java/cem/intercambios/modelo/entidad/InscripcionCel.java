@@ -23,48 +23,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "InscripcionCel.findAll",
             query = "SELECT i FROM InscripcionCel i")
-    , @NamedQuery(name = "InscripcionCel.findByCodigo",
+    ,
+    @NamedQuery(name = "InscripcionCel.findByCodigo",
             query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
-    , @NamedQuery(name = "InscripcionCel.findByFechaPostulacion",
+    ,
+    @NamedQuery(name = "InscripcionCel.findByFechaPostulacion",
             query = "SELECT i FROM InscripcionCel i WHERE i.fechaPostulacion = :fechaPostulacion")
-    , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion",
+    ,
+    @NamedQuery(name = "InscripcionCel.findByFechaInscripcion",
             query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionCel.findByEstado",
-            query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")       
-    , @NamedQuery(name = "InscripcionCel.programasInscritosCel",
+    ,
+    @NamedQuery(name = "InscripcionCel.findByEstado",
+            query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")
+    ,
+    @NamedQuery(name = "InscripcionCel.programasInscritosCel",
             query = "SELECT i FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona")
-    , @NamedQuery(name = "InscripcionCel.codigoAutoIncremental",
+    ,
+    @NamedQuery(name = "InscripcionCel.codigoAutoIncremental",
             query = "SELECT MAX(i.codigo) + 1 FROM InscripcionCel i")
+    ,
+    @NamedQuery(name = "InscripcionCel.programasDisponiblesPorPaisConFamilias",
+            query = "SELECT ic1 FROM Programa pr INNER JOIN pr.inscripcionCelList ic1 INNER JOIN ic1.rutCel cel INNER JOIN cel.persona per1 WHERE pr.estado = 2 AND ic1.estado = 2 AND per1.pais IN ( SELECT per2.pais FROM FamiliaAnfitriona fa INNER JOIN fa.persona per2 )")
 })
 public class InscripcionCel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_POSTULACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPostulacion;
-    
+
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
-    
+
     @JoinColumn(name = "RUT_CEL", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private CentroEstudiosLocal rutCel;
-    
+
     @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Programa codPrograma;
@@ -84,7 +93,7 @@ public class InscripcionCel implements Serializable {
         this.rutCel = rutCel;
         this.estado = estado;
     }
-    
+
     public InscripcionCel(BigDecimal codigo, Date fechaPostulacion,
             Date fechaInscripcion, short estado) {
         this.codigo = codigo;
@@ -96,11 +105,11 @@ public class InscripcionCel implements Serializable {
     public BigDecimal getCodigo() {
         return codigo;
     }
-    
+
     public Date getFechaPostulacion() {
         return fechaPostulacion;
     }
-    
+
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
@@ -108,7 +117,7 @@ public class InscripcionCel implements Serializable {
     public void setFechaPostulacion(Date fechaPostulacion) {
         this.fechaPostulacion = fechaPostulacion;
     }
-    
+
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
@@ -165,5 +174,5 @@ public class InscripcionCel implements Serializable {
         return "cem.intercambios.modelo.entidad.InscripcionCel[ codigo="
                 + codigo + " ]";
     }
-    
+
 }
