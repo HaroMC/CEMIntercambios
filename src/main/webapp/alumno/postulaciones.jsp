@@ -22,7 +22,9 @@
                 <thead>
                     <tr>
                         <th>Codigo</th>
-                        <th>Nombre</th>  
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Pais</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,7 +33,8 @@
                         <tr>
                             <td> <c:out value="${p.codPrograma.codigo}" /> </td>
                             <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
-                            
+                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
+                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
                             <td>
                                 <form method="post" action="seleccionFamilia.jsp">
                                     <c:set var="pais" value="${p.rutCel.persona.pais}" scope="session"/>
