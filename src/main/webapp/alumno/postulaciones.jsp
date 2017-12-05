@@ -12,7 +12,7 @@
             <h2>Programas a los cuales puede postular </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
-            <br/>
+            <br/>            
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
