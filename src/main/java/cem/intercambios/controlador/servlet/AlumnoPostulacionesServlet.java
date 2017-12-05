@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cem.intercambios.controlador.servlet;
 
+import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
-import cem.intercambios.modelo.entidad.Programa;
+import cem.intercambios.modelo.entidad.InscripcionCel;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -16,38 +12,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Bugueño
- */
 public class AlumnoPostulacionesServlet extends HttpServlet {
 
     @EJB
     private ProgramaFacade pf;
+    
+    @EJB
+    private InscripcionCelFacade icf;
 
     private HttpSession sesion;
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         
-        sesion = request.getSession();
+        sesion = req.getSession();
         String mensaje;
-        List<Programa> listadoPrograma = null; 
+        List<InscripcionCel> listadoProgramas = icf.findByEstado((short) 2);
         
-        if (listadoPrograma != null) {
-            sesion.setAttribute("listadoPrograma", listadoPrograma);
-            //mensaje = "Visualización correcta de todos los alumnos.";
-        } else {
-            mensaje = "No se encontraron registros.";
-            sesion.setAttribute("mensajeEstado", mensaje);
+        if (listadoProgramas != null) {
+            sesion.setAttribute("listadoProgramas", listadoProgramas);
         }
-        response.sendRedirect("administrar-alumnos.jsp");
+        
+        resp.sendRedirect("postulaciones.jsp");
     }
 
   
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         
     }
