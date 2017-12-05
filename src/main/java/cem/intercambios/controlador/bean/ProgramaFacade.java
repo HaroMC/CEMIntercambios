@@ -73,5 +73,17 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
             return null;
         }
     }
+    
+    
+    public List<Programa> programasDisponiblesSinPostular(String rutCel) {
+        try {
+            return em.createNamedQuery("Programa.programasDisponiblesSinPostular")
+                    .setParameter("rutCel", rutCel)
+                    .getResultList();
+        }
+        catch (NoResultException ex) {
+            return null;
+        }
+    }
 
 }

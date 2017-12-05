@@ -46,11 +46,14 @@ public class CelPostulacionesServlet extends HttpServlet {
         sesion = req.getSession();
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
 
-        List<Programa> programasDisponibles = pf.findByEstado((short) 1);
+        List<Programa> programasDisponibles
+                = pf.programasDisponiblesSinPostular(
+                        usuarioActual.getRutPersona());
+        
         if (programasDisponibles != null) {
             sesion.setAttribute("programasDisponibles", programasDisponibles);
         }
-
+        
         List<InscripcionCel> programasInscritos = icf.programasInscritosCel(
                 usuarioActual.getRutPersona());
         if (programasInscritos != null) {
