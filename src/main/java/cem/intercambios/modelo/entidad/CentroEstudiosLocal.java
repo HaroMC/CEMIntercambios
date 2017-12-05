@@ -22,9 +22,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "CENTRO_ESTUDIOS_LOCAL")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CentroEstudiosLocal.findAll", query = "SELECT c FROM CentroEstudiosLocal c")
-    , @NamedQuery(name = "CentroEstudiosLocal.findByRutPersona", query = "SELECT c FROM CentroEstudiosLocal c WHERE c.rutPersona = :rutPersona")
-    , @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditado", query = "SELECT c FROM CentroEstudiosLocal c WHERE c.estaAcreditado = :estaAcreditado")})
+    @NamedQuery(name = "CentroEstudiosLocal.findAll",
+            query = "SELECT c FROM CentroEstudiosLocal c")
+    , @NamedQuery(name = "CentroEstudiosLocal.findByRutPersona",
+            query = "SELECT c FROM CentroEstudiosLocal c WHERE c.rutPersona = :rutPersona")
+    , @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditado",
+            query = "SELECT c FROM CentroEstudiosLocal c WHERE c.estaAcreditado = :estaAcreditado")})
 public class CentroEstudiosLocal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,7 +44,8 @@ public class CentroEstudiosLocal implements Serializable {
     @Column(name = "ESTA_ACREDITADO")
     private short estaAcreditado;
     
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
+    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT",
+            insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
     
@@ -64,10 +68,6 @@ public class CentroEstudiosLocal implements Serializable {
         return rutPersona;
     }
 
-    public void setRutPersona(String rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
     public short getEstaAcreditado() {
         return estaAcreditado;
     }
@@ -78,10 +78,6 @@ public class CentroEstudiosLocal implements Serializable {
 
     public Persona getPersona() {
         return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     @XmlTransient
@@ -102,20 +98,25 @@ public class CentroEstudiosLocal implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CentroEstudiosLocal)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof CentroEstudiosLocal)) {
             return false;
         }
         CentroEstudiosLocal other = (CentroEstudiosLocal) object;
-        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
+        if ((this.rutPersona == null && other.rutPersona != null) ||
+                (this.rutPersona != null &&
+                !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof CentroEstudiosLocal;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.CentroEstudiosLocal[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.CentroEstudiosLocal[ "
+                + "rutPersona=" + rutPersona + " ]";
     }
     
 }

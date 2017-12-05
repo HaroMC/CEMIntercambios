@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="container">
-            <h2>Seleccione una familia con la cual quedarse  </h2>
-            <h6>esta lista es segun el pais al cual pertenece el cel, quien impartira el curso seleccionado</h6>
-            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <h2> Seleccione una familia con la cual quedarse </h2>
+            <h6> esta lista es segun el pais al cual pertenece el cel, quien impartira el curso seleccionado</h6>
+            <p> Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">

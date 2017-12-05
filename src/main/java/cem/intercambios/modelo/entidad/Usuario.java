@@ -21,16 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "USUARIO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByRutPersona", query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Usuario.findByNombreUsuario", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
-    , @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuario.findByFechaRegistro", query = "SELECT u FROM Usuario u WHERE u.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "Usuario.findByPerfil", query = "SELECT u FROM Usuario u WHERE u.perfil = :perfil")
-
-    , @NamedQuery(name = "Usuario.validarIngreso", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuario.buscarCuentaPorRut", query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
-    //, @NamedQuery(name = "Usuario.codigoAutoIncremental", query = "SELECT MAX(u.codigo) + 1 FROM Usuario u")
+    @NamedQuery(name = "Usuario.findAll",
+            query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByRutPersona",
+            query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
+    , @NamedQuery(name = "Usuario.findByNombreUsuario",
+            query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
+    , @NamedQuery(name = "Usuario.findByContrasena",
+            query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")
+    , @NamedQuery(name = "Usuario.findByFechaRegistro",
+            query = "SELECT u FROM Usuario u WHERE u.fechaRegistro = :fechaRegistro")
+    , @NamedQuery(name = "Usuario.findByPerfil",
+            query = "SELECT u FROM Usuario u WHERE u.perfil = :perfil")
+    , @NamedQuery(name = "Usuario.validarIngreso",
+            query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasena = :contrasena")
+    , @NamedQuery(name = "Usuario.buscarCuentaPorRut",
+            query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
 })
 public class Usuario implements Serializable {
 
@@ -91,11 +97,7 @@ public class Usuario implements Serializable {
     public String getRutPersona() {
         return rutPersona;
     }
-
-    public void setRutPersona(String rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
+    
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -116,10 +118,6 @@ public class Usuario implements Serializable {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
     public String getPerfil() {
         return perfil;
     }
@@ -132,10 +130,6 @@ public class Usuario implements Serializable {
         return persona;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,20 +139,25 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Usuario)) {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
+        if ((this.rutPersona == null && other.rutPersona != null) ||
+                (this.rutPersona != null &&
+                !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Usuario;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Usuario[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.Usuario[ rutPersona="
+                + rutPersona + " ]";
     }
     
 }

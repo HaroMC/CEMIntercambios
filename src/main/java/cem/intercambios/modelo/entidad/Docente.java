@@ -21,9 +21,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "DOCENTE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d")
-    , @NamedQuery(name = "Docente.findByRutPersona", query = "SELECT d FROM Docente d WHERE d.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Docente.findByObservaciones", query = "SELECT d FROM Docente d WHERE d.observaciones = :observaciones")})
+    @NamedQuery(name = "Docente.findAll",
+            query = "SELECT d FROM Docente d")
+    , @NamedQuery(name = "Docente.findByRutPersona",
+            query = "SELECT d FROM Docente d WHERE d.rutPersona = :rutPersona")
+    , @NamedQuery(name = "Docente.findByObservaciones",
+            query = "SELECT d FROM Docente d WHERE d.observaciones = :observaciones")})
 public class Docente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,7 +41,8 @@ public class Docente implements Serializable {
     private String observaciones;
     @OneToMany(mappedBy = "rutDocente")
     private List<Asignatura> asignaturaList;
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
+    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT",
+            insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
 
@@ -52,11 +56,7 @@ public class Docente implements Serializable {
     public String getRutPersona() {
         return rutPersona;
     }
-
-    public void setRutPersona(String rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
+    
     public String getObservaciones() {
         return observaciones;
     }
@@ -77,11 +77,7 @@ public class Docente implements Serializable {
     public Persona getPersona() {
         return persona;
     }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -91,20 +87,25 @@ public class Docente implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Docente)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Docente)) {
             return false;
         }
         Docente other = (Docente) object;
-        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
+        if ((this.rutPersona == null && other.rutPersona != null) ||
+                (this.rutPersona != null &&
+                !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Docente;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Docente[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.Docente[ rutPersona="
+                + rutPersona + " ]";
     }
     
 }
