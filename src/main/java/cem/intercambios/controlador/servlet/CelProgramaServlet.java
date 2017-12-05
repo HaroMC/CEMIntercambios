@@ -5,6 +5,7 @@ import cem.intercambios.modelo.entidad.Programa;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpSession;
 
 public class CelProgramaServlet extends HttpServlet {
 
+    private static final Logger LOGGER
+            = Logger.getLogger(CelProgramaServlet.class.getName());
+    
     @EJB
     private ProgramaFacade pf;
 

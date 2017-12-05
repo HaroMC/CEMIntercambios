@@ -26,12 +26,18 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ALUMNO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a")
-    , @NamedQuery(name = "Alumno.findByRutPersona", query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Alumno.findByNumeroMatricula", query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula")
-    , @NamedQuery(name = "Alumno.findByFechaMatricula", query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula")
-    , @NamedQuery(name = "Alumno.findByNombreCarrera", query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera")
-    , @NamedQuery(name = "Alumno.findByEsMoroso", query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")})
+    @NamedQuery(name = "Alumno.findAll",
+            query = "SELECT a FROM Alumno a")
+    , @NamedQuery(name = "Alumno.findByRutPersona",
+            query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona")
+    , @NamedQuery(name = "Alumno.findByNumeroMatricula",
+            query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula")
+    , @NamedQuery(name = "Alumno.findByFechaMatricula",
+            query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula")
+    , @NamedQuery(name = "Alumno.findByNombreCarrera",
+            query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera")
+    , @NamedQuery(name = "Alumno.findByEsMoroso",
+            query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")})
 public class Alumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,7 +77,8 @@ public class Alumno implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
     private List<Certificado> certificadoList;
     
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT", insertable = false, updatable = false)
+    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT",
+            insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
     
@@ -85,7 +92,8 @@ public class Alumno implements Serializable {
         this.rutPersona = rutPersona;
     }
 
-    public Alumno(String rutPersona, BigInteger numeroMatricula, Date fechaMatricula, String nombreCarrera, short esMoroso) {
+    public Alumno(String rutPersona, BigInteger numeroMatricula,
+            Date fechaMatricula, String nombreCarrera, short esMoroso) {
         this.rutPersona = rutPersona;
         this.numeroMatricula = numeroMatricula;
         this.fechaMatricula = fechaMatricula;
@@ -97,32 +105,16 @@ public class Alumno implements Serializable {
         return rutPersona;
     }
 
-    public void setRutPersona(String rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
     public BigInteger getNumeroMatricula() {
         return numeroMatricula;
-    }
-
-    public void setNumeroMatricula(BigInteger numeroMatricula) {
-        this.numeroMatricula = numeroMatricula;
     }
 
     public Date getFechaMatricula() {
         return fechaMatricula;
     }
 
-    public void setFechaMatricula(Date fechaMatricula) {
-        this.fechaMatricula = fechaMatricula;
-    }
-
     public String getNombreCarrera() {
         return nombreCarrera;
-    }
-
-    public void setNombreCarrera(String nombreCarrera) {
-        this.nombreCarrera = nombreCarrera;
     }
 
     public short getEsMoroso() {
@@ -154,17 +146,14 @@ public class Alumno implements Serializable {
     public Persona getPersona() {
         return persona;
     }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
+    
     @XmlTransient
     public List<InscripcionAlumno> getInscripcionAlumnoList() {
         return inscripcionAlumnoList;
     }
 
-    public void setInscripcionAlumnoList(List<InscripcionAlumno> inscripcionAlumnoList) {
+    public void setInscripcionAlumnoList(
+            List<InscripcionAlumno> inscripcionAlumnoList) {
         this.inscripcionAlumnoList = inscripcionAlumnoList;
     }
 
@@ -177,20 +166,25 @@ public class Alumno implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Alumno)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Alumno)) {
             return false;
         }
         Alumno other = (Alumno) object;
-        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
+        if ((this.rutPersona == null && other.rutPersona != null) ||
+                (this.rutPersona != null &&
+                !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Alumno;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Alumno[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.Alumno[ rutPersona="
+                + rutPersona + " ]";
     }
     
 }

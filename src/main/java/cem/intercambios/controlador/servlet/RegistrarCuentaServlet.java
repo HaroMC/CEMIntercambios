@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class RegistrarCuentaServlet extends HttpServlet {
 
     private static final Logger LOGGER
-            = Logger.getLogger(IniciarSesionServlet.class.getName());
+            = Logger.getLogger(RegistrarCuentaServlet.class.getName());
 
     private HttpSession sesion;
 
@@ -73,21 +73,13 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                     req.getParameter("pais"),
                                     req.getParameter("correo"),
                                     req.getParameter("telefono"),
-                                    //"Familia",
                                     new FamiliaAnfitriona(
                                             rut,
                                             Short.parseShort(req.getParameter(
                                                     "integrantes")),
                                             estado
                                     ),
-                                    
                                     new Usuario(
-                                            /*uf.codigoAutoIncremental(),
-                                            req.getParameter("nombreUsuario"),
-                                            req.getParameter("clave1"),
-                                            fechaRegistro,
-                                            req.getParameter("rut"),
-                                            "Familia"*/
                                             rut,
                                             req.getParameter("nombreUsuario"),
                                             req.getParameter("clave1"),
@@ -95,7 +87,7 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                             "Familia"
                                     )
                             );
-                            
+
                         }
                     } catch (ParseException ex) {
 

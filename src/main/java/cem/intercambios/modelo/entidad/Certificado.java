@@ -21,23 +21,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CERTIFICADO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Certificado.findAll", query = "SELECT c FROM Certificado c")
-    , @NamedQuery(name = "Certificado.findByCodigo", query = "SELECT c FROM Certificado c WHERE c.codigo = :codigo")
-    , @NamedQuery(name = "Certificado.findByFechaSolicitud", query = "SELECT c FROM Certificado c WHERE c.fechaSolicitud = :fechaSolicitud")})
+    @NamedQuery(name = "Certificado.findAll",
+            query = "SELECT c FROM Certificado c")
+    , @NamedQuery(name = "Certificado.findByCodigo",
+            query = "SELECT c FROM Certificado c WHERE c.codigo = :codigo")
+    , @NamedQuery(name = "Certificado.findByFechaSolicitud",
+            query = "SELECT c FROM Certificado c WHERE c.fechaSolicitud = :fechaSolicitud")})
 public class Certificado implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_SOLICITUD")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSolicitud;
+    
     @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private Alumno rutAlumno;
@@ -87,20 +92,24 @@ public class Certificado implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Certificado)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Certificado)) {
             return false;
         }
         Certificado other = (Certificado) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.codigo == null && other.codigo != null) ||
+                (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Certificado;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Certificado[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Certificado[ codigo="
+                + codigo + " ]";
     }
     
 }

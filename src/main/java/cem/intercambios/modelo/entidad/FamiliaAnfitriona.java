@@ -22,12 +22,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "FAMILIA_ANFITRIONA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FamiliaAnfitriona.findAll", query = "SELECT f FROM FamiliaAnfitriona f")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByRutPersona", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.rutPersona = :rutPersona")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByCantidadIntegrantes", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.cantidadIntegrantes = :cantidadIntegrantes")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByEstado", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.estado = :estado")
-    
-    , @NamedQuery(name = "FamiliaAnfitriona.familiasPorPais", query = "SELECT f FROM FamiliaAnfitriona f INNER JOIN f.persona p WHERE p.pais = :pais")
+    @NamedQuery(name = "FamiliaAnfitriona.findAll",
+            query = "SELECT f FROM FamiliaAnfitriona f")
+    , @NamedQuery(name = "FamiliaAnfitriona.findByRutPersona",
+            query = "SELECT f FROM FamiliaAnfitriona f WHERE f.rutPersona = :rutPersona")
+    , @NamedQuery(name = "FamiliaAnfitriona.findByCantidadIntegrantes",
+            query = "SELECT f FROM FamiliaAnfitriona f WHERE f.cantidadIntegrantes = :cantidadIntegrantes")
+    , @NamedQuery(name = "FamiliaAnfitriona.findByEstado",
+            query = "SELECT f FROM FamiliaAnfitriona f WHERE f.estado = :estado")
+    , @NamedQuery(name = "FamiliaAnfitriona.familiasPorPais",
+            query = "SELECT f FROM FamiliaAnfitriona f INNER JOIN f.persona p WHERE p.pais = :pais")
 })
 public class FamiliaAnfitriona implements Serializable {
 
@@ -79,11 +83,7 @@ public class FamiliaAnfitriona implements Serializable {
     public String getRutPersona() {
         return rutPersona;
     }
-
-    public void setRutPersona(String rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
+    
     public short getCantidadIntegrantes() {
         return cantidadIntegrantes;
     }
@@ -103,11 +103,7 @@ public class FamiliaAnfitriona implements Serializable {
     public Persona getPersona() {
         return persona;
     }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
+    
     @XmlTransient
     public List<Antecedente> getAntecedenteList() {
         return antecedenteList;
@@ -122,7 +118,8 @@ public class FamiliaAnfitriona implements Serializable {
         return inscripcionAlumnoList;
     }
 
-    public void setInscripcionAlumnoList(List<InscripcionAlumno> inscripcionAlumnoList) {
+    public void setInscripcionAlumnoList(
+            List<InscripcionAlumno> inscripcionAlumnoList) {
         this.inscripcionAlumnoList = inscripcionAlumnoList;
     }
 
@@ -135,20 +132,25 @@ public class FamiliaAnfitriona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FamiliaAnfitriona)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof FamiliaAnfitriona)) {
             return false;
         }
         FamiliaAnfitriona other = (FamiliaAnfitriona) object;
-        if ((this.rutPersona == null && other.rutPersona != null) || (this.rutPersona != null && !this.rutPersona.equals(other.rutPersona))) {
+        if ((this.rutPersona == null && other.rutPersona != null) ||
+                (this.rutPersona != null &&
+                !this.rutPersona.equals(other.rutPersona))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof FamiliaAnfitriona;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.FamiliaAnfitriona[ rutPersona=" + rutPersona + " ]";
+        return "cem.intercambios.modelo.entidad.FamiliaAnfitriona[ rutPersona="
+                + rutPersona + " ]";
     }
     
 }

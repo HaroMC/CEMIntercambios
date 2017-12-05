@@ -21,20 +21,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "INSCRIPCION_CEL")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "InscripcionCel.findAll", query = "SELECT i FROM InscripcionCel i")
-    , @NamedQuery(name = "InscripcionCel.findByCodigo", query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
-    , @NamedQuery(name = "InscripcionCel.findByFechaPostulacion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaPostulacion = :fechaPostulacion")
-    , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion", query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionCel.findByEstado", query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")       
-    , @NamedQuery(name = "InscripcionCel.programasInscritosCel", query = "SELECT i FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona")
-    , @NamedQuery(name = "InscripcionCel.codigoAutoIncremental", query = "SELECT MAX(i.codigo) + 1 FROM InscripcionCel i")
+    @NamedQuery(name = "InscripcionCel.findAll",
+            query = "SELECT i FROM InscripcionCel i")
+    , @NamedQuery(name = "InscripcionCel.findByCodigo",
+            query = "SELECT i FROM InscripcionCel i WHERE i.codigo = :codigo")
+    , @NamedQuery(name = "InscripcionCel.findByFechaPostulacion",
+            query = "SELECT i FROM InscripcionCel i WHERE i.fechaPostulacion = :fechaPostulacion")
+    , @NamedQuery(name = "InscripcionCel.findByFechaInscripcion",
+            query = "SELECT i FROM InscripcionCel i WHERE i.fechaInscripcion = :fechaInscripcion")
+    , @NamedQuery(name = "InscripcionCel.findByEstado",
+            query = "SELECT i FROM InscripcionCel i WHERE i.estado = :estado")       
+    , @NamedQuery(name = "InscripcionCel.programasInscritosCel",
+            query = "SELECT i FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona")
+    , @NamedQuery(name = "InscripcionCel.codigoAutoIncremental",
+            query = "SELECT MAX(i.codigo) + 1 FROM InscripcionCel i")
 })
 public class InscripcionCel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields
-    // consider using these annotations to enforce field validation
     
     @Id
     @Basic(optional = false)
@@ -48,8 +52,6 @@ public class InscripcionCel implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPostulacion;
     
-    //@Basic(optional = false)
-    //@NotNull
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
@@ -94,11 +96,7 @@ public class InscripcionCel implements Serializable {
     public BigDecimal getCodigo() {
         return codigo;
     }
-
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public Date getFechaPostulacion() {
         return fechaPostulacion;
     }
@@ -148,20 +146,24 @@ public class InscripcionCel implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof InscripcionCel)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof InscripcionCel)) {
             return false;
         }
         InscripcionCel other = (InscripcionCel) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.codigo == null && other.codigo != null) ||
+                (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof InscripcionAlumno;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.InscripcionCel[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.InscripcionCel[ codigo="
+                + codigo + " ]";
     }
     
 }

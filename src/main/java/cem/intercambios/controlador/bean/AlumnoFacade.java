@@ -1,11 +1,9 @@
 package cem.intercambios.controlador.bean;
 
 import cem.intercambios.modelo.entidad.Alumno;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Stateless

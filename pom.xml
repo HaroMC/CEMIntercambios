@@ -4,7 +4,7 @@
 
     <groupId>cem.intercambios</groupId>
     <artifactId>CEMIntercambios</artifactId>
-    <version>1.0.0.Snapshot</version>
+    <version>1.1.0.Snapshot</version>
     <packaging>war</packaging>
 
     <name>CEMIntercambios</name>
@@ -84,5 +84,9 @@
             </plugin>
         </plugins>
     </build>
+    <description>Registro de cambios
 
+05-12-2017 - 1.1.0
+A la fecha, en el menu de administrador, sólo resta controlar la gestión de notas.
+Falta la adaptación de los demás perfiles.</description>
 </project>

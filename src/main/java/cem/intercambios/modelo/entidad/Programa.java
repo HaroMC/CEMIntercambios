@@ -23,18 +23,28 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "PROGRAMA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Programa.findAll", query = "SELECT p FROM Programa p")
-    , @NamedQuery(name = "Programa.findByCodigo", query = "SELECT p FROM Programa p WHERE p.codigo = :codigo")
-    , @NamedQuery(name = "Programa.findByNombrePrograma", query = "SELECT p FROM Programa p WHERE p.nombrePrograma = :nombrePrograma")
-    , @NamedQuery(name = "Programa.findByFechaInicio", query = "SELECT p FROM Programa p WHERE p.fechaInicio = :fechaInicio")
-    , @NamedQuery(name = "Programa.findByFechaTermino", query = "SELECT p FROM Programa p WHERE p.fechaTermino = :fechaTermino")
-    , @NamedQuery(name = "Programa.findByCupos", query = "SELECT p FROM Programa p WHERE p.cupos = :cupos")
-    , @NamedQuery(name = "Programa.findByValor", query = "SELECT p FROM Programa p WHERE p.valor = :valor")
-    , @NamedQuery(name = "Programa.findByEstado", query = "SELECT p FROM Programa p WHERE p.estado = :estado")
-        
-    , @NamedQuery(name = "Programa.programasInscritosCel", query = "SELECT p FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona AND i.estado = :estado")
-    , @NamedQuery(name = "Programa.programasDisponiblesSinPostular", query = "SELECT p FROM Programa p LEFT JOIN p.inscripcionCelList ic1 WHERE p.estado = 1 AND p.codigo NOT IN ( SELECT ic2.codPrograma.codigo FROM InscripcionCel ic2 WHERE ic2.rutCel.rutPersona = :rutCel )")
-    , @NamedQuery(name = "Programa.ultimoCodigo", query = "SELECT MAX(p.codigo) FROM Programa p")
+    @NamedQuery(name = "Programa.findAll",
+            query = "SELECT p FROM Programa p")
+    , @NamedQuery(name = "Programa.findByCodigo",
+            query = "SELECT p FROM Programa p WHERE p.codigo = :codigo")
+    , @NamedQuery(name = "Programa.findByNombrePrograma",
+            query = "SELECT p FROM Programa p WHERE p.nombrePrograma = :nombrePrograma")
+    , @NamedQuery(name = "Programa.findByFechaInicio",
+            query = "SELECT p FROM Programa p WHERE p.fechaInicio = :fechaInicio")
+    , @NamedQuery(name = "Programa.findByFechaTermino",
+            query = "SELECT p FROM Programa p WHERE p.fechaTermino = :fechaTermino")
+    , @NamedQuery(name = "Programa.findByCupos",
+            query = "SELECT p FROM Programa p WHERE p.cupos = :cupos")
+    , @NamedQuery(name = "Programa.findByValor",
+            query = "SELECT p FROM Programa p WHERE p.valor = :valor")
+    , @NamedQuery(name = "Programa.findByEstado",
+            query = "SELECT p FROM Programa p WHERE p.estado = :estado")
+    , @NamedQuery(name = "Programa.programasInscritosCel",
+            query = "SELECT p FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona AND i.estado = :estado")
+    , @NamedQuery(name = "Programa.programasDisponiblesSinPostular",
+            query = "SELECT p FROM Programa p LEFT JOIN p.inscripcionCelList ic1 WHERE p.estado = 1 AND p.codigo NOT IN ( SELECT ic2.codPrograma.codigo FROM InscripcionCel ic2 WHERE ic2.rutCel.rutPersona = :rutCel )")
+    , @NamedQuery(name = "Programa.ultimoCodigo",
+            query = "SELECT MAX(p.codigo) FROM Programa p")
 })
 public class Programa implements Serializable {
     
@@ -69,9 +79,6 @@ public class Programa implements Serializable {
     @NotNull
     @Column(name = "CUPOS")
     private long cupos;
-    
-    /*@Column(name = "VALOR")
-    private Integer valor;*/
     
     @Basic(optional = false)
     @NotNull
@@ -122,11 +129,7 @@ public class Programa implements Serializable {
     public String getCodigo() {
         return codigo;
     }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public String getNombrePrograma() {
         return nombrePrograma;
     }
@@ -189,7 +192,8 @@ public class Programa implements Serializable {
         return inscripcionAlumnoList;
     }
 
-    public void setInscripcionAlumnoList(List<InscripcionAlumno> inscripcionAlumnoList) {
+    public void setInscripcionAlumnoList(
+            List<InscripcionAlumno> inscripcionAlumnoList) {
         this.inscripcionAlumnoList = inscripcionAlumnoList;
     }
 
@@ -211,20 +215,24 @@ public class Programa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Programa)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Programa)) {
             return false;
         }
         Programa other = (Programa) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.codigo == null && other.codigo != null) ||
+                (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Programa;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Programa[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Programa[ codigo="
+                + codigo + " ]";
     }
     
 }

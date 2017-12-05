@@ -21,15 +21,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CALIFICACION")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Calificacion.findAll", query = "SELECT c FROM Calificacion c")
-    , @NamedQuery(name = "Calificacion.findByCodigo", query = "SELECT c FROM Calificacion c WHERE c.codigo = :codigo")
-    , @NamedQuery(name = "Calificacion.findByNota", query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")
-    , @NamedQuery(name = "Calificacion.findByFechaCalificacion", query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")})
+    @NamedQuery(name = "Calificacion.findAll",
+            query = "SELECT c FROM Calificacion c")
+    , @NamedQuery(name = "Calificacion.findByCodigo",
+            query = "SELECT c FROM Calificacion c WHERE c.codigo = :codigo")
+    , @NamedQuery(name = "Calificacion.findByNota",
+            query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")
+    , @NamedQuery(name = "Calificacion.findByFechaCalificacion",
+            query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")})
 public class Calificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
@@ -62,7 +65,8 @@ public class Calificacion implements Serializable {
         this.codigo = codigo;
     }
 
-    public Calificacion(BigDecimal codigo, BigDecimal nota, Date fechaCalificacion) {
+    public Calificacion(BigDecimal codigo, BigDecimal nota,
+            Date fechaCalificacion) {
         this.codigo = codigo;
         this.nota = nota;
         this.fechaCalificacion = fechaCalificacion;
@@ -71,11 +75,7 @@ public class Calificacion implements Serializable {
     public BigDecimal getCodigo() {
         return codigo;
     }
-
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public BigDecimal getNota() {
         return nota;
     }
@@ -117,20 +117,24 @@ public class Calificacion implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Calificacion)) {
+        // TODO: Warning - this method won't work in the case the id fields
+        // are not set
+        /*if (!(object instanceof Calificacion)) {
             return false;
         }
         Calificacion other = (Calificacion) object;
-        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+        if ((this.codigo == null && other.codigo != null) ||
+                (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
-        return true;
+        return true;*/
+        return object instanceof Calificacion;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.Calificacion[ codigo=" + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.Calificacion[ codigo=" 
+               + codigo + " ]";
     }
     
 }

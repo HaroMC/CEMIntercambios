@@ -7,7 +7,6 @@ import cem.intercambios.modelo.entidad.InscripcionCel;
 import cem.intercambios.modelo.entidad.Programa;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
