@@ -17,7 +17,6 @@
             <br />
             <form action="cem-programas?accion=agregar" method="post"
                   class="form-horizontal">
-                
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Nombre del programa
@@ -29,6 +28,7 @@
                                required="true">
                     </div>
                 </div>
+
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                        <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Nombre de la asignatura 1
                     </label>
@@ -76,7 +76,8 @@
                                placeholder="Ingrese el nombre de la asignatura">
                     </div>
                 </div>
-                
+
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Nombre de la asignatura 2
@@ -84,7 +85,8 @@
                     <div class="col-sm-5">
                         <input type="text" class="form-control"
                                name="nombreAsignatura2" 
-                               placeholder="Ingrese el nombre de la asignatura">
+                               placeholder="Ingrese el nombre de la asignatura"
+                               >
                     </div>
                 </div>
 
@@ -98,6 +100,8 @@
                         </button>
                     </div>
                 </div>
+
+        
 
             </form>
         </div>

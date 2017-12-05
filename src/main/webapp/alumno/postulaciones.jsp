@@ -29,9 +29,18 @@
                 <tbody id="myTable2">
                     <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
-                            <td> <c:out value="${p.codigo}" /> </td>
-                            <td> <c:out value="${p.nombre}" /> </td>
-                            <td><button type="button" class="btn btn-primary">Postular</button></td>
+                            <td> <c:out value="${p.codPrograma.codigo}" /> </td>
+                            <td> <c:out value="${p.codProgrma.nombrePrograma}" /> </td>
+                            
+                            <td>
+                                <form method="post" action="seleccionFamilia.jsp">
+                                    <c:set var="pais" value="${p.rutCel.persona.pais}" scope="session"/>
+                                    <c:set var="codigoProgra" value="${p.codPrograma.codigo}" scope="session"/>
+                                <button type="button" class="btn btn-primary">
+                                    Postular
+                                </button>
+                                </form>
+                            </td>
                     </tr>
                 </c:forEach>
                 </tbody>

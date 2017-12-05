@@ -25,7 +25,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "FamiliaAnfitriona.findAll", query = "SELECT f FROM FamiliaAnfitriona f")
     , @NamedQuery(name = "FamiliaAnfitriona.findByRutPersona", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.rutPersona = :rutPersona")
     , @NamedQuery(name = "FamiliaAnfitriona.findByCantidadIntegrantes", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.cantidadIntegrantes = :cantidadIntegrantes")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByEstado", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.estado = :estado")})
+    , @NamedQuery(name = "FamiliaAnfitriona.findByEstado", query = "SELECT f FROM FamiliaAnfitriona f WHERE f.estado = :estado")
+})
 public class FamiliaAnfitriona implements Serializable {
 
     private static final long serialVersionUID = 1L;
