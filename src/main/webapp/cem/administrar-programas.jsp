@@ -107,7 +107,8 @@
                 </tbody>
             </table>
         </div>
-        <script>
+    </body>
+            <script>
             $(document).ready(function () {
                 $("#myInput2").on("keyup", function () {
                     var value = $(this).val().toLowerCase();
@@ -117,5 +118,4 @@
                 });
             });
         </script>
-    </body>
 </html>
