@@ -4,7 +4,7 @@
 
     <groupId>cem.intercambios</groupId>
     <artifactId>CEMIntercambios</artifactId>
-    <version>1.1.0.Snapshot</version>
+    <version>1.2.0.Alpha</version>
     <packaging>war</packaging>
 
     <name>CEMIntercambios</name>
@@ -88,5 +88,9 @@
 
 05-12-2017 - 1.1.0
 A la fecha, en el menu de administrador, sólo resta controlar la gestión de notas.
-Falta la adaptación de los demás perfiles.</description>
+Falta la adaptación de los demás perfiles.
+
+06-12-2017 - 1.2.0
+Se adaptaron cambios en las entidades para reflejar las nuevas llaves primarias
+compuestas en la base de datos 3.1.1.</description>
 </project>

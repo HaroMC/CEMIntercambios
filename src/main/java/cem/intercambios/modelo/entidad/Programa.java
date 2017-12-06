@@ -48,10 +48,10 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT p FROM Programa p WHERE p.estado = :estado")
     ,
     @NamedQuery(name = "Programa.programasInscritosCel",
-            query = "SELECT p FROM InscripcionCel i INNER JOIN i.rutCel c INNER JOIN i.codPrograma p WHERE c.rutPersona = :rutPersona AND i.estado = :estado")
+            query = "SELECT p FROM InscripcionCel i INNER JOIN i.centroEstudiosLocal c INNER JOIN i.programa p WHERE c.rutPersona = :rutCel AND i.estado = :estado")
     ,
     @NamedQuery(name = "Programa.programasDisponiblesSinPostular",
-            query = "SELECT p FROM Programa p LEFT JOIN p.inscripcionCelList ic1 WHERE p.estado = 1 AND p.codigo NOT IN ( SELECT ic2.codPrograma.codigo FROM InscripcionCel ic2 WHERE ic2.rutCel.rutPersona = :rutCel )")
+            query = "SELECT p FROM Programa p LEFT JOIN p.inscripcionCelList ic1 WHERE p.estado = 1 AND p.codigo NOT IN ( SELECT ic2.programa.codigo FROM InscripcionCel ic2 WHERE ic2.centroEstudiosLocal.rutPersona = :rutCel )")
     ,
     @NamedQuery(name = "Programa.ultimoCodigo",
             query = "SELECT MAX(p.codigo) FROM Programa p")
@@ -103,10 +103,10 @@ public class Programa implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
     private List<Asignatura> asignaturaList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
     private List<InscripcionAlumno> inscripcionAlumnoList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPrograma")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
     private List<InscripcionCel> inscripcionCelList;
 
     public Programa() {
@@ -225,17 +225,6 @@ public class Programa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Programa)) {
-            return false;
-        }
-        Programa other = (Programa) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Programa;
     }
 

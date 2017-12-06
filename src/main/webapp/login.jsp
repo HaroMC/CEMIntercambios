@@ -21,7 +21,8 @@
                     </h1>
                     <div class="account-wall">
                         <img class="profile-img" alt=""
-                             src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" />
+                             src="http://www.cemgdl.com/images/logo.png" />
+                             <!--src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" />-->
                         <form class="form-signin" action="ingresar"
                               method="post">
                             <input type="text" class="form-control"

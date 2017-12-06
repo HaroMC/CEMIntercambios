@@ -42,7 +42,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
             return null;
         }
     }
-
+/*
     public BigDecimal codigoAutoIncremental() {
         try {
             return em.createNamedQuery("InscripcionCel.codigoAutoIncremental",
@@ -55,7 +55,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
             return null;
         }
     }
-
+*/
     public List<InscripcionCel> findByEstado(short estado) {
         try {
             return em.createNamedQuery("InscripcionCel.findByEstado")

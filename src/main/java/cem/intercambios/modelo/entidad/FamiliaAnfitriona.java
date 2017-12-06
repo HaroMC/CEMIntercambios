@@ -24,16 +24,21 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "FamiliaAnfitriona.findAll",
             query = "SELECT f FROM FamiliaAnfitriona f")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByRutPersona",
+    ,
+    @NamedQuery(name = "FamiliaAnfitriona.findByRutPersona",
             query = "SELECT f FROM FamiliaAnfitriona f WHERE f.rutPersona = :rutPersona")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByCantidadIntegrantes",
+    ,
+    @NamedQuery(name = "FamiliaAnfitriona.findByCantidadIntegrantes",
             query = "SELECT f FROM FamiliaAnfitriona f WHERE f.cantidadIntegrantes = :cantidadIntegrantes")
-    , @NamedQuery(name = "FamiliaAnfitriona.findByEstado",
+    ,
+    @NamedQuery(name = "FamiliaAnfitriona.findByEstado",
             query = "SELECT f FROM FamiliaAnfitriona f WHERE f.estado = :estado")
-    , @NamedQuery(name = "FamiliaAnfitriona.familiasPorPais",
+    ,
+    @NamedQuery(name = "FamiliaAnfitriona.familiasPorPais",
             query = "SELECT f FROM FamiliaAnfitriona f INNER JOIN f.persona p WHERE p.pais = :pais")
 })
 public class FamiliaAnfitriona implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
     
@@ -51,9 +56,8 @@ public class FamiliaAnfitriona implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
     @Column(name = "ESTADO")
-    private String estado;
+    private short estado;
     
     @JoinColumn(name = "RUT_PERSONA",
             referencedColumnName = "RUT", insertable = false, updatable = false)
@@ -74,7 +78,7 @@ public class FamiliaAnfitriona implements Serializable {
     }
 
     public FamiliaAnfitriona(String rutPersona, short cantidadIntegrantes,
-            String estado) {
+            short estado) {
         this.rutPersona = rutPersona;
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
@@ -92,11 +96,11 @@ public class FamiliaAnfitriona implements Serializable {
         this.cantidadIntegrantes = cantidadIntegrantes;
     }
 
-    public String getEstado() {
+    public short getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(short estado) {
         this.estado = estado;
     }
 
@@ -132,18 +136,6 @@ public class FamiliaAnfitriona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof FamiliaAnfitriona)) {
-            return false;
-        }
-        FamiliaAnfitriona other = (FamiliaAnfitriona) object;
-        if ((this.rutPersona == null && other.rutPersona != null) ||
-                (this.rutPersona != null &&
-                !this.rutPersona.equals(other.rutPersona))) {
-            return false;
-        }
-        return true;*/
         return object instanceof FamiliaAnfitriona;
     }
 
@@ -152,5 +144,5 @@ public class FamiliaAnfitriona implements Serializable {
         return "cem.intercambios.modelo.entidad.FamiliaAnfitriona[ rutPersona="
                 + rutPersona + " ]";
     }
-    
+
 }

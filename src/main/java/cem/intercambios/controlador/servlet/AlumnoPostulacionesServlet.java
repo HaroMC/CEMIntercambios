@@ -7,6 +7,7 @@ import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
 import cem.intercambios.modelo.entidad.FamiliaAnfitriona;
 import cem.intercambios.modelo.entidad.InscripcionAlumno;
+import cem.intercambios.modelo.entidad.InscripcionAlumnoPK;
 import cem.intercambios.modelo.entidad.InscripcionCel;
 import cem.intercambios.modelo.entidad.Usuario;
 import cem.intercambios.modelo.utilidades.CemUtiles;
@@ -24,7 +25,9 @@ import javax.servlet.http.HttpSession;
 public class AlumnoPostulacionesServlet extends HttpServlet {
 
     private HttpSession sesion;
+    
     private final CemUtiles cu = new CemUtiles();
+    
     private static final Logger LOGGER
             = Logger.getLogger(AlumnoPostulacionesServlet.class.getName());
 
@@ -71,15 +74,19 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        
         obtenerSesionActiva(req, resp);
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
+        String rutAlumno = usuarioActual.getRutPersona();
+        String codigoPrograma = req.getParameter("programa");
+        
         switch (verificarAccion(req)) {
             case "confirmar_postulacion":
                 InscripcionAlumno nuevaPostulacion = new InscripcionAlumno(
-                        iaf.codigoAutoIncremental(),
+                        new InscripcionAlumnoPK(rutAlumno, codigoPrograma),
                         cu.establecerFechaActual(),
-                        pf.find(req.getParameter("programa")),
-                        af.find(usuarioActual.getRutPersona()),
+                        pf.find(codigoPrograma),
+                        af.find(rutAlumno),
                         faf.find(req.getParameter("rutFamilia")),
                         (short) 1
                 );

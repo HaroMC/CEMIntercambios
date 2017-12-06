@@ -28,7 +28,7 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
     public InscripcionAlumnoFacade() {
         super(InscripcionAlumno.class);
     }
-
+/*
     public BigDecimal codigoAutoIncremental() {
         try {
             return em.createNamedQuery(
@@ -42,13 +42,13 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
             return null;
         }
     }
-
+*/
     public List<InscripcionAlumno> programasInscritosYPostulados(
-            String rutPersona) {
+            String rutAlumno) {
         try {
             return em.createNamedQuery(
                     "InscripcionAlumno.programasInscritosYPostulados")
-                    .setParameter("rutPersona", rutPersona)
+                    .setParameter("rutAlumno", rutAlumno)
                     .getResultList();
         } catch (NoResultException ex) {
             LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"

@@ -2,8 +2,8 @@ package cem.intercambios.controlador.servlet;
 
 import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.modelo.entidad.InscripcionCel;
+import cem.intercambios.modelo.entidad.InscripcionCelPK;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -64,6 +64,7 @@ public class CemInscripcionCelServlet extends HttpServlet {
                     case "si":
                         inscripcionEditar = (InscripcionCel)
                                 sesion.getAttribute("inscripcion");
+                        
                         inscripcionEditar.setEstado(
                                 Short.parseShort(req.getParameter("estado")));
                         icf.edit(inscripcionEditar);
@@ -72,9 +73,11 @@ public class CemInscripcionCelServlet extends HttpServlet {
                         break;
 
                     default:
-                        inscripcionEditar = icf.find(BigDecimal.valueOf(
-                                Long.parseLong(req.getParameter("codigo"))
-                        ));
+                        inscripcionEditar = icf.find(
+                                new InscripcionCelPK(
+                                        req.getParameter("rutCel"),
+                                        req.getParameter("codigoPrograma"))
+                        );
                         sesion.setAttribute("inscripcion", inscripcionEditar);
                         sesion.setAttribute("tipo", "CEL");
                         resp.sendRedirect("ver-detalles.jsp");

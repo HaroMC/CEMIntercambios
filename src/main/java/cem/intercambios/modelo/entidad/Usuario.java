@@ -23,19 +23,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll",
             query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByRutPersona",
+    ,
+    @NamedQuery(name = "Usuario.findByRutPersona",
             query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Usuario.findByNombreUsuario",
+    ,
+    @NamedQuery(name = "Usuario.findByNombreUsuario",
             query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
-    , @NamedQuery(name = "Usuario.findByContrasena",
+    ,
+    @NamedQuery(name = "Usuario.findByContrasena",
             query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuario.findByFechaRegistro",
+    ,
+    @NamedQuery(name = "Usuario.findByFechaRegistro",
             query = "SELECT u FROM Usuario u WHERE u.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "Usuario.findByPerfil",
+    ,
+    @NamedQuery(name = "Usuario.findByPerfil",
             query = "SELECT u FROM Usuario u WHERE u.perfil = :perfil")
-    , @NamedQuery(name = "Usuario.validarIngreso",
+    ,
+    @NamedQuery(name = "Usuario.validarIngreso",
             query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuario.buscarCuentaPorRut",
+    ,
+    @NamedQuery(name = "Usuario.buscarCuentaPorRut",
             query = "SELECT u FROM Usuario u WHERE u.rutPersona = :rutPersona")
 })
 public class Usuario implements Serializable {
@@ -139,18 +146,6 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Usuario)) {
-            return false;
-        }
-        Usuario other = (Usuario) object;
-        if ((this.rutPersona == null && other.rutPersona != null) ||
-                (this.rutPersona != null &&
-                !this.rutPersona.equals(other.rutPersona))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Usuario;
     }
 

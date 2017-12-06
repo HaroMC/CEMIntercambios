@@ -77,7 +77,7 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                             rut,
                                             Short.parseShort(req.getParameter(
                                                     "integrantes")),
-                                            estado
+                                            (short) 1
                                     ),
                                     new Usuario(
                                             rut,

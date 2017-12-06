@@ -4,6 +4,7 @@ import cem.intercambios.controlador.bean.CentroEstudiosLocalFacade;
 import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
 import cem.intercambios.modelo.entidad.InscripcionCel;
+import cem.intercambios.modelo.entidad.InscripcionCelPK;
 import cem.intercambios.modelo.entidad.Programa;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
@@ -68,16 +69,19 @@ public class CelPostulacionesServlet extends HttpServlet {
 
         obtenerSesionActiva(req, resp);
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
+        String rutCel = usuarioActual.getRutPersona();
+        String codigoPrograma = req.getParameter("codigoPrograma");
 
         switch (verificarAccion(req)) {
 
             case "postular":
                 InscripcionCel nuevaPostulacion = new InscripcionCel(
-                        icf.codigoAutoIncremental(),
+                        new InscripcionCelPK(rutCel, codigoPrograma),
                         establecerFechaActual(),
-                        pf.find(req.getParameter("codigoPrograma")),
-                        celf.find(usuarioActual.getRutPersona()),
+                        pf.find(codigoPrograma),
+                        celf.find(rutCel),
                         (short) 1
+                        
                 );
                 icf.create(nuevaPostulacion);
                 String mensaje = "Se ha iniciado una nueva postulación.";

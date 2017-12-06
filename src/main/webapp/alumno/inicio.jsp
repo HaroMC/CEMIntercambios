@@ -55,32 +55,32 @@
                     <c:forEach var="ia" items="${inscripcionesAlumno}" >
                         <tr>
                             <td>
-                                <c:out value="${ia.codPrograma.nombrePrograma}" />
+                                <c:out value="${ia.programa.nombrePrograma}" />
                             </td>
                             <td>
                                 <c:forEach var="nom"
-                                           items="${ia.codPrograma.inscripcionCelList}">
-                                    <c:out value="${nom.rutCel.persona.nombreCompleto}" />
+                                           items="${ia.programa.inscripcionCelList}">
+                                    <c:out value="${nom.centroEstudiosLocal.persona.nombreCompleto}" />
                                 </c:forEach>
                             </td>
                             <td>
                                 <c:forEach var="loc"
-                                           items="${ia.codPrograma.inscripcionCelList}">
-                                    <c:out value="${loc.rutCel.persona.domicilio}" />,
-                                    <c:out value="${loc.rutCel.persona.ciudad}" />,
-                                    <c:out value="${loc.rutCel.persona.pais}" />
+                                           items="${ia.programa.inscripcionCelList}">
+                                    <c:out value="${loc.centroEstudiosLocal.persona.domicilio}" />,
+                                    <c:out value="${loc.centroEstudiosLocal.persona.ciudad}" />,
+                                    <c:out value="${loc.centroEstudiosLocal.persona.pais}" />
                                 </c:forEach>
                             </td>
                             <td>
                                 <fmt:formatDate dateStyle="short" type="date"
-                                                value="${ia.codPrograma.fechaInicio}" />
+                                                value="${ia.programa.fechaInicio}" />
                             </td>
                             <td>
                                 <fmt:formatDate dateStyle="short" type="date"
-                                                value="${ia.codPrograma.fechaTermino}" />
+                                                value="${ia.programa.fechaTermino}" />
                             </td>
                             <td>
-                                <c:out value="${ia.codPrograma.valor}" />
+                                <c:out value="${ia.programa.valor}" />
                             </td>
                             <td>
                                 <c:choose>

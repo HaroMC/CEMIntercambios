@@ -88,7 +88,7 @@ public class Alumno implements Serializable {
     @OneToOne(optional = false)
     private Persona persona;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<InscripcionAlumno> inscripcionAlumnoList;
 
     public Alumno() {
@@ -172,18 +172,6 @@ public class Alumno implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Alumno)) {
-            return false;
-        }
-        Alumno other = (Alumno) object;
-        if ((this.rutPersona == null && other.rutPersona != null) ||
-                (this.rutPersona != null &&
-                !this.rutPersona.equals(other.rutPersona))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Alumno;
     }
 

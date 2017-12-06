@@ -24,11 +24,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Asignatura.findAll",
             query = "SELECT a FROM Asignatura a")
-    , @NamedQuery(name = "Asignatura.findByCodigo",
+    ,
+    @NamedQuery(name = "Asignatura.findByCodigo",
             query = "SELECT a FROM Asignatura a WHERE a.codigo = :codigo")
-    , @NamedQuery(name = "Asignatura.findByNombreAsignatura",
+    ,
+    @NamedQuery(name = "Asignatura.findByNombreAsignatura",
             query = "SELECT a FROM Asignatura a WHERE a.nombreAsignatura = :nombreAsignatura")
-    , @NamedQuery(name = "Asignatura.findByDescripcion",
+    ,
+    @NamedQuery(name = "Asignatura.findByDescripcion",
             query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")})
 public class Asignatura implements Serializable {
 
@@ -128,17 +131,6 @@ public class Asignatura implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Asignatura)) {
-            return false;
-        }
-        Asignatura other = (Asignatura) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Asignatura;
     }
 

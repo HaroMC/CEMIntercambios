@@ -36,11 +36,11 @@
                             <label class="form-control">
                                 <c:choose>
                                     <c:when test="${tipo == 'alumno'}">
-                                        <c:out value="${inscripcion.rutAlumno
+                                        <c:out value="${inscripcion.alumno
                                                         .rutPersona}" />
                                     </c:when>
                                     <c:when test="${tipo == 'CEL'}">
-                                        <c:out value="${inscripcion.rutCel
+                                        <c:out value="${inscripcion.centroEstudiosLocal
                                                         .rutPersona}" />
                                     </c:when>
                                 </c:choose>
@@ -56,11 +56,11 @@
                                 <c:choose>
                                     <c:when test="${tipo == 'alumno'}">
                                         <c:out value="${inscripcion
-                                                        .rutAlumno.persona
+                                                        .alumno.persona
                                                         .nombreCompleto}" />
                                     </c:when>
                                     <c:when test="${tipo == 'CEL'}">
-                                        <c:out value="${inscripcion.rutCel
+                                        <c:out value="${inscripcion.centroEstudiosLocal
                                                         .persona
                                                         .nombreCompleto}" />
                                     </c:when>
@@ -74,7 +74,7 @@
                         </label>
                         <div class="col-md-8">
                             <label class="form-control">
-                                <c:out value="${inscripcion.codPrograma
+                                <c:out value="${inscripcion.programa
                                                 .nombrePrograma}" />
                             </label>
                         </div>
