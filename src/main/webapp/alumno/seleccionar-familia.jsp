@@ -67,7 +67,7 @@
                                     <input name="rutFamilia" type="hidden"
                                            value="${fn:escapeXml(lf.rutPersona)}" />
                                     <button type="submit" class="btn btn-primary">
-                                        Postular
+                                        Elegir
                                     </button>
 
                                 </form>
