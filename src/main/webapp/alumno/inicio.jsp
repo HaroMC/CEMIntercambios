@@ -14,11 +14,21 @@
                      style="width:30%; margin-left:70%" >
             </div>
             <div class="col-sm-3 col-md-4">
-                <p> Nombre del alumno: "LLENAR CAMPO"</p>
-                <p> Pais: "LLenar Campo"</p>
-                <p>Ciudad: "LLenar Campo"</p>
-                <p>Correo: "LLenar Campo"</p>
-                <p>Telefono: "LLenar Campo"</p>
+                <p>
+                    Alumno: <c:out value="${usuarioActual.persona.nombreCompleto}" />
+                </p>
+                <p>
+                    País de residencia: <c:out value="${usuarioActual.persona.pais}" />
+                </p>
+                <p>
+                    Ciudad: <c:out value="${usuarioActual.persona.ciudad}" />
+                </p>
+                <p>
+                    Correo: <c:out value="${usuarioActual.persona.correo}" />
+                </p>
+                <p>
+                    Teléfono: <c:out value="${usuarioActual.persona.telefono}" />
+                </p>
             </div>
         </div>
         <br/>
@@ -31,24 +41,44 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre del programa </th>
-                        <th>Asignatura</th>
-                        <th></th>
+                        <th> Programa </th>
+                        <th>  </th>
+                        <th> Valor del programa </th>
                     </tr>
                 </thead>
-                <tbody id="myTable">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><button type="button" class="btn btn-primary">
-                                Selecccionar
-                            </button></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>             
+                <tbody id="myTable2">
+                    <c:forEach var="p" items="${listadoProgramas}" >
+                        <tr>
+                            <td>
+                                <c:out value="${p.codPrograma.codigo}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                            </td>
+                            <td>
+                                <form method="get" action="alumno-postulaciones">
+                                    
+                                    <input type="hidden" name="accion"
+                                           value="${fn:escapeXml("seleccionar_familia")}" />
+                                    <input type="hidden" name="pais"
+                                           value="${fn:escapeXml(p.rutCel.persona.pais)}" />
+                                    <input type="hidden" name="programa"
+                                           value="${fn:escapeXml(p.codPrograma.codigo)}" />
+                                    
+                                    <button type="submit" class="btn btn-primary">
+                                        Postular
+                                    </button>
+                                    
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
             <!--

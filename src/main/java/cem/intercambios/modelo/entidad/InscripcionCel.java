@@ -86,11 +86,11 @@ public class InscripcionCel implements Serializable {
     }
 
     public InscripcionCel(BigDecimal codigo, Date fechaPostulacion,
-            Programa codPrograma, CentroEstudiosLocal rutCel, short estado) {
+            Programa programa, CentroEstudiosLocal cel, short estado) {
         this.codigo = codigo;
         this.fechaPostulacion = fechaPostulacion;
-        this.codPrograma = codPrograma;
-        this.rutCel = rutCel;
+        this.codPrograma = programa;
+        this.rutCel = cel;
         this.estado = estado;
     }
 
@@ -155,17 +155,6 @@ public class InscripcionCel implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof InscripcionCel)) {
-            return false;
-        }
-        InscripcionCel other = (InscripcionCel) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof InscripcionAlumno;
     }
 

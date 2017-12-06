@@ -36,7 +36,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
                     .getResultList();
         } catch (NoResultException ex) {
             LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
-                    + "Clase: " + InscripcionCel.class.getName() + "\n"
+                    + "Clase: " + InscripcionCelFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionCel>) programasInscritosCel",
                     ex);
             return null;
@@ -49,7 +49,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
                     BigDecimal.class).getSingleResult();
         } catch (NoResultException ex) {
             LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
-                    + "Clase: " + InscripcionCel.class.getName() + "\n"
+                    + "Clase: " + InscripcionCelFacade.class.getName() + "\n"
                     + "Método: (BigDecimal) codigoAutoIncremental",
                     ex);
             return null;
@@ -63,7 +63,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
                     .getResultList();
         } catch (NoResultException ex) {
             LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
-                    + "Clase: " + InscripcionCel.class.getName() + "\n"
+                    + "Clase: " + InscripcionCelFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionCel>) findByEstado",
                     ex);
             return null;
@@ -77,7 +77,7 @@ public class InscripcionCelFacade extends AbstractFacade<InscripcionCel> {
                     .getResultList();
         } catch (NoResultException ex) {
             LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
-                    + "Clase: " + InscripcionCel.class.getName() + "\n"
+                    + "Clase: " + InscripcionCelFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionCel>) "
                     + "programasDisponiblesPorPaisConFamilias",
                     ex);

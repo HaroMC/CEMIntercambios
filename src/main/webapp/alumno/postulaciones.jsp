@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> Programas disponibles </title>
     </head>
     <body>
         <div class="container">
@@ -46,7 +46,7 @@
                                            value="${fn:escapeXml("seleccionar_familia")}" />
                                     <input type="hidden" name="pais"
                                            value="${fn:escapeXml(p.rutCel.persona.pais)}" />
-                                    <input type="hidden" name="codigoPrograma"
+                                    <input type="hidden" name="programa"
                                            value="${fn:escapeXml(p.codPrograma.codigo)}" />
                                     
                                     <button type="submit" class="btn btn-primary">

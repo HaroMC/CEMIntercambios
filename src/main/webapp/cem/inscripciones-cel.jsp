@@ -26,8 +26,8 @@
                 <thead>
                     <tr>
                         <th> CEL </th>
-                        <th> Programa </th>
-                        <th> Estado de la inscripción </th>
+                        <th> Programa inscrito </th>
+                        <th> Estado </th>
                         <th> </th>
                     </tr>
                 </thead>

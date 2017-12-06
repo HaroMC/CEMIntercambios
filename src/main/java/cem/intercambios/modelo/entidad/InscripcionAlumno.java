@@ -23,47 +23,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "InscripcionAlumno.findAll",
             query = "SELECT i FROM InscripcionAlumno i")
-    , @NamedQuery(name = "InscripcionAlumno.findByCodigo",
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByCodigo",
             query = "SELECT i FROM InscripcionAlumno i WHERE i.codigo = :codigo")
-    , @NamedQuery(name = "InscripcionAlumno.findByFechaPostulacion",
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByFechaPostulacion",
             query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaPostulacion = :fechaPostulacion")
-    , @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion",
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion",
             query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionAlumno.findByEstado",
-            query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")})
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByEstado",
+            query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.codigoAutoIncremental",
+            query = "SELECT MAX(i.codigo) + 1 FROM InscripcionAlumno i")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.programasInscritosYPostulados",
+            query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.rutAlumno al WHERE al.rutPersona = :rutPersona")
+})
 public class InscripcionAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO")
     private BigDecimal codigo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_POSTULACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPostulacion;
-    
+
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
-    
+
     @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private Alumno rutAlumno;
-    
+
     @JoinColumn(name = "RUT_FAMILIA", referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private FamiliaAnfitriona rutFamilia;
-    
+
     @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Programa codPrograma;
@@ -73,6 +84,17 @@ public class InscripcionAlumno implements Serializable {
 
     public InscripcionAlumno(BigDecimal codigo) {
         this.codigo = codigo;
+    }
+
+    public InscripcionAlumno(BigDecimal codigo, Date fechaPostulacion,
+            Programa programa, Alumno alumno, FamiliaAnfitriona familia,
+            short estado) {
+        this.codigo = codigo;
+        this.fechaPostulacion = fechaPostulacion;
+        this.codPrograma = programa;
+        this.rutAlumno = alumno;
+        this.rutFamilia = familia;
+        this.estado = estado;
     }
 
     public InscripcionAlumno(BigDecimal codigo, Date fechaPostulacion,
@@ -86,11 +108,11 @@ public class InscripcionAlumno implements Serializable {
     public BigDecimal getCodigo() {
         return codigo;
     }
-    
+
     public Date getFechaPostulacion() {
         return fechaPostulacion;
     }
-    
+
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
@@ -98,7 +120,7 @@ public class InscripcionAlumno implements Serializable {
     public void setFechaPostulacion(Date fechaPostulacion) {
         this.fechaPostulacion = fechaPostulacion;
     }
-    
+
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
@@ -144,17 +166,6 @@ public class InscripcionAlumno implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof InscripcionAlumno)) {
-            return false;
-        }
-        InscripcionAlumno other = (InscripcionAlumno) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof InscripcionAlumno;
     }
 
@@ -163,5 +174,5 @@ public class InscripcionAlumno implements Serializable {
         return "cem.intercambios.modelo.entidad.InscripcionAlumno[ codigo="
                 + codigo + " ]";
     }
-    
+
 }

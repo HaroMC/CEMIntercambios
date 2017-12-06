@@ -9,7 +9,6 @@
     </head>
     <body>
         <div class="container well">
-
             <div class="row">
                 <div class="col-md-12">
                     <h2>
@@ -17,21 +16,18 @@
                     </h2>
                 </div>
             </div>
-
-            <br> <br />
-
+            <br />
+            <br />
             <c:choose>
                 <c:when test="${tipo == 'alumno'}">
-                    <c:set var="accion" value="inscripciones-alumnos?accion=modificar&confirmar=si" />
+                    <c:set var="accion" value="inscripciones-alumnos" />
                 </c:when>
                 <c:when test="${tipo == 'CEL'}">
-                    <c:set var="accion" value="inscripciones-cel?accion=modificar&confirmar=si" />
+                    <c:set var="accion" value="inscripciones-cel" />
                 </c:when>
             </c:choose>
-
             <div class="col-md-8 col-md-offset-3">
                 <form method="post" action="<c:out value="${accion}"/>">
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Rut
@@ -40,16 +36,17 @@
                             <label class="form-control">
                                 <c:choose>
                                     <c:when test="${tipo == 'alumno'}">
-                                        <c:out value="${inscripcion.rutAlumno.rutPersona}" />
+                                        <c:out value="${inscripcion.rutAlumno
+                                                        .rutPersona}" />
                                     </c:when>
                                     <c:when test="${tipo == 'CEL'}">
-                                        <c:out value="${inscripcion.rutCel.rutPersona}" />
+                                        <c:out value="${inscripcion.rutCel
+                                                        .rutPersona}" />
                                     </c:when>
                                 </c:choose>
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Nombre del <c:out value="${tipo}"/>
@@ -58,27 +55,30 @@
                             <label class="form-control">
                                 <c:choose>
                                     <c:when test="${tipo == 'alumno'}">
-                                        <c:out value="${inscripcion.rutAlumno.persona.nombreCompleto}" />
+                                        <c:out value="${inscripcion
+                                                        .rutAlumno.persona
+                                                        .nombreCompleto}" />
                                     </c:when>
                                     <c:when test="${tipo == 'CEL'}">
-                                        <c:out value="${inscripcion.rutCel.persona.nombreCompleto}" />
+                                        <c:out value="${inscripcion.rutCel
+                                                        .persona
+                                                        .nombreCompleto}" />
                                     </c:when>
                                 </c:choose>
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Programa al que postula
                         </label>
                         <div class="col-md-8">
                             <label class="form-control">
-                                <c:out value="${inscripcion.codPrograma.nombrePrograma}" />
+                                <c:out value="${inscripcion.codPrograma
+                                                .nombrePrograma}" />
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Fecha en la que postula
@@ -86,11 +86,11 @@
                         <div class="col-md-8">
                             <label class="form-control">
                                 <fmt:formatDate dateStyle="long" type="date"
-                                                value="${inscripcion.fechaPostulacion}"/>
+                                                value="${inscripcion
+                                                         .fechaPostulacion}"/>
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Fecha en la que fue inscrito
@@ -98,11 +98,11 @@
                         <div class="col-md-8">
                             <label class="form-control">
                                 <fmt:formatDate dateStyle="long" type="date"
-                                                value="${inscripcion.fechaInscripcion}"/>
+                                                value="${inscripcion
+                                                         .fechaInscripcion}"/>
                             </label>
                         </div>
                     </div>
-
                     <c:if test="${tipo == 'alumno'}">
                         <div class="form-group">
                             <label class="col-md-4 control-label">
@@ -110,12 +110,12 @@
                             </label>
                             <div class="col-md-8">
                                 <label class="form-control">
-                                    <c:out value="${inscripcion.rutFamilia.persona.nombreCompleto}"/>
+                                    <c:out value="${inscripcion.rutFamilia
+                                                    .persona.nombreCompleto}"/>
                                 </label>
                             </div>
                         </div>
                     </c:if>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Estado
@@ -128,34 +128,50 @@
                                     </c:when>
                                     <c:when test="${inscripcion.estado == 1}">
                                         <select name="estado" required="true">
-                                            <option value="1" selected> Postulando </option>
-                                            <option value="2"> Inscrito </option>
-                                            <option value="3"> Rechazado </option>
+                                            <option value="${fn:escapeXml("1")}"
+                                                    selected>
+                                                Postulando
+                                            </option>
+                                            <option value="${fn:escapeXml("2")}">
+                                                Inscrito
+                                            </option>
+                                            <option value="${fn:escapeXml("3")}">
+                                                Rechazado
+                                            </option>
                                         </select>
                                     </c:when>
                                     <c:when test="${inscripcion.estado == 3}">
                                         <select name="estado" required="true">
-                                            <option value="1"> Postulando </option>
-                                            <option value="2"> Inscrito </option>
-                                            <option value="3" selected> Rechazado </option>
+                                            <option value="${fn:escapeXml("1")}">
+                                                Postulando
+                                            </option>
+                                            <option value="${fn:escapeXml("2")}">
+                                                Inscrito
+                                            </option>
+                                            <option value="${fn:escapeXml("3")}"
+                                                    selected>
+                                                Rechazado
+                                            </option>
                                         </select>
                                     </c:when>
                                 </c:choose>
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             <c:out value="${mensajeEstado}" />
                         </label>
                         <div class="col-md-8">
+                            <input type="hidden" name="accion"
+                                   value="${fn:escapeXml("modificar")}" />
+                            <input type="hidden" name="confirmar"
+                                   value="${fn:escapeXml("si")}" />
                             <button type="submit" class="btn btn-primary">
                                 Confirmar cambios
                             </button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
