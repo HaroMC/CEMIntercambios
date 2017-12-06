@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> Perfil de control </title>
     </head>
     <body>
         <div class="row">
@@ -37,59 +37,78 @@
             <p>Filtra tu busqueda aqui:</p>
             <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">
-            <br>
+            <br />
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th> Programa </th>
-                        <th>  </th>
-                        <th> Valor del programa </th>
+                        <th> Centro de estudios </th>
+                        <th> Localización </th>
+                        <th> Fecha de inicio </th>
+                        <th> Fecha de término </th>
+                        <th> Valor </th>
+                        <th> Estado de la inscripción </th>
+                        <th> Cancelar </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${listadoProgramas}" >
+                    <c:forEach var="ia" items="${inscripcionesAlumno}" >
                         <tr>
                             <td>
-                                <c:out value="${p.codPrograma.codigo}" />
+                                <c:out value="${ia.codPrograma.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <c:forEach var="nom"
+                                           items="${ia.codPrograma.inscripcionCelList}">
+                                    <c:out value="${nom.rutCel.persona.nombreCompleto}" />
+                                </c:forEach>
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <c:forEach var="loc"
+                                           items="${ia.codPrograma.inscripcionCelList}">
+                                    <c:out value="${loc.rutCel.persona.domicilio}" />,
+                                    <c:out value="${loc.rutCel.persona.ciudad}" />,
+                                    <c:out value="${loc.rutCel.persona.pais}" />
+                                </c:forEach>
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <fmt:formatDate dateStyle="short" type="date"
+                                                value="${ia.codPrograma.fechaInicio}" />
                             </td>
                             <td>
-                                <form method="get" action="alumno-postulaciones">
-                                    
-                                    <input type="hidden" name="accion"
-                                           value="${fn:escapeXml("seleccionar_familia")}" />
-                                    <input type="hidden" name="pais"
-                                           value="${fn:escapeXml(p.rutCel.persona.pais)}" />
-                                    <input type="hidden" name="programa"
-                                           value="${fn:escapeXml(p.codPrograma.codigo)}" />
-                                    
-                                    <button type="submit" class="btn btn-primary">
-                                        Postular
-                                    </button>
-                                    
-                                </form>
+                                <fmt:formatDate dateStyle="short" type="date"
+                                                value="${ia.codPrograma.fechaTermino}" />
+                            </td>
+                            <td>
+                                <c:out value="${ia.codPrograma.valor}" />
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${ia.estado == 1}">
+                                        Postulando
+                                    </c:when>
+                                    <c:when test="${ia.estado == 2}">
+                                        Postulando
+                                    </c:when>
+                                    <c:when test="${ia.estado == 3}">
+                                        No seleccionado
+                                    </c:when>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <button type="submit"
+                                        class="btn btn-primary center-block">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
-            <!--
-                        <button type="button" class="btn btn-primary">
-                            Rechazar
-                        </button>
-            -->
         </div>
 
-        <br/>
-        <br/>
+        <br /> <br />
+
         <div class="container">
             <h2>Notas por asignaturas segun programa</h2>                
             <p>Si necesitas buscar algo especifico puedes hacerlo aqui:</p>
@@ -173,6 +192,5 @@
                 </tbody>
             </table>           
         </div>
-
     </body>
 </html>
