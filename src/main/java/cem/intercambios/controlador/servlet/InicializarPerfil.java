@@ -48,9 +48,11 @@ public class InicializarPerfil extends HttpServlet {
                 break;
 
             case "Alumno":
+                
                 List<InscripcionAlumno> inscripcionesAlumno
-                        = iaf.programasInscritosYPostulados(
+                        = iaf.verDetallesDelDestinoPorPrograma(
                                 usuarioActual.getRutPersona());
+                
                 if (inscripcionesAlumno != null) {
                     sesion.setAttribute("inscripcionesAlumno",
                             inscripcionesAlumno);

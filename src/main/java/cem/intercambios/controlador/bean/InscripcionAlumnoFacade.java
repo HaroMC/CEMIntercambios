@@ -43,7 +43,8 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
         }
     }
 
-    public List<InscripcionAlumno> programasInscritosYPostulados(String rutPersona) {
+    public List<InscripcionAlumno> programasInscritosYPostulados(
+            String rutPersona) {
         try {
             return em.createNamedQuery(
                     "InscripcionAlumno.programasInscritosYPostulados")
@@ -54,6 +55,23 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
                     + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionAlumno>) "
                     + "programasInscritosYPostulados",
+                    ex);
+            return null;
+        }
+    }
+
+    public List<InscripcionAlumno> verDetallesDelDestinoPorPrograma(
+            String rutAlumno) {
+        try {
+            return em.createNamedQuery(
+                    "InscripcionAlumno.verDetallesDelDestinoPorPrograma")
+                    .setParameter("rutAlumno", rutAlumno)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
+                    + "Método: (List<InscripcionAlumno>) "
+                    + "verDetallesDelDestinoPorPrograma",
                     ex);
             return null;
         }

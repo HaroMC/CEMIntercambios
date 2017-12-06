@@ -11,11 +11,6 @@ import cem.intercambios.modelo.entidad.InscripcionCel;
 import cem.intercambios.modelo.entidad.Usuario;
 import cem.intercambios.modelo.utilidades.CemUtiles;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,10 +43,8 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         obtenerSesionActiva(req, resp);
         switch (verificarAccion(req)) {
-
             case "seleccionar_familia":
                 String pais = req.getParameter("pais");
                 List<FamiliaAnfitriona> listadoFamilias
@@ -78,12 +71,9 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         obtenerSesionActiva(req, resp);
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
-
         switch (verificarAccion(req)) {
-
             case "confirmar_postulacion":
                 InscripcionAlumno nuevaPostulacion = new InscripcionAlumno(
                         iaf.codigoAutoIncremental(),
@@ -107,7 +97,6 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
             default:
                 resp.sendRedirect("inicializar-perfil");
         }
-
     }
     //</editor-fold>
 
