@@ -65,7 +65,7 @@
                                     <input name="rutFamilia" type="hidden"
                                            value="${fn:escapeXml(param.codigoPrograma)}" />
                                     <button type="submit" class="btn btn-primary">
-                                        Postular
+                                        Elegir
                                     </button>
                                     
                                 </form>
