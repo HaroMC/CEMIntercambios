@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 05-12-2017, 2:34:12
     Author     : Bugueño
 */
-.scrollTable{
+.administrarProgramas{
     height: 400px;
     overflow: scroll;
 }

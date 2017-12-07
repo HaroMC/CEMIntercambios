@@ -23,74 +23,22 @@
                     <c:out value="${mensajeEstado}" />
                 </label>
             </div>
-            <div class="scrollTable">
+            <div class="administrarProgramas">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td> <c:out value="${p.codigo}" /> </td>
-                            <td> <c:out value="${p.nombrePrograma}" /> </td>
-                            <td>
-                                <fmt:formatDate dateStyle="default" type="date"
-                                                value="${p.fechaInicio}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="default" type="date"
-                                                value="${p.fechaTermino}" />
-                            </td>
-                            <td> <c:out value="${p.cupos}" /> </td>
-                            <td> - </td>
-                            <td>
-                                <fmt:formatNumber type="currency"
-                                                  currencySymbol="$"
-                                                  value="${p.valor}"
-                                                  currencyCode="CLP" />
-                            </td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${p.estado == 1}">
-                                        Sin CEL asignado
-                                    </c:when>
-                                    <c:when test="${p.estado == 2}">
-                                        Disponible
-                                    </c:when>
-                                    <c:when test="${p.estado == 3}">
-                                        Sin cupos
-                                    </c:when>
-                                    <c:when test="${p.estado == 4}">
-                                        Iniciado
-                                    </c:when>
-                                    <c:when test="${p.estado == 5}">
-                                        Terminado
-                                    </c:when>
-                                    <c:otherwise>
-                                        Definir
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td>
-                                <form action="cem-programas?accion=modificar"
-                                      method="post">
-                                    <input type="hidden" name="codigo"
-                                           value="<c:out value="${p.codigo}" />" />
-                                    <button type="submit"
-                                            class="btn btn-primary center-block">
-                                        <i class="glyphicon glyphicon-pencil"></i>
-                                    </button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="cem-programas?accion=eliminar"
-                                      method="post">
-                                    <input type="hidden" name="codigo"
-                                           value="<c:out value="${p.codigo}" />" />
-                                    <button type="submit"
-                                            class="btn btn-primary center-block">
-                                        <i class="glyphicon glyphicon-minus"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <th>Codigo</th>
+                            <th>Nombre Programa</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Fecha de Termino</th>
+                            <th>Cupos Disponibles</th>
+                            <th>Cupos Restantes</th>
+                            <th>Valor</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
-                    </thead>
+                    </thead>                      
                     <tbody id="myTable2">
                         <c:forEach var="p" items="${listadoProgramas}" >
                             <tr>
