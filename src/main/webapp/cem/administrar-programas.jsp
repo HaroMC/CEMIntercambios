@@ -43,11 +43,11 @@
                             <td> <c:out value="${p.codigo}" /> </td>
                             <td> <c:out value="${p.nombrePrograma}" /> </td>
                             <td>
-                                <fmt:formatDate dateStyle="long" type="date"
+                                <fmt:formatDate dateStyle="default" type="date"
                                                 value="${p.fechaInicio}" />
                             </td>
                             <td>
-                                <fmt:formatDate dateStyle="long" type="date"
+                                <fmt:formatDate dateStyle="default" type="date"
                                                 value="${p.fechaTermino}" />
                             </td>
                             <td> <c:out value="${p.cupos}" /> </td>

@@ -127,7 +127,6 @@ public class Programa implements Serializable {
 
     public Programa(String codigo, String nombrePrograma, Date fechaInicio,
             Date fechaTermino, long cupos, short estado) {
-
         this.codigo = codigo;
         this.nombrePrograma = nombrePrograma;
         this.fechaInicio = fechaInicio;
