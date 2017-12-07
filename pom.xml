@@ -156,16 +156,16 @@
 
 1.0.0 (Se me olvidó la fecha :P) [Harold]
 - Versión inicial del proyecto.
-
 1.1.0 (05-12-2017) [Harold]
 - En el menu de administrador, sólo resta controlar la gestión de notas.
 - Se está trabajando en adaptación de los demás perfiles.
-
 1.2.0 (06-12-2017) [Harold]
 - Se adaptaron cambios en las entidades para reflejar las nuevas llaves primarias
 compuestas en la base de datos 3.1.1.
-
 1.2.1 (06-12-2017) [Harold]
 - Es posible registrar programas con, mínimo, una asignatura hasta, máximo, tres.
-- Bug fixes varios.</description>
+- Bug fixes varios.
+1.2.2 (06-12-2017) [Harold]
+- Se implementó el web service client en el proyecto, pero aún no está completamente configurado.
+- Estaré trabajando en ello luego del examen.</description>
 </project>
