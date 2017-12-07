@@ -13,23 +13,59 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <div class="container">
-            <h1>aqui se dene subir los antecedentes</h1>
+        <div class="container">
+            <div class="row">
+                <h1>aqui se dene subir los antecedentes</h1>
+                <br/>
+                <div class="col-md-6">
+                    <form>
+                        <h4>Cerificado de antecedentes</h4>
+                        <input type="file" name="file" size="50" />
+                        <button class="btn btn-primary" type="submit">Subir Archivo </button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <h4>Certificado de residencia</h4>
+                        <input type="file" name="file" size="50" />
+                        <button class="btn btn-primary" type="submit">Subir Archivo </button>
+                    </form>
+                </div>
+            </div>
             <br/>
-            <form action="" method="" enctype="multipart/form-data">
-                <h4>Cerificado de antecedentes</h4>
-                <input type="file" name="file" size="50" />
-                <br />
-                <h4>Certificado de residencia</h4>
-                <input type="file" name="file" size="50" />
-                <br />
-                <h4>Fotos del lugar de residencia</h4>
-                <input type="file" name="file" size="50" />
-                <input type="file" name="file" size="50" />
-                <input type="file" name="file" size="50" />
-                <br />
-                <input type="submit" value="subir archivo" />
-            </form>
+            <br/>
+            <div class="col-md-12 text-center" style="margin-bottom: 50px">
+                <h2>Fotos del lugar de residencia</h2>
+            </div>
+            <br/>
+       
+            <div class="row">
+                <div class="col-md-4">
+                    <form>
+                        <h4>Foto 1</h4>
+                        <input type="file" name="file" size="50" />
+                        <button class="btn btn-primary" type="submit">Subir Archivo </button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form>
+                        <h4>Foto 2</h4>
+                        <input type="file" name="file" size="50" />
+                        <button class="btn btn-primary" type="submit">Subir Archivo </button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form>
+                        <h4>Foto 3</h4>
+                        <input type="file" name="file" size="50" />
+                        <button class="btn btn-primary" type="submit">Subir Archivo </button>
+                    </form>
+                </div>
+            </div>
         </div>
+        <br/>
+        <br/>
+
     </body>
+
 </html>
