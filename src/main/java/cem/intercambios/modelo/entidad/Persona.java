@@ -23,21 +23,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll",
             query = "SELECT p FROM Persona p")
-    , @NamedQuery(name = "Persona.findByRut",
+    ,
+    @NamedQuery(name = "Persona.findByRut",
             query = "SELECT p FROM Persona p WHERE p.rut = :rut")
-    , @NamedQuery(name = "Persona.findByNombreCompleto",
+    ,
+    @NamedQuery(name = "Persona.findByNombreCompleto",
             query = "SELECT p FROM Persona p WHERE p.nombreCompleto = :nombreCompleto")
-    , @NamedQuery(name = "Persona.findByFechaNacimiento",
+    ,
+    @NamedQuery(name = "Persona.findByFechaNacimiento",
             query = "SELECT p FROM Persona p WHERE p.fechaNacimiento = :fechaNacimiento")
-    , @NamedQuery(name = "Persona.findByDomicilio",
+    ,
+    @NamedQuery(name = "Persona.findByDomicilio",
             query = "SELECT p FROM Persona p WHERE p.domicilio = :domicilio")
-    , @NamedQuery(name = "Persona.findByCiudad",
+    ,
+    @NamedQuery(name = "Persona.findByCiudad",
             query = "SELECT p FROM Persona p WHERE p.ciudad = :ciudad")
-    , @NamedQuery(name = "Persona.findByPais",
+    ,
+    @NamedQuery(name = "Persona.findByPais",
             query = "SELECT p FROM Persona p WHERE p.pais = :pais")
-    , @NamedQuery(name = "Persona.findByCorreo",
+    ,
+    @NamedQuery(name = "Persona.findByCorreo",
             query = "SELECT p FROM Persona p WHERE p.correo = :correo")
-    , @NamedQuery(name = "Persona.findByTelefono",
+    ,
+    @NamedQuery(name = "Persona.findByTelefono",
             query = "SELECT p FROM Persona p WHERE p.telefono = :telefono")})
 public class Persona implements Serializable {
 
@@ -243,17 +251,6 @@ public class Persona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Persona)) {
-            return false;
-        }
-        Persona other = (Persona) object;
-        if ((this.rut == null && other.rut != null) ||
-                (this.rut != null && !this.rut.equals(other.rut))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Persona;
     }
 

@@ -24,16 +24,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Antecedente.findAll",
             query = "SELECT a FROM Antecedente a")
-    , @NamedQuery(name = "Antecedente.findByCodigo",
+    ,
+    @NamedQuery(name = "Antecedente.findByCodigo",
             query = "SELECT a FROM Antecedente a WHERE a.codigo = :codigo")
-    , @NamedQuery(name = "Antecedente.findByDescripcion",
+    ,
+    @NamedQuery(name = "Antecedente.findByDescripcion",
             query = "SELECT a FROM Antecedente a WHERE a.descripcion = :descripcion")
-    , @NamedQuery(name = "Antecedente.findByFechaCaducidad",
+    ,
+    @NamedQuery(name = "Antecedente.findByFechaCaducidad",
             query = "SELECT a FROM Antecedente a WHERE a.fechaCaducidad = :fechaCaducidad")
-    , @NamedQuery(name = "Antecedente.findByRutaDocumento",
-            query = "SELECT a FROM Antecedente a WHERE a.rutaDocumento = :rutaDocumento")})
+    ,
+    @NamedQuery(name = "Antecedente.findByRutaDocumento",
+            query = "SELECT a FROM Antecedente a WHERE a.rutaDocumento = :rutaDocumento")
+})
 public class Antecedente implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -52,7 +57,21 @@ public class Antecedente implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCaducidad;
 
-    @Size(max = 100)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 300)
+    @Column(name = "NOMBRE_ARCHIVO")
+    private String nombreArchivo;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "TIPO_DOCUMENTO")
+    private String tipoDocumento;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 400)
     @Column(name = "RUTA_DOCUMENTO")
     private String rutaDocumento;
 
@@ -117,17 +136,6 @@ public class Antecedente implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Antecedente)) {
-            return false;
-        }
-        Antecedente other = (Antecedente) object;
-        if ((this.codigo == null && other.codigo != null) || 
-               (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Antecedente;
     }
 
@@ -135,6 +143,22 @@ public class Antecedente implements Serializable {
     public String toString() {
         return "cem.intercambios.modelo.entidad.Antecedente[ codigo="
                 + codigo + " ]";
+    }
+
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
 }

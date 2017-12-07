@@ -28,61 +28,67 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Alumno.findAll",
             query = "SELECT a FROM Alumno a")
-    , @NamedQuery(name = "Alumno.findByRutPersona",
+    ,
+    @NamedQuery(name = "Alumno.findByRutPersona",
             query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona")
-    , @NamedQuery(name = "Alumno.findByNumeroMatricula",
+    ,
+    @NamedQuery(name = "Alumno.findByNumeroMatricula",
             query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula")
-    , @NamedQuery(name = "Alumno.findByFechaMatricula",
+    ,
+    @NamedQuery(name = "Alumno.findByFechaMatricula",
             query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula")
-    , @NamedQuery(name = "Alumno.findByNombreCarrera",
+    ,
+    @NamedQuery(name = "Alumno.findByNombreCarrera",
             query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera")
-    , @NamedQuery(name = "Alumno.findByEsMoroso",
-            query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")})
+    ,
+    @NamedQuery(name = "Alumno.findByEsMoroso",
+            query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")
+})
 public class Alumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "RUT_PERSONA")
     private String rutPersona;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "NUMERO_MATRICULA")
     private BigInteger numeroMatricula;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_MATRICULA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaMatricula;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "NOMBRE_CARRERA")
     private String nombreCarrera;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ES_MOROSO")
     private short esMoroso;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
     private List<Calificacion> calificacionList;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
     private List<Certificado> certificadoList;
-    
+
     @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT",
             insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutAlumno")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<InscripcionAlumno> inscripcionAlumnoList;
 
     public Alumno() {
@@ -146,7 +152,7 @@ public class Alumno implements Serializable {
     public Persona getPersona() {
         return persona;
     }
-    
+
     @XmlTransient
     public List<InscripcionAlumno> getInscripcionAlumnoList() {
         return inscripcionAlumnoList;
@@ -166,18 +172,6 @@ public class Alumno implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Alumno)) {
-            return false;
-        }
-        Alumno other = (Alumno) object;
-        if ((this.rutPersona == null && other.rutPersona != null) ||
-                (this.rutPersona != null &&
-                !this.rutPersona.equals(other.rutPersona))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Alumno;
     }
 
@@ -186,5 +180,5 @@ public class Alumno implements Serializable {
         return "cem.intercambios.modelo.entidad.Alumno[ rutPersona="
                 + rutPersona + " ]";
     }
-    
+
 }

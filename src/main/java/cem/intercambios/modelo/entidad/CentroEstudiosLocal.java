@@ -24,9 +24,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "CentroEstudiosLocal.findAll",
             query = "SELECT c FROM CentroEstudiosLocal c")
-    , @NamedQuery(name = "CentroEstudiosLocal.findByRutPersona",
+    ,
+    @NamedQuery(name = "CentroEstudiosLocal.findByRutPersona",
             query = "SELECT c FROM CentroEstudiosLocal c WHERE c.rutPersona = :rutPersona")
-    , @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditado",
+    ,
+    @NamedQuery(name = "CentroEstudiosLocal.findByEstaAcreditado",
             query = "SELECT c FROM CentroEstudiosLocal c WHERE c.estaAcreditado = :estaAcreditado")})
 public class CentroEstudiosLocal implements Serializable {
 
@@ -44,12 +46,14 @@ public class CentroEstudiosLocal implements Serializable {
     @Column(name = "ESTA_ACREDITADO")
     private short estaAcreditado;
     
-    @JoinColumn(name = "RUT_PERSONA", referencedColumnName = "RUT",
-            insertable = false, updatable = false)
+    @JoinColumn(name = "RUT_PERSONA",
+            referencedColumnName = "RUT",
+            insertable = false,
+            updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutCel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "centroEstudiosLocal")
     private List<InscripcionCel> inscripcionCelList;
 
     public CentroEstudiosLocal() {
@@ -98,18 +102,6 @@ public class CentroEstudiosLocal implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof CentroEstudiosLocal)) {
-            return false;
-        }
-        CentroEstudiosLocal other = (CentroEstudiosLocal) object;
-        if ((this.rutPersona == null && other.rutPersona != null) ||
-                (this.rutPersona != null &&
-                !this.rutPersona.equals(other.rutPersona))) {
-            return false;
-        }
-        return true;*/
         return object instanceof CentroEstudiosLocal;
     }
 

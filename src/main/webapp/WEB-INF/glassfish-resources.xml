@@ -21,5 +21,8 @@
         <property name="driverClass" value="oracle.jdbc.OracleDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/cem" object-type="user" pool-name="oracle-thin_XE_cemPool"/>
-    <jdbc-resource enabled="true" jndi-name="java:app/conexion_entrega" object-type="user" pool-name="oracle-thin_XE_CEMPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/cem" object-type="user" pool-name="oracle-thin_XE_cemPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/SistemaCem" object-type="user" pool-name="oracle-thin_XE_cemPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/cem" object-type="user" pool-name="oracle-thin_XE_cemPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/cem" object-type="user" pool-name="oracle-thin_XE_cemPool"/>
 </resources>

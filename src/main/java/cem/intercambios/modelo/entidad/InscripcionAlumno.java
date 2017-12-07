@@ -1,12 +1,11 @@
 package cem.intercambios.modelo.entidad;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -23,74 +22,104 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "InscripcionAlumno.findAll",
             query = "SELECT i FROM InscripcionAlumno i")
-    , @NamedQuery(name = "InscripcionAlumno.findByCodigo",
-            query = "SELECT i FROM InscripcionAlumno i WHERE i.codigo = :codigo")
-    , @NamedQuery(name = "InscripcionAlumno.findByFechaPostulacion",
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByRutAlumno",
+            query = "SELECT i FROM InscripcionAlumno i WHERE i.inscripcionAlumnoPK.rutAlumno = :rutAlumno")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByCodPrograma",
+            query = "SELECT i FROM InscripcionAlumno i WHERE i.inscripcionAlumnoPK.codPrograma = :codPrograma")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByFechaPostulacion",
             query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaPostulacion = :fechaPostulacion")
-    , @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion",
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByFechaInscripcion",
             query = "SELECT i FROM InscripcionAlumno i WHERE i.fechaInscripcion = :fechaInscripcion")
-    , @NamedQuery(name = "InscripcionAlumno.findByEstado",
-            query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")})
+    ,
+    @NamedQuery(name = "InscripcionAlumno.findByEstado",
+            query = "SELECT i FROM InscripcionAlumno i WHERE i.estado = :estado")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.programasInscritosYPostulados",
+            query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.alumno al WHERE al.rutPersona = :rutAlumno")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.verDetallesDelDestinoPorPrograma",
+            query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.alumno al INNER JOIN ia.rutFamilia fa INNER JOIN ia.programa pr INNER JOIN pr.inscripcionCelList ic INNER JOIN ic.centroEstudiosLocal ce INNER JOIN ce.persona pe WHERE al.rutPersona = :rutAlumno")
+})
 public class InscripcionAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CODIGO")
-    private BigDecimal codigo;
-    
+
+    @EmbeddedId
+    protected cem.intercambios.modelo.entidad.InscripcionAlumnoPK inscripcionAlumnoPK;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHA_POSTULACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPostulacion;
-    
+
     @Column(name = "FECHA_INSCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInscripcion;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ESTADO")
     private short estado;
-    
-    @JoinColumn(name = "RUT_ALUMNO", referencedColumnName = "RUT_PERSONA")
+
+    @JoinColumn(name = "RUT_ALUMNO",
+            referencedColumnName = "RUT_PERSONA",
+            insertable = false,
+            updatable = false)
     @ManyToOne(optional = false)
-    private Alumno rutAlumno;
-    
-    @JoinColumn(name = "RUT_FAMILIA", referencedColumnName = "RUT_PERSONA")
+    private Alumno alumno;
+
+    @JoinColumn(name = "RUT_FAMILIA",
+            referencedColumnName = "RUT_PERSONA")
     @ManyToOne(optional = false)
     private FamiliaAnfitriona rutFamilia;
-    
-    @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
+
+    @JoinColumn(name = "COD_PROGRAMA",
+            referencedColumnName = "CODIGO",
+            insertable = false,
+            updatable = false)
     @ManyToOne(optional = false)
-    private Programa codPrograma;
+    private Programa programa;
 
     public InscripcionAlumno() {
     }
 
-    public InscripcionAlumno(BigDecimal codigo) {
-        this.codigo = codigo;
+    public InscripcionAlumno(InscripcionAlumnoPK inscripcionAlumnoPK) {
+        this.inscripcionAlumnoPK = inscripcionAlumnoPK;
     }
 
-    public InscripcionAlumno(BigDecimal codigo, Date fechaPostulacion,
-            Date fechaInscripcion, short estado) {
-        this.codigo = codigo;
+    public InscripcionAlumno(String rutAlumno, String codPrograma) {
+        this.inscripcionAlumnoPK
+                = new InscripcionAlumnoPK(rutAlumno, codPrograma);
+    }
+    
+    public InscripcionAlumno(InscripcionAlumnoPK llaveCompuesta,
+            Date fechaPostulacion, Programa programa, Alumno alumno,
+            FamiliaAnfitriona familia, short estado) {
+        this.inscripcionAlumnoPK = llaveCompuesta;
         this.fechaPostulacion = fechaPostulacion;
-        this.fechaInscripcion = fechaInscripcion;
+        this.programa = programa;
+        this.alumno = alumno;
+        this.rutFamilia = familia;
         this.estado = estado;
     }
 
-    public BigDecimal getCodigo() {
-        return codigo;
+    public InscripcionAlumnoPK getInscripcionAlumnoPK() {
+        return inscripcionAlumnoPK;
+    }
+
+    public void setInscripcionAlumnoPK(InscripcionAlumnoPK inscripcionAlumnoPK) {
+        this.inscripcionAlumnoPK = inscripcionAlumnoPK;
     }
     
     public Date getFechaPostulacion() {
         return fechaPostulacion;
     }
-    
+
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
@@ -98,7 +127,7 @@ public class InscripcionAlumno implements Serializable {
     public void setFechaPostulacion(Date fechaPostulacion) {
         this.fechaPostulacion = fechaPostulacion;
     }
-    
+
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
@@ -111,12 +140,12 @@ public class InscripcionAlumno implements Serializable {
         this.estado = estado;
     }
 
-    public Alumno getRutAlumno() {
-        return rutAlumno;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
-    public void setRutAlumno(Alumno rutAlumno) {
-        this.rutAlumno = rutAlumno;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public FamiliaAnfitriona getRutFamilia() {
@@ -127,41 +156,31 @@ public class InscripcionAlumno implements Serializable {
         this.rutFamilia = rutFamilia;
     }
 
-    public Programa getCodPrograma() {
-        return codPrograma;
+    public Programa getPrograma() {
+        return programa;
     }
 
-    public void setCodPrograma(Programa codPrograma) {
-        this.codPrograma = codPrograma;
+    public void setPrograma(Programa programa) {
+        this.programa = programa;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigo != null ? codigo.hashCode() : 0);
+        hash += (inscripcionAlumnoPK != null ?
+                inscripcionAlumnoPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof InscripcionAlumno)) {
-            return false;
-        }
-        InscripcionAlumno other = (InscripcionAlumno) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof InscripcionAlumno;
     }
 
     @Override
     public String toString() {
-        return "cem.intercambios.modelo.entidad.InscripcionAlumno[ codigo="
-                + codigo + " ]";
+        return "cem.intercambios.modelo.entidad.InscripcionAlumno[ "
+                + "inscripcionAlumnoPK=" + inscripcionAlumnoPK + " ]";
     }
-    
+
 }

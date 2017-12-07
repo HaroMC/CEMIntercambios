@@ -69,18 +69,23 @@ public class IniciarSesionServlet extends HttpServlet {
     private void redirecionarPerfil(HttpServletResponse resp, String perfil)
             throws ServletException, IOException {
         switch (perfil) {
+            
             case "Cem":
                 resp.sendRedirect("cem/cem-programas");
                 break;
+                
             case "Cel":
                 resp.sendRedirect("cel/inicio.jsp");
                 break;
+                
             case "Alumno":
-                resp.sendRedirect("alumno/inicio.jsp");
+                resp.sendRedirect("inicializar-perfil");
                 break;
+                
             case "Familia":
                 resp.sendRedirect("familia/inicio.jsp");
                 break;
+                
             default:
                 resp.sendRedirect("error/no-autorizado.jsp");
         }

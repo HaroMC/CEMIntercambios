@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"> </script>
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/estilo-login.css">
     </head>
     <body>          
@@ -21,7 +21,8 @@
                     </h1>
                     <div class="account-wall">
                         <img class="profile-img" alt=""
-                             src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" />
+                             src="http://www.cemgdl.com/images/logo.png" />
+                             <!--src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" />-->
                         <form class="form-signin" action="ingresar"
                               method="post">
                             <input type="text" class="form-control"
@@ -40,14 +41,13 @@
                             <c:out value="${mensajeEstado}" />
                         </form>
                     </div>                       
-                    <a href="registro/alumno.jsp" class="text-center new-account">
+                    <a href="registro/alumno.jsp"
+                       class="text-center new-account">
                         Si eres un alumno regular, regístrate aquí.
                     </a>
-                    <a href="registro/familia.jsp" class="text-center new-account">
+                    <a href="registro/familia.jsp"
+                       class="text-center new-account">
                         Si eres un representante familiar, regístrate aquí.
-                    </a>
-                    <a href="pruebas" class="text-center new-account">
-                        Pruebas
                     </a>
                 </div>
             </div>

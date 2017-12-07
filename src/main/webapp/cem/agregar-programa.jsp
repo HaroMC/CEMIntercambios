@@ -24,9 +24,8 @@
 
             <div class="col-md-6 col-md-offset-3">
 
-                <form action="cem-programas?accion=agregar" method="post"
+                <form action="cem-programas" method="post"
                       class="form-horizontal">
-
 
                     <fieldset>
                         <legend> Detalles del programa </legend>
@@ -97,8 +96,18 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control"
-                                       name="asignatura1"
+                                       name="asignatura1" required="true"
                                        placeholder="Nombre de la asignatura requerida." />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control"
+                                       name="descripcion1"
+                                       placeholder="Breve descripción de la asignatura (opcional)." />
                             </div>
                         </div>
 
@@ -112,6 +121,16 @@
                                        placeholder="Nombre de la asignatura requerida." />
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control"
+                                       name="descripcion2"
+                                       placeholder="Breve descripción de la asignatura (opcional)." />
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">
@@ -123,6 +142,17 @@
                                        placeholder="Nombre de la asignatura requerida." />
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control"
+                                       name="descripcion3"
+                                       placeholder="Breve descripción de la asignatura (opcional)." />
+                            </div>
+                        </div>
+                        
                     </fieldset>
 
                     <div class="form-group">
@@ -130,12 +160,14 @@
                             ${mensajeEstado}
                         </label>
                         <div class="col-md-8">
-                            <button type="submit" class="btn btn-default">
-                                Agregar
-                            </button>
+                            <input type="hidden" name="accion" value="agregar" />
+                            <input type="submit" class="btn btn-primary"
+                                   value="Agregar" />
+                            <input type="button" class="btn btn-primary"
+                                   value="Cancelar"
+                                   onclick="location.href = 'cem-programas';"/>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

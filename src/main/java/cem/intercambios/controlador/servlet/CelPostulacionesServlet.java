@@ -4,6 +4,7 @@ import cem.intercambios.controlador.bean.CentroEstudiosLocalFacade;
 import cem.intercambios.controlador.bean.InscripcionCelFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
 import cem.intercambios.modelo.entidad.InscripcionCel;
+import cem.intercambios.modelo.entidad.InscripcionCelPK;
 import cem.intercambios.modelo.entidad.Programa;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class CelPostulacionesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        sesion = req.getSession();
+        obtenerSesionActiva(req, resp);
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
 
         List<Programa> programasDisponibles
@@ -66,34 +67,35 @@ public class CelPostulacionesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String mensaje;
-        sesion = req.getSession();
-        String accion = ((req.getParameter("accion") == null)
-                ? "" : req.getParameter("accion"));
+        obtenerSesionActiva(req, resp);
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
+        String rutCel = usuarioActual.getRutPersona();
+        String codigoPrograma = req.getParameter("codigoPrograma");
 
-        switch (accion) {
+        switch (verificarAccion(req)) {
 
             case "postular":
                 InscripcionCel nuevaPostulacion = new InscripcionCel(
-                        icf.codigoAutoIncremental(),
+                        new InscripcionCelPK(rutCel, codigoPrograma),
                         establecerFechaActual(),
-                        pf.find(req.getParameter("codigoPrograma")),
-                        celf.find(usuarioActual.getRutPersona()),
+                        pf.find(codigoPrograma),
+                        celf.find(rutCel),
                         (short) 1
+                        
                 );
                 icf.create(nuevaPostulacion);
-                mensaje = "Se ha iniciado una nueva postulación.";
+                String mensaje = "Se ha iniciado una nueva postulación.";
                 LOGGER.info(mensaje);
                 req.setAttribute("mensajeEstado", mensaje);
                 resp.sendRedirect("inscripciones");
                 break;
 
             case "cancelar_postulacion":
+                resp.sendRedirect("inicializar-perfil");
                 break;
 
             default:
-
+                resp.sendRedirect("inicializar-perfil");
         }
     }
 
@@ -113,4 +115,18 @@ public class CelPostulacionesServlet extends HttpServlet {
         }
     }
 
+    private void obtenerSesionActiva(HttpServletRequest req,
+            HttpServletResponse resp)
+            throws ServletException, IOException {
+        sesion = req.getSession();
+        if (sesion.getAttribute("usuarioActual") == null) {
+            resp.sendRedirect("../error/no-autorizado.jsp");
+        }
+    }
+
+    private String verificarAccion(HttpServletRequest req) {
+        return ((req.getParameter("accion") == null)
+                ? "" : req.getParameter("accion"));
+    }
+    
 }

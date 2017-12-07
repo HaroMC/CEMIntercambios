@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> Programas disponibles </title>
     </head>
     <body>
         <div class="container">
@@ -28,16 +28,16 @@
                     <c:forEach var="p" items="${listadoProgramas}" >
                         <tr>
                             <td>
-                                <c:out value="${p.codPrograma.codigo}" />
+                                <c:out value="${p.programa.codigo}" />
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <c:out value="${p.programa.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <c:out value="${p.programa.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${p.codPrograma.nombrePrograma}" />
+                                <c:out value="${p.programa.nombrePrograma}" />
                             </td>
                             <td>
                                 <form method="get" action="alumno-postulaciones">
@@ -45,9 +45,9 @@
                                     <input type="hidden" name="accion"
                                            value="${fn:escapeXml("seleccionar_familia")}" />
                                     <input type="hidden" name="pais"
-                                           value="${fn:escapeXml(p.rutCel.persona.pais)}" />
-                                    <input type="hidden" name="codigoPrograma"
-                                           value="${fn:escapeXml(p.codPrograma.codigo)}" />
+                                           value="${fn:escapeXml(p.centroEstudiosLocal.persona.pais)}" />
+                                    <input type="hidden" name="programa"
+                                           value="${fn:escapeXml(p.programa.codigo)}" />
                                     
                                     <button type="submit" class="btn btn-primary">
                                         Postular

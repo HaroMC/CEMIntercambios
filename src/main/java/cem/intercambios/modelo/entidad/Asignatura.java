@@ -24,40 +24,47 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Asignatura.findAll",
             query = "SELECT a FROM Asignatura a")
-    , @NamedQuery(name = "Asignatura.findByCodigo",
+    ,
+    @NamedQuery(name = "Asignatura.findByCodigo",
             query = "SELECT a FROM Asignatura a WHERE a.codigo = :codigo")
-    , @NamedQuery(name = "Asignatura.findByNombreAsignatura",
+    ,
+    @NamedQuery(name = "Asignatura.findByNombreAsignatura",
             query = "SELECT a FROM Asignatura a WHERE a.nombreAsignatura = :nombreAsignatura")
-    , @NamedQuery(name = "Asignatura.findByDescripcion",
-            query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")})
+    ,
+    @NamedQuery(name = "Asignatura.findByDescripcion",
+            query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")
+    ,
+    @NamedQuery(name = "Asignatura.codigoAtuoIncremental",
+            query = "SELECT MAX(a.codigo) FROM Asignatura a")
+})
 public class Asignatura implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "CODIGO")
     private String codigo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "NOMBRE_ASIGNATURA")
     private String nombreAsignatura;
-    
+
     @Size(max = 250)
     @Column(name = "DESCRIPCION")
     private String descripcion;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codAsignatura")
     private List<Calificacion> calificacionList;
-    
+
     @JoinColumn(name = "RUT_DOCENTE", referencedColumnName = "RUT_PERSONA")
     @ManyToOne
     private Docente rutDocente;
-    
+
     @JoinColumn(name = "COD_PROGRAMA", referencedColumnName = "CODIGO")
     @ManyToOne(optional = false)
     private Programa codPrograma;
@@ -73,11 +80,19 @@ public class Asignatura implements Serializable {
         this.codigo = codigo;
         this.nombreAsignatura = nombreAsignatura;
     }
-
+    
+    public Asignatura(String codigo, String nombreAsignatura,
+            String descripcion, Programa programa) {
+        this.codigo = codigo;
+        this.nombreAsignatura = nombreAsignatura;
+        this.descripcion = descripcion;
+        this.codPrograma = programa;
+    }
+    
     public String getCodigo() {
         return codigo;
     }
-    
+
     public String getNombreAsignatura() {
         return nombreAsignatura;
     }
@@ -128,17 +143,6 @@ public class Asignatura implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Asignatura)) {
-            return false;
-        }
-        Asignatura other = (Asignatura) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Asignatura;
     }
 
@@ -147,5 +151,5 @@ public class Asignatura implements Serializable {
         return "cem.intercambios.modelo.entidad.Asignatura[ codigo="
                 + codigo + " ]";
     }
-    
+
 }

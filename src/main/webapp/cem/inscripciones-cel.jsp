@@ -26,16 +26,16 @@
                 <thead>
                     <tr>
                         <th> CEL </th>
-                        <th> Programa </th>
-                        <th> Estado de la inscripción </th>
+                        <th> Programa inscrito </th>
+                        <th> Estado </th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
                     <c:forEach var="ic" items="${inscripcionesCel}" >
                         <tr>
-                            <td> <c:out value="${ic.rutCel.persona.nombreCompleto}" /> </td>
-                            <td> <c:out value="${ic.codPrograma.nombrePrograma}" /> </td>
+                            <td> <c:out value="${ic.centroEstudiosLocal.persona.nombreCompleto}" /> </td>
+                            <td> <c:out value="${ic.programa.nombrePrograma}" /> </td>
                             <td>
                                 <c:choose>
                                     <c:when test="${ic.estado == 1}">
@@ -50,9 +50,17 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <form method="post" action="inscripciones-cel?accion=modificar">
-                                    <input type="hidden" name="codigo"
-                                           value="<c:out value="${ic.codigo}" />" />
+                                <form method="post" action="inscripciones-cel">
+                                    
+                                    <input type="hidden" name="accion"
+                                           value="${fn:escapeXml("modificar")}" />
+                                    
+                                    <input type="hidden" name="codigoPrograma"
+                                           value="${fn:escapeXml(ic.inscripcionCelPK.codPrograma)}" />
+                                    
+                                    <input type="hidden" name="rutCel"
+                                           value="${fn:escapeXml(ic.inscripcionCelPK.rutCel)}" />
+                                    
                                     <button type="submit" id="btn-aceptar"
                                             class="btn btn-primary center-block">
                                         <i> Ver detalles </i>

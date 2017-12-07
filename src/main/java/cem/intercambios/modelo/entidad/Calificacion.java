@@ -23,11 +23,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Calificacion.findAll",
             query = "SELECT c FROM Calificacion c")
-    , @NamedQuery(name = "Calificacion.findByCodigo",
+    ,
+    @NamedQuery(name = "Calificacion.findByCodigo",
             query = "SELECT c FROM Calificacion c WHERE c.codigo = :codigo")
-    , @NamedQuery(name = "Calificacion.findByNota",
+    ,
+    @NamedQuery(name = "Calificacion.findByNota",
             query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")
-    , @NamedQuery(name = "Calificacion.findByFechaCalificacion",
+    ,
+    @NamedQuery(name = "Calificacion.findByFechaCalificacion",
             query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")})
 public class Calificacion implements Serializable {
 
@@ -117,17 +120,6 @@ public class Calificacion implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields
-        // are not set
-        /*if (!(object instanceof Calificacion)) {
-            return false;
-        }
-        Calificacion other = (Calificacion) object;
-        if ((this.codigo == null && other.codigo != null) ||
-                (this.codigo != null && !this.codigo.equals(other.codigo))) {
-            return false;
-        }
-        return true;*/
         return object instanceof Calificacion;
     }
 

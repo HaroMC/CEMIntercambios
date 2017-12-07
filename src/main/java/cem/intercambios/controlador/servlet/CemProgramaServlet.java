@@ -1,17 +1,22 @@
 package cem.intercambios.controlador.servlet;
 
+import cem.intercambios.controlador.bean.AsignaturaFacade;
 import cem.intercambios.controlador.bean.ProgramaFacade;
+import cem.intercambios.modelo.entidad.Asignatura;
 import cem.intercambios.modelo.entidad.Programa;
+import cem.intercambios.modelo.utilidades.CemUtiles;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -34,8 +39,13 @@ public class CemProgramaServlet extends HttpServlet {
 
     private HttpSession sesion;
 
+    private final CemUtiles cu = new CemUtiles();
+
     @EJB
     private ProgramaFacade pf;
+
+    @EJB
+    private AsignaturaFacade af;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -88,20 +98,23 @@ public class CemProgramaServlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc="Caso : Agregar">
             case "agregar":
                 programaRegistrado = definirPrograma(req);
-
                 if (programaRegistrado != null) {
-                    pf.create(programaRegistrado);
-                    mensaje = "Programa registrado correctamente.";
-                    LOGGER.info(mensaje);
-                    req.setAttribute("mensajeEstado", mensaje);
-                } else {
-                    mensaje = "Se ha producido un error al registrar el "
-                            + "programa.";
-                    req.setAttribute("mensajeEstado", mensaje);
-                    LOGGER.info(mensaje);
+                    try {
+                        pf.create(programaRegistrado);
+                        mensaje = "Programa registrado correctamente.";
+                        LOGGER.info(mensaje);
+                        req.setAttribute("mensajeEstado", mensaje);
+                        resp.sendRedirect("cem-programas");
+                    } catch (Exception ex) {
+                        LOGGER.log(Level.SEVERE,
+                                "Error en la inserción. La llave única ya "
+                                + "existe en la base de datos.", ex);
+                        req.setAttribute("mensajeEstado",
+                                "Se ha producido un error al registrar el "
+                                + "programa.");
+                        resp.sendRedirect("agregar-programa.jsp");
+                    }
                 }
-
-                resp.sendRedirect("cem-programas");
                 break;
             //</editor-fold>
 
@@ -208,10 +221,13 @@ public class CemProgramaServlet extends HttpServlet {
         String asignaturaUno = req.getParameter("asignatura1");
         String asignaturaDos = req.getParameter("asignatura2");
         String asignaturaTres = req.getParameter("asignatura3");
+        
+        String descrpcionUno = req.getParameter("descrpcion1");
+        String descrpcionDos = req.getParameter("descrpcion2");
+        String descrpcionTres = req.getParameter("descrpcion3");
 
         Programa nuevoPrograma = new Programa(
-                // Definir un código correctamente!!
-                "PRO-".concat(Integer.toString(pf.count() + 1)),
+                cu.codigoPrograma(nombrePrograma, tipoDuracion, cupos),
                 nombrePrograma,
                 Long.parseLong(valor),
                 Long.parseLong(cupos),
@@ -219,33 +235,34 @@ public class CemProgramaServlet extends HttpServlet {
         );
 
         nuevoPrograma = definirFechas(nuevoPrograma, tipoDuracion);
+
+        List<Asignatura> asignaturas = new ArrayList<>();
+
+        if (asignaturaUno.length() > 0) {
+            asignaturas.add(
+                    crearAsignatura(asignaturaUno, descrpcionUno,
+                            nuevoPrograma));
+        }
+
+        if (asignaturaDos.length() > 0) {
+            asignaturas.add(
+                    crearAsignatura(asignaturaUno, descrpcionDos,
+                            nuevoPrograma));
+        }
+
+        if (asignaturaTres.length() > 0) {
+            asignaturas.add(
+                    crearAsignatura(asignaturaUno, descrpcionTres,
+                            nuevoPrograma));
+        }
+
+        if (!asignaturas.isEmpty()) {
+            nuevoPrograma.setAsignaturaList(asignaturas);
+        }
+
         return nuevoPrograma;
     }
-    
-    
-    private String definirCodigo(String nombrePrograma) {
-        
-        int random = ThreadLocalRandom.current().nextInt(1, 100000);
-        
-        int largo;
-        
-        StringBuilder sb = new StringBuilder();
-        
-        String[] palabras = nombrePrograma.split(" ");
-        
-        sb.append("PR").append("-");
-        
-        for (String palabra : palabras) {
-            
-            sb.append(palabra.charAt(0));
-            
-        }
-        
-        return "";
-    }
-    
-    
-    
+
     private void ordenarLista(List<Programa> listadoProgramas) {
         Collections.sort(listadoProgramas, new Comparator<Programa>() {
             @Override
@@ -254,5 +271,11 @@ public class CemProgramaServlet extends HttpServlet {
             }
         });
     }
-    
+
+    private Asignatura crearAsignatura(String asignatura, String descripcion,
+            Programa programa) {
+        return new Asignatura(cu.codigoAsignatura(asignatura), asignatura,
+                descripcion, programa);
+    }
+
 }
