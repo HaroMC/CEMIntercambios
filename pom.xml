@@ -4,7 +4,7 @@
 
     <groupId>cem.intercambios</groupId>
     <artifactId>CEMIntercambios</artifactId>
-    <version>1.2.1.Alpha</version>
+    <version>1.3.0.Alpha</version>
     <packaging>war</packaging>
 
     <name>CEMIntercambios</name>
@@ -37,6 +37,11 @@
             <artifactId>itext7-core</artifactId>
             <version>7.0.5</version>
             <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.3</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -167,5 +172,8 @@ compuestas en la base de datos 3.1.1.
 - Bug fixes varios.
 1.2.2 (06-12-2017) [Harold]
 - Se implementó el web service client en el proyecto, pero aún no está completamente configurado.
-- Estaré trabajando en ello luego del examen.</description>
+- Estaré trabajando en ello luego del examen.
+1.3.0 (08-12-2017) [Brian Francis Spencer Katalinic]
+-Se implementó el módulo de subida de antecedentes familiares, la cual en la base de datos interactúa
+con la familia en cuestión que subió el archivo.</description>
 </project>
