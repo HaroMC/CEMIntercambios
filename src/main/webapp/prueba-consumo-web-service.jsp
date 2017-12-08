@@ -4,11 +4,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Prueba de conexión Web Service </title>
+        <title> Prueba de comunicación con Web Service </title>
     </head>
     <body>
-        <h1>
-            
-        </h1>
+        <h2> Prueba de comunicación </h2>
+        <br />
+        <br />
+        Rut del alumno: ( <input type="text" name="rut" /> )
     </body>
 </html>

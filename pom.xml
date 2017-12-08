@@ -122,7 +122,7 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_36124/AlumnosMatriculados/ProcesoValidarAlumnos.wsdl</wsdlFile>
+                                <wsdlFile>localhost_36124/ServicioAlumnosMatriculados/ProcesoValidarAlumnos.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName>cem.intercambios.controlador.cliente</packageName>
                             <vmArgs>

@@ -26,17 +26,14 @@
                         <a href="antecedentes.jsp"> Antecedentes </a>
                     </li>
                 </ul>
-                <label class="nav navbar-nav navbar-right label label-default"
-                       style="color: white; width: 10%; height: 50px">
-                    <br />
-                    <c:out value="${mensajeBienvenida}" />
-                    <br />
-                    <br />
-                    <form  class="label label-default" style="color: #204d74"
-                           action="../salir" method="get">
-                        <input type="submit" value="Cerrar sesión" />
+                <div class="nav navbar-nav navbar-right">
+                    <label style="color: white; width: 10%; height: 50px" class="col-lg-8">
+                        <c:out value="${mensajeBienvenida}" />
+                    </label>
+                    <form action="../salir" method="get">
+                        <input type="submit" value="Cerrar sesión" class="btn btn-default col-lg-8"/>
                     </form>
-                </label>
+                </div>
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
