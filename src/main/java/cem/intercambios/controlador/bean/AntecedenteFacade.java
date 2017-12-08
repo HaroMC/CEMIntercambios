@@ -1,6 +1,7 @@
 package cem.intercambios.controlador.bean;
 
 import cem.intercambios.modelo.entidad.Antecedente;
+import java.math.BigDecimal;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,6 +24,15 @@ public class AntecedenteFacade extends AbstractFacade<Antecedente> {
 
     public AntecedenteFacade() {
         super(Antecedente.class);
+    }
+    
+    public BigDecimal codigoAuto(){
+        BigDecimal derp = em.createNamedQuery("Antecedente.codigoAnt", BigDecimal.class).getSingleResult(); //variable para obtener el código de antecedente y estamparlo en la variable jpql 
+        if(derp==null){
+            return BigDecimal.ONE;
+        }else{
+            return derp.add(BigDecimal.ONE);
+        }
     }
     
 }

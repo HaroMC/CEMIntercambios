@@ -22,6 +22,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ANTECEDENTE")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Antecedente.codigoAnt", 
+            query = "SELECT MAX(a.codigo) FROM Antecedente a")
+    ,
     @NamedQuery(name = "Antecedente.findAll",
             query = "SELECT a FROM Antecedente a")
     ,
@@ -90,6 +93,17 @@ public class Antecedente implements Serializable {
         this.codigo = codigo;
         this.fechaCaducidad = fechaCaducidad;
     }
+
+    public Antecedente(BigDecimal codigo, Date fechaCaducidad, String nombreArchivo, String tipoDocumento, String rutaDocumento, FamiliaAnfitriona rutFamilia) {
+        this.codigo = codigo;
+        this.fechaCaducidad = fechaCaducidad;
+        this.nombreArchivo = nombreArchivo;
+        this.tipoDocumento = tipoDocumento;
+        this.rutaDocumento = rutaDocumento;
+        this.rutFamilia = rutFamilia;
+    }
+    
+    
 
     public BigDecimal getCodigo() {
         return codigo;

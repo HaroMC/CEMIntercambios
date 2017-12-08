@@ -48,6 +48,10 @@
         <servlet-name>InicializarPerfil</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.InicializarPerfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FamiliaAntecedenteServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.FamiliaAntecedenteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>InicializarPerfil</servlet-name>
         <url-pattern>/inicializar-perfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FamiliaAntecedenteServlet</servlet-name>
+        <url-pattern>/familia/familia-antecedente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
