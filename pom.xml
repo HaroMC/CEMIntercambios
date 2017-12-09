@@ -27,11 +27,11 @@
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.5-rc1</version>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext7-core</artifactId>
