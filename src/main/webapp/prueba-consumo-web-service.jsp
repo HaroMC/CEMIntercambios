@@ -10,6 +10,8 @@
         <h2> Prueba de comunicación </h2>
         <br />
         <br />
-        Rut del alumno: ( <input type="text" name="rut" /> )
+        <form method="post" action="WebComsumerServlet">
+            Rut del alumno: ( <input type="text" name="rut" /> )
+        </form>
     </body>
 </html>
