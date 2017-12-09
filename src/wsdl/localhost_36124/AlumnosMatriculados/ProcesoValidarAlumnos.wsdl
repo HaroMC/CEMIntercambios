@@ -4,21 +4,40 @@
 <xsd:import namespace="http://servicio.gestionalumnos.cem/" schemaLocation="http://localhost:36124/AlumnosMatriculados/ProcesoValidarAlumnos?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="verificar_alumno_matriculado">
-<part name="parameters" element="tns:verificar_alumno_matriculado"/>
+<message name="verificar_rut_alumno">
+<part name="parameters" element="tns:verificar_rut_alumno"/>
 </message>
-<message name="verificar_alumno_matriculadoResponse">
-<part name="parameters" element="tns:verificar_alumno_matriculadoResponse"/>
+<message name="verificar_rut_alumnoResponse">
+<part name="parameters" element="tns:verificar_rut_alumnoResponse"/>
+</message>
+<message name="entregar_listado_alumnos">
+<part name="parameters" element="tns:entregar_listado_alumnos"/>
+</message>
+<message name="entregar_listado_alumnosResponse">
+<part name="parameters" element="tns:entregar_listado_alumnosResponse"/>
 </message>
 <portType name="ProcesoValidarAlumnos">
-<operation name="verificar_alumno_matriculado">
-<input wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/verificar_alumno_matriculadoRequest" message="tns:verificar_alumno_matriculado"/>
-<output wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/verificar_alumno_matriculadoResponse" message="tns:verificar_alumno_matriculadoResponse"/>
+<operation name="verificar_rut_alumno">
+<input wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/verificar_rut_alumnoRequest" message="tns:verificar_rut_alumno"/>
+<output wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/verificar_rut_alumnoResponse" message="tns:verificar_rut_alumnoResponse"/>
+</operation>
+<operation name="entregar_listado_alumnos">
+<input wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/entregar_listado_alumnosRequest" message="tns:entregar_listado_alumnos"/>
+<output wsam:Action="http://servicio.gestionalumnos.cem/ProcesoValidarAlumnos/entregar_listado_alumnosResponse" message="tns:entregar_listado_alumnosResponse"/>
 </operation>
 </portType>
 <binding name="ProcesoValidarAlumnosPortBinding" type="tns:ProcesoValidarAlumnos">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="verificar_alumno_matriculado">
+<operation name="verificar_rut_alumno">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="entregar_listado_alumnos">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

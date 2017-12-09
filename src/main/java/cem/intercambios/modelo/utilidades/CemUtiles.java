@@ -1,5 +1,10 @@
 package cem.intercambios.modelo.utilidades;
 
+import cem.intercambios.controlador.cliente.Alumno;
+import cem.intercambios.modelo.entidad.Persona;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -91,5 +96,53 @@ public class CemUtiles {
         codigo.append(aleatorio);
         return codigo.toString();
     }
-    
+
+    public Persona convertirAlumnoWebAPersonaJPA(Alumno alumnoWEB) {
+        Date fechaMatricula = alumnoWEB.getFechaMatricula()
+                .toGregorianCalendar().getTime();
+        Date fechaNacimiento = alumnoWEB.getFechaNacimiento()
+                .toGregorianCalendar().getTime();
+        Persona persona = new Persona(
+                alumnoWEB.getRutPersona(),
+                alumnoWEB.getNombreCompleto(),
+                fechaNacimiento,
+                alumnoWEB.getDomicilio(),
+                alumnoWEB.getCiudad(),
+                alumnoWEB.getPais(),
+                alumnoWEB.getCorreo(),
+                alumnoWEB.getTelefono(),
+                new cem.intercambios.modelo.entidad.Alumno(
+                        alumnoWEB.getRutPersona(),
+                        alumnoWEB.getNumeroMatricula(),
+                        fechaMatricula,
+                        alumnoWEB.getNombreCarrera(),
+                        alumnoWEB.getEsMoroso()
+                )
+        );
+        return persona;
+    }
+
+    /**
+     * Método que encripta la contraseña con el algoritmo MD5 para guardarla con
+     * mayor seguridad en la base de datos.
+     *
+     * @param contrasena La contraseña que será encriptada.
+     * @return La nueva contraseña encriptada.
+     * @throws NoSuchAlgorithmException
+     */
+    public String encriptar(String contrasena)
+            throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(contrasena.getBytes());
+        byte byteData[] = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(
+                    Integer.toString((byteData[i] & 0xff) + 0x100, 16)
+                            .substring(1)
+            );
+        }
+        return sb.toString();
+    }
+
 }

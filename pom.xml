@@ -4,7 +4,7 @@
 
     <groupId>cem.intercambios</groupId>
     <artifactId>CEMIntercambios</artifactId>
-    <version>1.3.0.Alpha</version>
+    <version>1.4.0.Alpha</version>
     <packaging>war</packaging>
 
     <name>CEMIntercambios</name>
@@ -27,17 +27,17 @@
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.5-rc1</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext7-core</artifactId>
             <version>7.0.5</version>
             <type>pom</type>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -181,5 +181,7 @@ compuestas en la base de datos 3.1.1.
 - Estaré trabajando en ello luego del examen.
 1.3.0 (08-12-2017) [Brian Francis Spencer Katalinic]
 -Se implementó el módulo de subida de antecedentes familiares, la cual en la base de datos interactúa
-con la familia en cuestión que subió el archivo.</description>
+con la familia en cuestión que subió el archivo.
+1.4.0 (09-12-2017) [Harold]
+- Registro de cuentas de usuario funcionando correctamente usando el servicio web asociado.</description>
 </project>

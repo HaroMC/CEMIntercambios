@@ -14,12 +14,25 @@
 
 <xs:complexType name="entregar_listado_alumnosResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:alumno" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:Alumno" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="alumno">
-<xs:sequence/>
+<xs:complexType name="Alumno">
+<xs:sequence>
+<xs:element name="rutPersona" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreCompleto" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="domicilio" type="xs:string" minOccurs="0"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroMatricula" type="xs:integer" minOccurs="0"/>
+<xs:element name="fechaMatricula" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="nombreCarrera" type="xs:string" minOccurs="0"/>
+<xs:element name="esMoroso" type="xs:short"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="verificar_rut_alumno">
@@ -30,7 +43,7 @@
 
 <xs:complexType name="verificar_rut_alumnoResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:alumno" minOccurs="0"/>
+<xs:element name="return" type="tns:Alumno" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
