@@ -31,6 +31,9 @@
                      <li>
                         <a href="acuerdo.jsp"> acuerdo </a>
                     </li>
+                    <li>
+                        <a href="generar-certifica.jsp"> Certificado </a>
+                    </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">
