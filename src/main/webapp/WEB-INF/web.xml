@@ -52,6 +52,10 @@
         <servlet-name>FamiliaAntecedenteServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.FamiliaAntecedenteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.ActualizarAlumnosRegistradosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>FamiliaAntecedenteServlet</servlet-name>
         <url-pattern>/familia/familia-antecedente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
+        <url-pattern>/cem/actualizar-alumnos-registrados</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -15,14 +15,16 @@
         <br/>
         <div class="container">
             <div class="row">
-                <form method="get" action="NUEVO_SERVLET">
-                    <button type="submit"
-                            class="btn btn-primary center-block">
-                        <i class=""> Notas </i>
-                    </button>
-                </form>
+                <h2>
+                    Alumnos registrados en el sistema
+                    <form method="posr" action="actualizar-alumnos-registrados">
+                        <button type="submit"
+                                class="btn btn-primary center-block">
+                            <i class=""> Actualizar datos de alumnos </i>
+                        </button>
+                    </form>
+                </h2>
             </div>
-            <h2> Alumnos registrados en el sistema </h2>
 
             <p> Filtrar su búsqueda de alumnos </p>
             <input class="form-control" id="myInput" type="text"
