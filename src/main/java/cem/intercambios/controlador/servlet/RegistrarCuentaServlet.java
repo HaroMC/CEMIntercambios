@@ -50,15 +50,16 @@ public class RegistrarCuentaServlet extends HttpServlet {
         DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
 
         switch (accion) {
+            
+            //<editor-fold defaultstate="collapsed" desc=" Registrar cuenta de familia ">
             case "registrar_familia":
-
                 try {
                     String rut = req.getParameter("rut");
                     if (pf.find(rut) == null) {
                         Persona nuevoRegistro = new Persona(
                                 rut,
                                 req.getParameter("nombreJefeFamilia") + " "
-                                + req.getParameter("apellidoJefeFamilia"),
+                                        + req.getParameter("apellidoJefeFamilia"),
                                 formatoFecha.parse(req
                                         .getParameter("fechaNacimiento")),
                                 req.getParameter("domicilio"),
@@ -80,13 +81,15 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                         "Familia"
                                 )
                         );
-
+                        
                     }
                 } catch (ParseException ex) {
-
+                    
                 }
                 break;
-
+                //</editor-fold>
+                
+            //<editor-fold defaultstate="collapsed" desc=" Registrar cuenta de alumno ">
             case "registrar_alumno":
                 String rut = req.getParameter("rut");
                 try {
@@ -126,7 +129,8 @@ public class RegistrarCuentaServlet extends HttpServlet {
                 }
                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                 break;
-
+                //</editor-fold>
+                
             default:
                 resp.sendRedirect("ingresar");
         }

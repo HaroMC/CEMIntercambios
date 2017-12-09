@@ -14,8 +14,17 @@
     <body>
         <br/>
         <div class="container">
-            <h2>Alumnos registrados en el sistema</h2>      
-            <p>Si necesitas buscar un Alumno en especifico puedes hacerlo aqui:</p>
+            <div class="row">
+                <form method="get" action="NUEVO_SERVLET">
+                    <button type="submit"
+                            class="btn btn-primary center-block">
+                        <i class=""> Notas </i>
+                    </button>
+                </form>
+            </div>
+            <h2> Alumnos registrados en el sistema </h2>
+
+            <p> Filtrar su búsqueda de alumnos </p>
             <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">
             <br/>
@@ -51,8 +60,9 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <form action="cem-alumnos?accion=eliminar"
-                                      method="post">
+                                <form action="cem-alumnos" method="post">
+                                    <input type="hidden" name="accion"
+                                           value="<c:out value="eliminar"/>"/>
                                     <input type="hidden" name="rut"
                                            value="<c:out value="${a.rutPersona}"/>"/>
                                     <button type="submit"
@@ -62,8 +72,9 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="cem-alumnos?accion=ver_notas"
-                                      method="post">
+                                <form action="cem-alumnos" method="post">
+                                    <input type="hidden" name="accion"
+                                           value="<c:out value="ver_notas"/>"/>
                                     <button type="submit"
                                             class="btn btn-primary center-block">
                                         <i class=""> Notas </i>
