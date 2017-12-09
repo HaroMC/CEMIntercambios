@@ -9,7 +9,7 @@
     <body>
 
         <div class="container well">
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>
@@ -19,9 +19,9 @@
                     </h2>
                 </div>
             </div>
-            
+
             <br> <br />
-            
+
             <div class="col-md-6 col-md-offset-3">
 
                 <form action="../registrar?tipo=familia" method="post"
@@ -175,7 +175,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> ${mensaje} </label>
+                        <label class="col-md-4 control-label label-info">
+                            <c:out value="${mensajeEstado}" />
+                        </label>
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-primary"
                                     onClick="comprobarClave()">

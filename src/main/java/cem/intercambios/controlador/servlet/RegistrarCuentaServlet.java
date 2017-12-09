@@ -50,7 +50,7 @@ public class RegistrarCuentaServlet extends HttpServlet {
         DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
 
         switch (accion) {
-            
+
             //<editor-fold defaultstate="collapsed" desc=" Registrar cuenta de familia ">
             case "registrar_familia":
                 try {
@@ -59,7 +59,7 @@ public class RegistrarCuentaServlet extends HttpServlet {
                         Persona nuevoRegistro = new Persona(
                                 rut,
                                 req.getParameter("nombreJefeFamilia") + " "
-                                        + req.getParameter("apellidoJefeFamilia"),
+                                + req.getParameter("apellidoJefeFamilia"),
                                 formatoFecha.parse(req
                                         .getParameter("fechaNacimiento")),
                                 req.getParameter("domicilio"),
@@ -79,16 +79,25 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                         req.getParameter("clave1"),
                                         cu.establecerFechaActual(),
                                         "Familia"
-                                )
-                        );
-                        
+                                ));
+                        try {
+                            pf.create(nuevoRegistro);
+                            req.setAttribute("mensajeEstado", "Nuevo usuario "
+                                    + "registrado.");
+                        } catch (Exception ex) {
+                        req.setAttribute("mensajeEstado", "Se ha producido un "
+                                + "error al registrar.");
+                        }
+                    } else {
+                        req.setAttribute("mensajeEstado", "El rut ingresado"
+                                + " ya existe.");
                     }
                 } catch (ParseException ex) {
-                    
+
                 }
                 break;
-                //</editor-fold>
-                
+            //</editor-fold>
+
             //<editor-fold defaultstate="collapsed" desc=" Registrar cuenta de alumno ">
             case "registrar_alumno":
                 String rut = req.getParameter("rut");
@@ -106,8 +115,8 @@ public class RegistrarCuentaServlet extends HttpServlet {
                                 req.getParameter("nombreUsuario"),
                                 cu.encriptar(req.getParameter("clave1")),
                                 encontrado.getFechaMatricula()
-                                        .toGregorianCalendar()
-                                        .getTime(),
+                                .toGregorianCalendar()
+                                .getTime(),
                                 "Alumno"));
                         try {
                             pf.create(nuevoRegistro);
@@ -129,8 +138,8 @@ public class RegistrarCuentaServlet extends HttpServlet {
                 }
                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                 break;
-                //</editor-fold>
-                
+            //</editor-fold>
+
             default:
                 resp.sendRedirect("ingresar");
         }

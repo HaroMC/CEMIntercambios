@@ -4,30 +4,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>-->
         <title> Editar programa </title>
     </head>
     <body>
         <div class="container well">
             <div class="row">
                 <div class="col-md-12">
-                    <h2><p class="text-center">Modificar datos</p></h2>
+                    <h2>
+                        <p class="text-center">
+                            Modificar datos
+                        </p>
+                    </h2>
                 </div>
             </div>
             <br> <br />
             <div class="col-md-6 col-md-offset-3">
-                <form action="cem-programas?accion=modificar&confirmar=si"
-                      method="post"
-                      class="form-horizontal">
+                <form action="cem-programas" method="post" class="form-horizontal">
+
+                    <input type="hidden" name="accion" value="modificar" />
+                    <input type="hidden" name="confirmar" value="si" />
 
                     <fieldset>
                         <legend> Programa </legend>
                         <div class="form-group">
-                            <label class="col-md-4 control-label"> Código </label>
+                            <label class="col-md-4 control-label">
+                                Código
+                            </label>
                             <div class="col-md-8">
                                 <label class="form-control">
                                     <c:out value="${pEditar.codigo}" />
