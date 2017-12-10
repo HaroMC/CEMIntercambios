@@ -126,7 +126,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GenerarCertificadoServlet</servlet-name>
-        <url-pattern>/alumno/generar-certificado-servlet</url-pattern>
+        <url-pattern>/alumno/generar_certificado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
