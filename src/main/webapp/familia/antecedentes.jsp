@@ -1,14 +1,6 @@
-<%-- 
-    Document   : antecedentes
-    Created on : 04-12-2017, 17:30:35
-    Author     : Bugueño
-
-    Falta introducir un campo de texto para especificar la fecha de caducidad de documentos
-    
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/menu-familia.jsp" %>
+<%@include file="../WEB-INF/menu_familia.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +13,7 @@
                 <h1>aqui se dene subir los antecedentes</h1>
                 <br/>
                 <div class="col-md-6">
-                    <form action="familia-antecedente" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <form action="familia_antecedente" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                         <h4>Cerificado de antecedentes</h4>
                         <input type="file" name="file" size="50" />
                         <button class="btn btn-primary" type="submit">Subir Archivo </button>

@@ -15,7 +15,7 @@
     <body>
         <h1>Pulse acá para generar certificado!</h1>
         <form action="generar-certificado-servlet" method="get">
-            <button class="btn btn-primary" type="submit">Obtener Archivo </button>
+            <button class="btn btn-primary" type="submit" onclick="window.open(this.href,'popUpWindow')">Obtener Archivo </button>
         </form>
     </body>
 </html>

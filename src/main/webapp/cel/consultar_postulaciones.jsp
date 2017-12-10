@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cel.jsp" %>
+<%@ include file="../WEB-INF/menu_cel.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -51,9 +51,11 @@
                                 </c:if>
                             </td>
                             <td>
-                                <form method="post" action="inscripciones?accion=postular">
+                                <form method="post" action="inscripciones?">
+                                    <input type="hidden" name="accion"
+                                           value="postular"/>" />
                                     <input type="hidden" name="codigoPrograma"
-                                           value="${pd.codigo}" />
+                                           value="<c:out value="${pd.codigo}"/>" />
                                     <button type="submit" class="btn btn-primary">
                                         Postular
                                     </button>

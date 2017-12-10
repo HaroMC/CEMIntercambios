@@ -9,13 +9,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,7 +63,7 @@ public class CemProgramaServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        resp.sendRedirect("administrar-programas.jsp");
+        resp.sendRedirect("administrar_programas.jsp");
         //</editor-fold>
 
     }
@@ -91,7 +89,7 @@ public class CemProgramaServlet extends HttpServlet {
                 mensaje = "Programa eliminado correctamente.";
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
-                resp.sendRedirect("cem-programas");
+                resp.sendRedirect("cem_programas");
                 break;
             //</editor-fold>
 
@@ -104,7 +102,7 @@ public class CemProgramaServlet extends HttpServlet {
                         mensaje = "Programa registrado correctamente.";
                         LOGGER.info(mensaje);
                         req.setAttribute("mensajeEstado", mensaje);
-                        resp.sendRedirect("cem-programas");
+                        resp.sendRedirect("cem_programas");
                     } catch (Exception ex) {
                         LOGGER.log(Level.SEVERE,
                                 "Error en la inserción. La llave única ya "
@@ -112,7 +110,7 @@ public class CemProgramaServlet extends HttpServlet {
                         req.setAttribute("mensajeEstado",
                                 "Se ha producido un error al registrar el "
                                 + "programa.");
-                        resp.sendRedirect("agregar-programa.jsp");
+                        resp.sendRedirect("agregar_programa.jsp");
                     }
                 }
                 break;
@@ -141,19 +139,19 @@ public class CemProgramaServlet extends HttpServlet {
                                 req.getParameter("tipoDuracion"));
                         pf.edit(pEditar);
                         sesion.removeAttribute("pEditar");
-                        resp.sendRedirect("cem-programas");
+                        resp.sendRedirect("cem_programas");
                         break;
 
                     default:
                         pEditar = pf.find(req.getParameter("codigo"));
                         sesion.setAttribute("pEditar", pEditar);
-                        resp.sendRedirect("editar-programa.jsp");
+                        resp.sendRedirect("editar_programa.jsp");
                 }
                 break;
             //</editor-fold>
 
             default:
-                resp.sendRedirect("cem-programas");
+                resp.sendRedirect("cem_programas");
         }
     }
 

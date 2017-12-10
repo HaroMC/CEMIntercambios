@@ -53,6 +53,10 @@
         <servlet-class>cem.intercambios.controlador.servlet.FamiliaAntecedenteServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.ActualizarAlumnosRegistradosServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GenerarCertificadoServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.GenerarCertificadoServlet</servlet-class>
     </servlet>
@@ -65,36 +69,8 @@
         <url-pattern>/salir</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CemProgramaServlet</servlet-name>
-        <url-pattern>/cem/cem-programas</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemAlumnoServlet</servlet-name>
-        <url-pattern>/cem/cem-alumnos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>RegistrarCuentaServlet</servlet-name>
         <url-pattern>/registrar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemFamiliaServlet</servlet-name>
-        <url-pattern>/cem/cem-administrar-familias</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CelProgramaServlet</servlet-name>
-        <url-pattern>/cel/cel-programas</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemInscripcionCelServlet</servlet-name>
-        <url-pattern>/cem/inscripciones-cel</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
-        <url-pattern>/cem/inscripciones-alumnos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AlumnoPostulacionesServlet</servlet-name>
-        <url-pattern>/alumno/alumno-postulaciones</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CelPostulacionesServlet</servlet-name>
@@ -105,8 +81,40 @@
         <url-pattern>/inicializar-perfil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CemProgramaServlet</servlet-name>
+        <url-pattern>/cem/cem_programas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemAlumnoServlet</servlet-name>
+        <url-pattern>/cem/cem_alumnos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
+        <url-pattern>/cem/inscripciones_alumnos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemFamiliaServlet</servlet-name>
+        <url-pattern>/cem/cem-administrar_familias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CelProgramaServlet</servlet-name>
+        <url-pattern>/cel/cel_programas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemInscripcionCelServlet</servlet-name>
+        <url-pattern>/cem/inscripciones_cel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoPostulacionesServlet</servlet-name>
+        <url-pattern>/alumno/alumno_postulaciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>FamiliaAntecedenteServlet</servlet-name>
-        <url-pattern>/familia/familia-antecedente</url-pattern>
+        <url-pattern>/familia/familia_antecedente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
+        <url-pattern>/cem/actualizar_alumnos_registrados</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GenerarCertificadoServlet</servlet-name>

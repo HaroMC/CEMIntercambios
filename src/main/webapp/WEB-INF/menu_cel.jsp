@@ -23,7 +23,7 @@
                         <a href="inicio.jsp"> Home </a>
                     </li>
                     <li>
-                        <a href="cel-programas"> Calificaciones </a>
+                        <a href="cel_programas"> Calificaciones </a>
                     </li>
                     <li>
                         <a href="inscripciones"> Postulaciones </a>

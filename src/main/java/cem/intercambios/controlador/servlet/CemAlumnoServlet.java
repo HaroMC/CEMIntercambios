@@ -1,6 +1,8 @@
 package cem.intercambios.controlador.servlet;
 
 import cem.intercambios.controlador.bean.AlumnoFacade;
+import cem.intercambios.controlador.bean.AsignaturaFacade;
+import cem.intercambios.controlador.bean.CalificacionFacade;
 import cem.intercambios.modelo.entidad.Alumno;
 import java.io.IOException;
 import java.util.Collections;
@@ -29,6 +31,12 @@ public class CemAlumnoServlet extends HttpServlet {
 
     @EJB
     private AlumnoFacade af;
+    
+    @EJB
+    private AsignaturaFacade asigf;
+    
+    @EJB
+    private CalificacionFacade caf;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -48,7 +56,7 @@ public class CemAlumnoServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        resp.sendRedirect("administrar-alumnos.jsp");
+        resp.sendRedirect("administrar_alumnos.jsp");
     }
 
     @Override
@@ -60,16 +68,28 @@ public class CemAlumnoServlet extends HttpServlet {
 
         switch (accion) {
 
-            case "eliminar":
+            case "eliminar_alumno":
                 af.remove(af.find(req.getParameter("rut")));
                 mensaje = "Programa eliminado correctamente.";
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
                 break;
-
-            case "modificar":
+                
+            case "ver_notas":
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                break;
         }
-        resp.sendRedirect("cem-alumnos");
+        resp.sendRedirect("cem_alumnos");
     }
 
     private void ordenarLista(List<Alumno> listadoAlumnos) {

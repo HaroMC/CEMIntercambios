@@ -28,21 +28,7 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
     public InscripcionAlumnoFacade() {
         super(InscripcionAlumno.class);
     }
-/*
-    public BigDecimal codigoAutoIncremental() {
-        try {
-            return em.createNamedQuery(
-                    "InscripcionAlumno.codigoAutoIncremental",
-                    BigDecimal.class).getSingleResult();
-        } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
-                    + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
-                    + "Método: (BigDecimal) codigoAutoIncremental",
-                    ex);
-            return null;
-        }
-    }
-*/
+
     public List<InscripcionAlumno> programasInscritosYPostulados(
             String rutAlumno) {
         try {
@@ -72,6 +58,23 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
                     + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionAlumno>) "
                     + "verDetallesDelDestinoPorPrograma",
+                    ex);
+            return null;
+        }
+    }
+
+    public List<InscripcionAlumno> calificacionesPorAlumno(
+            String rutAlumno) {
+        try {
+            return em.createNamedQuery(
+                    "InscripcionAlumno.calificacionesPorAlumno")
+                    .setParameter("rutAlumno", rutAlumno)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
+                    + "Método: (List<InscripcionAlumno>) "
+                    + "calificacionesPorAlumno",
                     ex);
             return null;
         }

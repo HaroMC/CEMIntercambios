@@ -14,7 +14,13 @@
 
 <xs:complexType name="entregar_listado_alumnosResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:Alumno" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:AlumnoWrap" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AlumnoWrap">
+<xs:sequence>
+<xs:element name="alumnos" type="tns:Alumno" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

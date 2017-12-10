@@ -1,11 +1,6 @@
-<%-- 
-    Document   : errorSubida
-    Created on : 08-12-2017, 1:21:39
-    Author     : FrancisBrianPC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="../WEB-INF/menu-familia.jsp" %>
+<%@ include file="../WEB-INF/menu_familia.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>

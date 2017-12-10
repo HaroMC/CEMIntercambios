@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html" pageEncoding = "UTF-8" %>
-<%@ include file="../WEB-INF/menu-registro.jsp" %>
+<%@ include file="../WEB-INF/menu_registro.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
     <body>
 
         <div class="container well">
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>
@@ -19,14 +19,16 @@
                     </h2>
                 </div>
             </div>
-            
+
             <br> <br />
-            
+
             <div class="col-md-6 col-md-offset-3">
 
-                <form action="../registrar?tipo=familia" method="post"
-                      class="form-horizontal">
+                <form action="../registrar" method="post" class="form-horizontal">
 
+                    <input type="hidden" name="accion"
+                           value="registrar_familia" />
+                    
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="NombreJefe">
                             Nombre(s) del jefe de familia
@@ -175,7 +177,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label"> ${mensaje} </label>
+                        <label class="col-md-4 control-label label-info">
+                            <c:out value="${mensajeEstado}" />
+                        </label>
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-primary"
                                     onClick="comprobarClave()">

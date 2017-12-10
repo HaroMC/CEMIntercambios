@@ -1,11 +1,6 @@
-<%-- 
-    Document   : administrar-familias
-    Created on : 04-12-2017, 1:21:04
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/menu-cem.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>

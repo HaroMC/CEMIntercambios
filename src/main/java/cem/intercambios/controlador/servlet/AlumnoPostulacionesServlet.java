@@ -55,7 +55,7 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
                 if (listadoFamilias != null) {
                     sesion.setAttribute("listadoFamilias", listadoFamilias);
                 }
-                req.getRequestDispatcher("seleccionar-familia.jsp")
+                req.getRequestDispatcher("seleccionar_familia.jsp")
                         .forward(req, resp);
                 break;
 
@@ -94,15 +94,15 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
                 String mensaje = "Se ha iniciado una nueva postulación.";
                 LOGGER.info(mensaje);
                 req.setAttribute("mensajeEstado", mensaje);
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
                 break;
 
             case "cancelar_postulacion":
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
                 break;
 
             default:
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
         }
     }
     //</editor-fold>
@@ -112,7 +112,7 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
             throws ServletException, IOException {
         sesion = req.getSession();
         if (sesion.getAttribute("usuarioActual") == null) {
-            resp.sendRedirect("../error/no-autorizado.jsp");
+            resp.sendRedirect("../error/no_autorizado.jsp");
         }
     }
 

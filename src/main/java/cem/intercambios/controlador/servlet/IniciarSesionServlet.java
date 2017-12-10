@@ -71,7 +71,7 @@ public class IniciarSesionServlet extends HttpServlet {
         switch (perfil) {
             
             case "Cem":
-                resp.sendRedirect("cem/cem-programas");
+                resp.sendRedirect("cem/cem_programas");
                 break;
                 
             case "Cel":
@@ -79,7 +79,7 @@ public class IniciarSesionServlet extends HttpServlet {
                 break;
                 
             case "Alumno":
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
                 break;
                 
             case "Familia":
@@ -87,7 +87,7 @@ public class IniciarSesionServlet extends HttpServlet {
                 break;
                 
             default:
-                resp.sendRedirect("error/no-autorizado.jsp");
+                resp.sendRedirect("error/no_autorizado.jsp");
         }
     }
 

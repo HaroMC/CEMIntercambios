@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../WEB-INF/menu-registro.jsp" %>
+<%@ include file="../WEB-INF/menu_registro.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <form action="../registrar" method="post"
                       class="form-horizontal">
-                    
+
                     <input type="hidden" name="accion"
                            value="registrar_alumno" />
 
@@ -33,7 +33,7 @@
                                    placeholder="12345678-9" required="true">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Nombre de usuario
@@ -71,18 +71,24 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4 control-label label-info">
+                        </label>
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-primary"
                                     onClick="comprobarClave()">
-                                Registrar
+                                Registrar cuenta
                             </button>
                         </div>
-                        <br />
-                        <label class="col-md-4 control-label">
-                            <c:out value="${mensajeEstado}" />
-                        </label>
                     </div>
-                        
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-info">
+                        </label>
+                        <div class="col-md-8">
+                            <c:out value="${mensajeEstado}" />
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

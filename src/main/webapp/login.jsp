@@ -5,12 +5,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Bienvenido </title>
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/estilo-login.css">
+        <title> Bienvenido </title>
     </head>
     <body>          
         <div class="container">
@@ -39,23 +39,25 @@
                                     type="submit">
                                 Entrar
                             </button>
-                            <c:out value="${mensajeEstado}" />
+                            <label class="col-md-4 control-label label-info">
+                                <c:out value="${mensajeEstado}" />
+                            </label>
                         </form>
-                    </div>                       
-                    <a href="registro/alumno.jsp"
-                       class="text-center new-account">
-                        Si eres un alumno regular, regístrate aquí.
-                    </a>
-                    <a href="registro/familia.jsp"
-                       class="text-center new-account">
-                        Si eres un representante familiar, regístrate aquí.
-                    </a>
-                    <br />
-                    <br />
-                    <a href="prueba-consumo-web-service.jsp"
-                       class="text-center new-account">
-                        Prueba de comunicación con web service
-                    </a>
+                    </div>
+                    <div class="account-wall">
+                        <label class="">
+                            <a href="registro/alumno.jsp" class="text-center new-account">
+                                Si eres un alumno del CEM, regístrate aquí.
+                            </a>
+                        </label>
+                        <label class="">
+                            <a href="registro/familia.jsp" class="text-center new-account">
+                                Si deseas registrar tu familia como anfitriona,
+                                <br />
+                                regístrate aquí.
+                            </a>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
