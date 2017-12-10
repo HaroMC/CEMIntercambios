@@ -157,7 +157,7 @@ public class FamiliaAntecedenteServlet extends HttpServlet {
             throws ServletException, IOException {
         sesion = req.getSession();
         if (sesion.getAttribute("usuarioActual") == null) {
-            resp.sendRedirect("../error/no-autorizado.jsp");
+            resp.sendRedirect("../error/no_autorizado.jsp");
         }
     }
     /**

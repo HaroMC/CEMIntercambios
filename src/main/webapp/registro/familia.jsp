@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html" pageEncoding = "UTF-8" %>
-<%@ include file="../WEB-INF/menu-registro.jsp" %>
+<%@ include file="../WEB-INF/menu_registro.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,9 +24,11 @@
 
             <div class="col-md-6 col-md-offset-3">
 
-                <form action="../registrar?tipo=familia" method="post"
-                      class="form-horizontal">
+                <form action="../registrar" method="post" class="form-horizontal">
 
+                    <input type="hidden" name="accion"
+                           value="registrar_familia" />
+                    
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="NombreJefe">
                             Nombre(s) del jefe de familia

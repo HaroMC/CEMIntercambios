@@ -43,13 +43,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     ,
     @NamedQuery(name = "InscripcionAlumno.verDetallesDelDestinoPorPrograma",
             query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.alumno al INNER JOIN ia.rutFamilia fa INNER JOIN ia.programa pr INNER JOIN pr.inscripcionCelList ic INNER JOIN ic.centroEstudiosLocal ce INNER JOIN ce.persona pe WHERE al.rutPersona = :rutAlumno")
+        ,
+    @NamedQuery(name = "InscripcionAlumno.calificacionesPorAlumno",
+            query = "SELECT ial FROM InscripcionAlumno ial INNER JOIN ial.alumno alu INNER JOIN alu.persona per INNER JOIN ial.programa pro INNER JOIN pro.asignaturaList asi INNER JOIN asi.calificacionList cal WHERE ial.estado = 2 AND ial.inscripcionAlumnoPK.rutAlumno = :rutAlumno")
 })
 public class InscripcionAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
-    protected cem.intercambios.modelo.entidad.InscripcionAlumnoPK inscripcionAlumnoPK;
+    protected InscripcionAlumnoPK inscripcionAlumnoPK;
 
     @Basic(optional = false)
     @NotNull

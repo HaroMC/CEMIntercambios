@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
             <h2>
                 Alumnos registrados en el sistema
             </h2>
-            <form method="post" action="actualizar-alumnos-registrados">
+            <form method="post" action="actualizar_alumnos_registrados">
                 <button type="submit"
                         class="btn btn-default">
                     <i class=""> Actualizar datos de alumnos </i>
@@ -59,9 +59,9 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <form action="cem-alumnos" method="post">
+                                <form action="cem_alumnos" method="post">
                                     <input type="hidden" name="accion"
-                                           value="<c:out value="eliminar"/>"/>
+                                           value="<c:out value="eliminar_alumno"/>"/>
                                     <input type="hidden" name="rut"
                                            value="<c:out value="${a.rutPersona}"/>"/>
                                     <button type="submit"
@@ -71,7 +71,7 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="cem-alumnos" method="post">
+                                <form action="cem_alumnos" method="post">
                                     <input type="hidden" name="accion"
                                            value="<c:out value="ver_notas"/>"/>
                                     <button type="submit"
@@ -95,14 +95,14 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre completo</th>
-                        <th>Programa</th>
-                        <th>Asignatura</th>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Nota 3</th>
-                        <th>Examen</th>
-                        <th>Promedio final</th>
+                        <th> Alumno(a) </th>
+                        <th> Programa </th>
+                        <th> Asignatura </th>
+                        <th> Nota 1 </th>
+                        <th> Nota 2 </th>
+                        <th> Nota 3 </th>
+                        <th> Examen </th>
+                        <th> Promedio </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">

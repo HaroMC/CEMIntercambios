@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-alumno.jsp" %>
+<%@ include file="../WEB-INF/menu_alumno.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -118,7 +118,7 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre  Completo</th>
+                        <th>Nombre completo</th>
                         <th>Programa</th>
                         <th>Estado</th>
                         <th>Asignatura</th>

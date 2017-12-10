@@ -60,7 +60,7 @@ public class CelPostulacionesServlet extends HttpServlet {
             sesion.setAttribute("programasInscritos", programasInscritos);
         }
 
-        resp.sendRedirect("consultar-postulaciones.jsp");
+        resp.sendRedirect("consultar_postulaciones.jsp");
     }
 
     @Override
@@ -91,11 +91,11 @@ public class CelPostulacionesServlet extends HttpServlet {
                 break;
 
             case "cancelar_postulacion":
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
                 break;
 
             default:
-                resp.sendRedirect("inicializar-perfil");
+                resp.sendRedirect("inicializar_perfil");
         }
     }
 
@@ -120,7 +120,7 @@ public class CelPostulacionesServlet extends HttpServlet {
             throws ServletException, IOException {
         sesion = req.getSession();
         if (sesion.getAttribute("usuarioActual") == null) {
-            resp.sendRedirect("../error/no-autorizado.jsp");
+            resp.sendRedirect("../error/no_autorizado.jsp");
         }
     }
 

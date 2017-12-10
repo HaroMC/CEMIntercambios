@@ -39,7 +39,7 @@ public class CemInscripcionCelServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        resp.sendRedirect("inscripciones-cel.jsp");
+        resp.sendRedirect("inscripciones_cel.jsp");
     }
 
     @Override
@@ -69,7 +69,7 @@ public class CemInscripcionCelServlet extends HttpServlet {
                                 Short.parseShort(req.getParameter("estado")));
                         icf.edit(inscripcionEditar);
                         sesion.removeAttribute("inscripcion");
-                        resp.sendRedirect("inscripciones-cel");
+                        resp.sendRedirect("inscripciones_cel");
                         break;
 
                     default:
@@ -80,7 +80,7 @@ public class CemInscripcionCelServlet extends HttpServlet {
                         );
                         sesion.setAttribute("inscripcion", inscripcionEditar);
                         sesion.setAttribute("tipo", "CEL");
-                        resp.sendRedirect("ver-detalles.jsp");
+                        resp.sendRedirect("ver_detalles.jsp");
                 }
                 break;
         }

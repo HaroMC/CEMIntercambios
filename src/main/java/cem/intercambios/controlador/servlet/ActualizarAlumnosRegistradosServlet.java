@@ -57,7 +57,7 @@ public class ActualizarAlumnosRegistradosServlet extends HttpServlet {
         } else {
             LOG.log(Level.SEVERE, "Error de comunicación con el servicio web.");
         }
-        resp.sendRedirect("cem-alumnos");
+        resp.sendRedirect("cem_alumnos");
     }
 
     private boolean persistirCambiosDetectados(

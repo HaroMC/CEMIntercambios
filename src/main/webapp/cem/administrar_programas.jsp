@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -83,8 +83,9 @@
                                     </c:choose>
                                 </td>
                                 <td>
-                                    <form action="cem-programas?accion=modificar"
-                                          method="post">
+                                    <form action="cem_programas" method="post">
+                                        <input type="hidden" name="accion"
+                                               value="modificar" />
                                         <input type="hidden" name="codigo"
                                                value="<c:out value="${p.codigo}" />" />
                                         <button type="submit"
@@ -94,8 +95,9 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="cem-programas?accion=eliminar"
-                                          method="post">
+                                    <form action="cem_programas" method="post">
+                                        <input type="hidden" name="accion"
+                                               value="eliminar" />
                                         <input type="hidden" name="codigo"
                                                value="<c:out value="${p.codigo}" />" />
                                         <button type="submit"

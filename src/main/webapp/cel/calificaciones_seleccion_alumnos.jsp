@@ -1,10 +1,5 @@
-<%-- 
-    Document   : calificaciones-seleccion-alumnos
-    Created on : 05-12-2017, 0:18:48
-    Author     : Bugueño
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +8,8 @@
         <!-- Link Bootstrap CSS -->
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <!--Link J.S.-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     </head>
     <body>

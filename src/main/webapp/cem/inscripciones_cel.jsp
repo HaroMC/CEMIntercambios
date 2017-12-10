@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <form method="post" action="inscripciones-cel">
+                                <form method="post" action="inscripciones_cel">
                                     
                                     <input type="hidden" name="accion"
                                            value="${fn:escapeXml("modificar")}" />

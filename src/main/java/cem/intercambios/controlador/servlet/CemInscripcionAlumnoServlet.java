@@ -38,7 +38,7 @@ public class CemInscripcionAlumnoServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        resp.sendRedirect("inscripciones-alumnos.jsp");
+        resp.sendRedirect("inscripciones_alumnos.jsp");
     }
 
     @Override

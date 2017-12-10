@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
             </div>
             <br> <br />
             <div class="col-md-6 col-md-offset-3">
-                <form action="cem-programas" method="post" class="form-horizontal">
+                <form action="cem_programas" method="post" class="form-horizontal">
 
                     <input type="hidden" name="accion" value="modificar" />
                     <input type="hidden" name="confirmar" value="si" />
@@ -179,7 +179,7 @@
                                    value="Confirmar cambios" />
                             <input type="button" class="btn btn-primary"
                                    value="Cancelar"
-                                   onclick="location.href = 'cem-programas';"/>
+                                   onclick="location.href = 'cem_programas';"/>
                         </div>
                     </div>
                 </form>

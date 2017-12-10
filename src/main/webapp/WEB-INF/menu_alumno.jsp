@@ -20,13 +20,16 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="inicio.jsp"> Home </a>
+                        <a href="../alumno/inicio.jsp"> Perfil </a>
+                    </li>                    
+                    <li>
+                        <a href="alumno_postulaciones"> Postulaciones </a>
                     </li>
                     <li>
-                        <a href="cel-programas"> Calificaciones </a>
+                        <a href="seleccionar_familia.jsp"> seleccion familia </a>
                     </li>
-                    <li>
-                        <a href="inscripciones"> Postulaciones </a>
+                     <li>
+                        <a href="acuerdo.jsp"> acuerdo </a>
                     </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"

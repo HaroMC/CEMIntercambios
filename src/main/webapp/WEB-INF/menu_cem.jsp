@@ -29,10 +29,10 @@
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="cem-alumnos"> Alumnos </a>
+                                <a href="cem_alumnos"> Alumnos </a>
                             </li>
                             <li>
-                                <a href="cem-administrar-familias"> Familias </a>
+                                <a href="cem_administrar_familias"> Familias </a>
                             </li>
                         </ul>
                     </li>
@@ -43,12 +43,12 @@
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="cem-programas">
+                                <a href="cem_programas">
                                     Ver listado de programas
                                 </a>
                             </li>
                             <li>
-                                <a href="agregar-programa.jsp">
+                                <a href="agregar_programa.jsp">
                                     Agregar programas
                                 </a>
                             </li>
@@ -62,10 +62,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="inscripciones-cel"> Centros de estudio locales </a>
+                                <a href="inscripciones_cel"> Centros de estudio locales </a>
                             </li>
                             <li>
-                                <a href="inscripciones-alumnos"> Alumnos </a>
+                                <a href="inscripciones_alumnos"> Alumnos </a>
                             </li>
                         </ul>
                     </li>

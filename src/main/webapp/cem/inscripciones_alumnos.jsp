@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>

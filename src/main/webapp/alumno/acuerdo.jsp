@@ -1,10 +1,5 @@
-<%-- 
-    Document   : acuerdo
-    Created on : 05-12-2017, 15:26:15
-    Author     : Bugueño
---%>
+<%@ page contentType = "text/html" pageEncoding = "UTF-8" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -20,14 +20,20 @@
             <br />
             <c:choose>
                 <c:when test="${tipo == 'alumno'}">
-                    <c:set var="accion" value="inscripciones-alumnos" />
+                    <c:set var="accion" value="inscripciones_alumnos" />
                 </c:when>
                 <c:when test="${tipo == 'CEL'}">
-                    <c:set var="accion" value="inscripciones-cel" />
+                    <c:set var="accion" value="inscripciones_cel" />
                 </c:when>
             </c:choose>
             <div class="col-md-8 col-md-offset-3">
                 <form method="post" action="<c:out value="${accion}"/>">
+
+                    <input type="hidden" name="accion"
+                           value="${fn:escapeXml("modificar")}" />
+                    <input type="hidden" name="confirmar"
+                           value="${fn:escapeXml("si")}" />
+
                     <div class="form-group">
                         <label class="col-md-4 control-label">
                             Rut
@@ -121,57 +127,63 @@
                             Estado
                         </label>
                         <div class="col-md-8">
-                            <label class="form-control">
-                                <c:choose>
-                                    <c:when test="${inscripcion.estado == 2}">
+                            <c:choose>
+                                <c:when test="${inscripcion.estado == 2}">
+                                    <label class="form-control">
                                         Inscrito
-                                    </c:when>
-                                    <c:when test="${inscripcion.estado == 1}">
-                                        <select name="estado" required="true">
-                                            <option value="${fn:escapeXml("1")}"
-                                                    selected>
-                                                Postulando
-                                            </option>
-                                            <option value="${fn:escapeXml("2")}">
-                                                Inscrito
-                                            </option>
-                                            <option value="${fn:escapeXml("3")}">
-                                                Rechazado
-                                            </option>
-                                        </select>
-                                    </c:when>
-                                    <c:when test="${inscripcion.estado == 3}">
-                                        <select name="estado" required="true">
-                                            <option value="${fn:escapeXml("1")}">
-                                                Postulando
-                                            </option>
-                                            <option value="${fn:escapeXml("2")}">
-                                                Inscrito
-                                            </option>
-                                            <option value="${fn:escapeXml("3")}"
-                                                    selected>
-                                                Rechazado
-                                            </option>
-                                        </select>
-                                    </c:when>
-                                </c:choose>
-                            </label>
+                                    </label>
+                                </c:when>
+                                <c:when test="${inscripcion.estado == 1}">
+                                    <select name="estado" required="true"
+                                            class="selectpicker form-control">
+                                        <option value="${fn:escapeXml("1")}"
+                                                selected>
+                                            Postulando
+                                        </option>
+                                        <option value="${fn:escapeXml("2")}">
+                                            Inscrito
+                                        </option>
+                                        <option value="${fn:escapeXml("3")}">
+                                            Rechazado
+                                        </option>
+                                    </select>
+                                </c:when>
+                                <c:when test="${inscripcion.estado == 3}">
+                                    <select name="estado" required="true"
+                                            class="selectpicker form-control">
+                                        <option value="${fn:escapeXml("1")}">
+                                            Postulando
+                                        </option>
+                                        <option value="${fn:escapeXml("2")}">
+                                            Inscrito
+                                        </option>
+                                        <option value="${fn:escapeXml("3")}"
+                                                selected>
+                                            Rechazado
+                                        </option>
+                                    </select>
+                                </c:when>
+                            </c:choose>
                         </div>
                     </div>
+
                     <div class="form-group">
+                        <div class="col-md-8">
+                            <input type="submit" class="btn btn-primary"
+                                   onclick="location.href = '<c:out value="${accion}"/>';"
+                                   value="Regresar">
+                            <c:choose>
+                                <c:when test="${inscripcion.estado != 2}">
+                                    <input type="submit" class="btn btn-primary"
+                                           value="Guardar cambios">
+                                </c:when>
+                            </c:choose>
+                        </div>
                         <label class="col-md-4 control-label">
                             <c:out value="${mensajeEstado}" />
                         </label>
-                        <div class="col-md-8">
-                            <input type="hidden" name="accion"
-                                   value="${fn:escapeXml("modificar")}" />
-                            <input type="hidden" name="confirmar"
-                                   value="${fn:escapeXml("si")}" />
-                            <button type="submit" class="btn btn-primary">
-                                Confirmar cambios
-                            </button>
-                        </div>
                     </div>
+
                 </form>
             </div>
         </div>

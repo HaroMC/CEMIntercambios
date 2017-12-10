@@ -40,7 +40,7 @@ public class InicializarPerfil extends HttpServlet {
         switch (usuarioActual.getPerfil()) {
 
             case "Cem":
-                resp.sendRedirect("cem/cem-programas");
+                resp.sendRedirect("cem/cem_programas");
                 break;
 
             case "Cel":
@@ -72,7 +72,7 @@ public class InicializarPerfil extends HttpServlet {
                 break;
 
             default:
-                resp.sendRedirect("error/no-autorizado.jsp");
+                resp.sendRedirect("error/no_autorizado.jsp");
         }
     }
 
@@ -82,7 +82,7 @@ public class InicializarPerfil extends HttpServlet {
 
         sesion = req.getSession();
         if (sesion.getAttribute("usuarioActual") == null) {
-            resp.sendRedirect("../error/no-autorizado.jsp");
+            resp.sendRedirect("../error/no_autorizado.jsp");
         }
     }
 

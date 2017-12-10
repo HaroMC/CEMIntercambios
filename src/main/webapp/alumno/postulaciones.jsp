@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../WEB-INF/menu-alumno.jsp" %>
+<%@ include file="../WEB-INF/menu_alumno.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@
                                 <c:out value="${p.programa.nombrePrograma}" />
                             </td>
                             <td>
-                                <form method="get" action="alumno-postulaciones">
+                                <form method="get" action="alumno_postulaciones">
                                     
                                     <input type="hidden" name="accion"
                                            value="${fn:escapeXml("seleccionar_familia")}" />

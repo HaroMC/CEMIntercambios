@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="../WEB-INF/menu-familia.jsp" %>
+<%@ include file="../WEB-INF/menu_familia.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>

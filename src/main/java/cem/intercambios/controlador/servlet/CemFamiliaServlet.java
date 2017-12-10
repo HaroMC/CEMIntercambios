@@ -38,7 +38,7 @@ public class CemFamiliaServlet extends HttpServlet {
             sesion.setAttribute("mensajeEstado", mensaje);
             LOGGER.info(mensaje);
         }
-        resp.sendRedirect("administrar-familias.jsp");
+        resp.sendRedirect("administrar_familias.jsp");
     }
 
     @Override

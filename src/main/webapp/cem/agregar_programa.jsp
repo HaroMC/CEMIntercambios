@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
-<%@ include file="../WEB-INF/menu-cem.jsp" %>
+<%@ include file="../WEB-INF/menu_cem.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
 
             <div class="col-md-6 col-md-offset-3">
 
-                <form action="cem-programas" method="post"
+                <form action="cem_programas" method="post"
                       class="form-horizontal">
 
                     <fieldset>
@@ -156,17 +156,17 @@
                     </fieldset>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">
-                            ${mensajeEstado}
-                        </label>
                         <div class="col-md-8">
                             <input type="hidden" name="accion" value="agregar" />
                             <input type="submit" class="btn btn-primary"
                                    value="Agregar" />
                             <input type="button" class="btn btn-primary"
                                    value="Cancelar"
-                                   onclick="location.href = 'cem-programas';"/>
+                                   onclick="location.href = 'cem_programas';"/>
                         </div>
+                        <label class="col-md-4 control-label">
+                            <c:out value="${mensajeEstado}" />
+                        </label>
                     </div>
                 </form>
             </div>
