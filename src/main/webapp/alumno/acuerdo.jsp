@@ -1,4 +1,5 @@
 <%@ page contentType = "text/html" pageEncoding = "UTF-8" %>
+<%@ include file="../WEB-INF/menu_alumno.jsp" %>
 
 <!DOCTYPE html>
 <html>

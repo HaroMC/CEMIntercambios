@@ -32,7 +32,7 @@
                                 <a href="cem_alumnos"> Alumnos </a>
                             </li>
                             <li>
-                                <a href="cem_administrar_familias"> Familias </a>
+                                <a href="administrar_familias"> Familias </a>
                             </li>
                         </ul>
                     </li>

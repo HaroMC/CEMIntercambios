@@ -26,13 +26,13 @@
                         <a href="alumno_postulaciones"> Postulaciones </a>
                     </li>
                     <li>
-                        <a href="seleccionar_familia.jsp"> seleccion familia </a>
+                        <a href="seleccionar_familia.jsp"> Seleccion familia </a>
                     </li>
                      <li>
                         <a href="acuerdo.jsp"> acuerdo </a>
                     </li>
                     <li>
-                        <a href="generar-certifica.jsp">Generar Certificado</a>
+                        <a href="generar_certificado">Generar Certificado</a>
                     </li>
                 </ul>
                 <label class="nav navbar-nav navbar-right label label-default"

@@ -1,11 +1,6 @@
-<%-- 
-    Document   : generar-certifica
-    Created on : 09-12-2017, 4:53:24
-    Author     : FrancisBrianPC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="../WEB-INF/menu-alumno.jsp" %>
+<%@ include file="../WEB-INF/menu_alumno.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>
