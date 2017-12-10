@@ -56,6 +56,10 @@
         <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.ActualizarAlumnosRegistradosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlumnoCalificacionServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.AlumnoCalificacionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>ActualizarAlumnosRegistradosServlet</servlet-name>
         <url-pattern>/cem/actualizar_alumnos_registrados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoCalificacionServlet</servlet-name>
+        <url-pattern>/alumno/calificaciones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
