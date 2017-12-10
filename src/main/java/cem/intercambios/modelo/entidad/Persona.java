@@ -155,6 +155,19 @@ public class Persona implements Serializable {
         this.usuario = usuario;
     }
 
+    public Persona(String rut, String nombreCompleto, Date fechaNacimiento,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono) {
+        this.rut = rut;
+        this.nombreCompleto = nombreCompleto;
+        this.fechaNacimiento = fechaNacimiento;
+        this.domicilio = domicilio;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+
     public String getRut() {
         return rut;
     }

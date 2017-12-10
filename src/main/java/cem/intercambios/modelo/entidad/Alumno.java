@@ -104,6 +104,17 @@ public class Alumno implements Serializable {
         this.esMoroso = esMoroso;
     }
 
+    public Alumno(String rutPersona, BigInteger numeroMatricula,
+            Date fechaMatricula, String nombreCarrera, short esMoroso,
+            Persona persona) {
+        this.rutPersona = rutPersona;
+        this.numeroMatricula = numeroMatricula;
+        this.fechaMatricula = fechaMatricula;
+        this.nombreCarrera = nombreCarrera;
+        this.esMoroso = esMoroso;
+        this.persona = persona;
+    }
+
     public String getRutPersona() {
         return rutPersona;
     }

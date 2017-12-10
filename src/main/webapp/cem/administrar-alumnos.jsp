@@ -14,18 +14,15 @@
     <body>
         <br/>
         <div class="container">
-            <div class="row">
-                <h2>
-                    Alumnos registrados en el sistema
-                    <form method="posr" action="actualizar-alumnos-registrados">
-                        <button type="submit"
-                                class="btn btn-primary center-block">
-                            <i class=""> Actualizar datos de alumnos </i>
-                        </button>
-                    </form>
-                </h2>
-            </div>
-
+            <h2>
+                Alumnos registrados en el sistema
+            </h2>
+            <form method="post" action="actualizar-alumnos-registrados">
+                <button type="submit"
+                        class="btn btn-default">
+                    <i class=""> Actualizar datos de alumnos </i>
+                </button>
+            </form>
             <p> Filtrar su búsqueda de alumnos </p>
             <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">

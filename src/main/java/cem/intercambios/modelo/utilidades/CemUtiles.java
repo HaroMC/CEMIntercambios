@@ -1,6 +1,6 @@
 package cem.intercambios.modelo.utilidades;
 
-import cem.intercambios.controlador.cliente.Alumno;
+import cem.intercambios.modelo.entidad.Alumno;
 import cem.intercambios.modelo.entidad.Persona;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -8,8 +8,10 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,8 +98,8 @@ public class CemUtiles {
         codigo.append(aleatorio);
         return codigo.toString();
     }
-
-    public Persona convertirAlumnoWebAPersonaJPA(Alumno alumnoWEB) {
+    
+    public Persona convertirAlumnoWebAPersonaJPA(cem.intercambios.controlador.cliente.Alumno alumnoWEB) {
         Date fechaMatricula = alumnoWEB.getFechaMatricula()
                 .toGregorianCalendar().getTime();
         Date fechaNacimiento = alumnoWEB.getFechaNacimiento()
