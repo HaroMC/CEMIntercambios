@@ -60,6 +60,10 @@
         <servlet-name>AlumnoCalificacionServlet</servlet-name>
         <servlet-class>cem.intercambios.controlador.servlet.AlumnoCalificacionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarCertificadoServlet</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.GenerarCertificadoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesionServlet</servlet-name>
         <url-pattern>/ingresar</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>AlumnoCalificacionServlet</servlet-name>
         <url-pattern>/alumno/calificaciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarCertificadoServlet</servlet-name>
+        <url-pattern>/alumno/generar-certificado-servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
