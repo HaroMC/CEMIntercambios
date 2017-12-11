@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> Postulaciones alumnos </title>
     </head>
     <body>
         <div class="container">
@@ -26,10 +26,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Alumno</th>
-                        <th>Programa inscrito</th>
-                        <th>Estado</th>
-                        <th></th>
+                        <th> Alumno </th>
+                        <th> Programa inscrito </th>
+                        <th> Estado </th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -52,16 +52,12 @@
                             </td>
                             <td>
                                 <form method="post" action="inscripciones_alumnos">
-
                                     <input type="hidden" name="accion"
                                            value="${fn:escapeXml("modificar")}" />
-
                                     <input type="hidden" name="codigoPrograma"
                                            value="${fn:escapeXml(ic.inscripcionAlumnoPK.codPrograma)}" />
-
                                     <input type="hidden" name="rutAlumno"
                                            value="${fn:escapeXml(ic.inscripcionAlumnoPK.rutAlumno)}" />
-
                                     <button type="submit" id="btn-aceptar"
                                             class="btn btn-primary center-block">
                                         <i> Ver detalles </i>

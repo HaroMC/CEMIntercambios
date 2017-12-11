@@ -8,7 +8,7 @@
         <title> Perfil de control </title>
     </head>
     <body>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-sm-3 col-md-4">                  
                 <img id="logoUsuario" src="../res/img/logo_alumnos.jpg"
                      style="width:30%; margin-left:70%" >
@@ -30,8 +30,27 @@
                     Teléfono: <c:out value="${usuarioActual.persona.telefono}" />
                 </p>
             </div>
+        </div>-->
+
+        <div class="row">         
+            <div class="col-sm-3 col-md-12 text-center" style="width: 80%; margin-left: 150px">
+                <fieldset>
+                    <legend>Datos del Usuario</legend>
+                    <div class="col-md-6 text-right">
+                        <p> Alumno: <c:out value="${usuarioActual.persona.nombreCompleto}" /> </p>
+                        <p> País de residencia: <c:out value="${usuarioActual.persona.pais}" /> </p>
+                        <p> Ciudad: <c:out value="${usuarioActual.persona.ciudad}" /> </p>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <p> Correo: <c:out value="${usuarioActual.persona.correo}" /> </p>
+                        <p> Teléfono: <c:out value="${usuarioActual.persona.telefono}" /> </p>
+                    </div>
+                </fieldset>
+            </div>
         </div>
+
         <br/>
+
         <div class="container">
             <h3>Selecciona un programa</h3>      
             <p>Filtra tu busqueda aqui:</p>
@@ -54,34 +73,22 @@
                 <tbody id="myTable2">
                     <c:forEach var="ia" items="${inscripcionesAlumno}" >
                         <tr>
+                            <td> <c:out value="${ia.programa.nombrePrograma}" /> </td>
                             <td>
-                                <c:out value="${ia.programa.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <c:forEach var="nom"
-                                           items="${ia.programa.inscripcionCelList}">
+                                <c:forEach var="nom" items="${ia.programa.inscripcionCelList}">
                                     <c:out value="${nom.centroEstudiosLocal.persona.nombreCompleto}" />
                                 </c:forEach>
                             </td>
                             <td>
-                                <c:forEach var="loc"
-                                           items="${ia.programa.inscripcionCelList}">
+                                <c:forEach var="loc" items="${ia.programa.inscripcionCelList}">
                                     <c:out value="${loc.centroEstudiosLocal.persona.domicilio}" />,
                                     <c:out value="${loc.centroEstudiosLocal.persona.ciudad}" />,
                                     <c:out value="${loc.centroEstudiosLocal.persona.pais}" />
                                 </c:forEach>
                             </td>
-                            <td>
-                                <fmt:formatDate dateStyle="short" type="date"
-                                                value="${ia.programa.fechaInicio}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="short" type="date"
-                                                value="${ia.programa.fechaTermino}" />
-                            </td>
-                            <td>
-                                <c:out value="${ia.programa.valor}" />
-                            </td>
+                            <td> <fmt:formatDate dateStyle="short" type="date" value="${ia.programa.fechaInicio}" /> </td>
+                            <td> <fmt:formatDate dateStyle="short" type="date" value="${ia.programa.fechaTermino}" /> </td>
+                            <td> <c:out value="${ia.programa.valor}" /> </td>
                             <td>
                                 <c:choose>
                                     <c:when test="${ia.estado == 1}">
@@ -96,8 +103,7 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <button type="submit"
-                                        class="btn btn-primary center-block">
+                                <button type="submit" class="btn btn-primary center-block">
                                     <i class="glyphicon glyphicon-remove"></i>
                                 </button>
                             </td>
@@ -118,14 +124,14 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre completo</th>
-                        <th>Programa</th>
-                        <th>Estado</th>
-                        <th>Asignatura</th>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Nota 3</th>
-                        <th>Nota Final</th>
+                        <th> Nombre completo </th>
+                        <th> Programa </th>
+                        <th> Estado </th>
+                        <th> Asignatura </th>
+                        <th> Nota 1 </th>
+                        <th> Nota 2 </th>
+                        <th> Nota 3 </th>
+                        <th> Nota final </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
