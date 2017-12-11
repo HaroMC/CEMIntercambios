@@ -83,7 +83,7 @@ public class IniciarSesionServlet extends HttpServlet {
                 break;
                 
             case "Familia":
-                resp.sendRedirect("familia/inicio.jsp");
+                resp.sendRedirect("familia/antecedentes.jsp");
                 break;
                 
             default:

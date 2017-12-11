@@ -62,10 +62,13 @@ public class CemInscripcionCelServlet extends HttpServlet {
                 switch (confirmarModificacion) {
 
                     case "si":
-                        inscripcionEditar = (InscripcionCel)
-                                sesion.getAttribute("inscripcion");
-                        inscripcionEditar.setEstado(
-                                Short.parseShort(req.getParameter("estado")));
+                        inscripcionEditar = (InscripcionCel) sesion.getAttribute("inscripcion");
+                        try {
+                            inscripcionEditar.setEstado(
+                                    Short.parseShort(req.getParameter("estado")));
+                        } catch (Exception ex) {
+
+                        }
                         icf.edit(inscripcionEditar);
                         sesion.removeAttribute("inscripcion");
                         resp.sendRedirect("inscripciones_cel");

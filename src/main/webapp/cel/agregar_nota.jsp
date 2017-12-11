@@ -97,7 +97,7 @@
                                    value="Agregar" />
                             <input type="button" class="btn btn-primary"
                                    value="Cancelar"
-                                   onclick="location.href = 'cem-programas';"/>
+                                   onclick="location.href = 'cem_programas';"/>
                         </div>
                     </div>
 

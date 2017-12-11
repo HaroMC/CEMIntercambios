@@ -11,17 +11,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/tamano_menu.css"> 
     </head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"> WebSiteName </a>
+                    <img src="../imagenes/study.png" style="width: 50px; height: 50px"/>
+                    <!--<a class="navbar-brand" href="#"> WebSiteName </a>-->
                 </div>
                 <ul class="nav navbar-nav">
-                    <!--<li>
-                        <a href="../alumno/inicio.jsp"> Perfil </a>
-                    </li>-->
+                    <li>
+                        <a href="../alumno/inicio.jsp"> Inicio </a>
+                    </li>
                     <li>
                         <a href="alumno_postulaciones"> Postulaciones </a>
                     </li>
@@ -35,15 +37,28 @@
                         <a href="generar_certificado">Generar Certificado</a>
                     </li>
                 </ul>
-                <label class="nav navbar-nav navbar-right label label-default"
+                <!--<label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">
                     <br />
-                    <c:out value="${mensajeBienvenida}" />
+                    < c:out value="$ {mensajeBienvenida}" />
                     <br />
                     <br />
                     <form  class="label label-default" style="color: #204d74"
                            action="../salir" method="get">
                         <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>-->
+                <label class="nav navbar-nav navbar-right label label-default"
+                       style="color: white; width: 10%; height: 70px">
+                    <br />
+                    <c:out value="${mensajeBienvenida}" />
+                    <br/>
+                    <br/>
+                    <form  class="label label-default" style="color: #204d74"
+                           action="../salir" method="get">
+                        <button type="submit" class="btn btn-default" style="height: 30px">
+                            <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión
+                        </button>
                     </form>
                 </label>
             </div>

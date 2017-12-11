@@ -11,12 +11,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/tamano_menu.css"> 
     </head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"> WebSiteName </a>
+                    <img src="../imagenes/study.png" style="width: 50px; height: 50px"/>
+                    <!--<a class="navbar-brand" href="#"> WebSiteName </a>-->
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
