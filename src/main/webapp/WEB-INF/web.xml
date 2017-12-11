@@ -82,7 +82,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InicializarPerfil</servlet-name>
-        <url-pattern>/inicializar-perfil</url-pattern>
+        <url-pattern>/inicializar_perfil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CemProgramaServlet</servlet-name>
@@ -95,10 +95,6 @@
     <servlet-mapping>
         <servlet-name>CemInscripcionAlumnoServlet</servlet-name>
         <url-pattern>/cem/inscripciones_alumnos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CemFamiliaServlet</servlet-name>
-        <url-pattern>/cem/cem-administrar_familias</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CelProgramaServlet</servlet-name>
@@ -128,9 +124,13 @@
         <servlet-name>GenerarCertificadoServlet</servlet-name>
         <url-pattern>/alumno/generar_certificado</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CemFamiliaServlet</servlet-name>
+        <url-pattern>/cem/administrar_familias</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            60
+            90
         </session-timeout>
     </session-config>
     <error-page>

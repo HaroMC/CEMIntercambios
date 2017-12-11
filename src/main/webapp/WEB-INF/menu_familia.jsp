@@ -31,9 +31,9 @@
                        style="color: white; width: 10%; height: 70px">
                     <br />
                     <c:out value="${mensajeBienvenida}" />
-                    <br />
-                    <br />
-                    <form  class="label label-default" style="color: #204d74"
+                    <br/>
+                    <br/>
+                    <form class="label label-default" style="color: #204d74"
                            action="../salir" method="get">
                         <button type="submit" class="btn btn-default" style="height: 30px">
                             <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión

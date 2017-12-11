@@ -244,13 +244,13 @@ public class CemProgramaServlet extends HttpServlet {
 
         if (asignaturaDos.length() > 0) {
             asignaturas.add(
-                    crearAsignatura(asignaturaUno, descrpcionDos,
+                    crearAsignatura(asignaturaDos, descrpcionDos,
                             nuevoPrograma));
         }
 
         if (asignaturaTres.length() > 0) {
             asignaturas.add(
-                    crearAsignatura(asignaturaUno, descrpcionTres,
+                    crearAsignatura(asignaturaTres, descrpcionTres,
                             nuevoPrograma));
         }
 

@@ -9,10 +9,9 @@
     </head>
     <body>
         <div class="container">
-            <h2> Listado de alumnos postulantes a programas</h2>
+            <h2> Estado de inscripciones : : Alumnos </h2>
             <p>
-                Si necesita buscar algo, 
-                puedes hacerlo aquí:
+                Si necesita buscar algo, puede hacerlo desde aquí
             </p>
             <input class="form-control" id="myInput2" type="text"
                    placeholder=""
@@ -36,7 +35,7 @@
                     <c:forEach var="ia" items="${inscripcionesAlumnos}" >
                         <tr>
                             <td> <c:out value="${ia.alumno.persona.nombreCompleto}" /> </td>
-                            <td> <c:out value="${ia.programa.codigo}" /> </td>
+                            <td> <c:out value="${ia.programa.nombrePrograma}" /> </td>
                             <td>
                                 <c:choose>
                                     <c:when test="${ia.estado == 1}">

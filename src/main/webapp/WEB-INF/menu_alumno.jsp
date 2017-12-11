@@ -17,25 +17,15 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <img src="../res/img/alumno.png" style="width: 50px; height: 50px"/>
+                    <img src="../res/img/alumno2.jpeg" style="width: 50px; height: 50px"/>
                     <!--<a class="navbar-brand" href="#"> WebSiteName </a>-->
                 </div>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="../alumno/inicio.jsp"> Inicio </a>
-                    </li>
-                    <li>
-                        <a href="alumno_postulaciones"> Postulaciones </a>
-                    </li>
-                    <li>
-                        <a href="seleccionar_familia.jsp"> Seleccion familia </a>
-                    </li>
-                     <li>
-                        <a href="acuerdo.jsp"> acuerdo </a>
-                    </li>
-                    <li>
-                        <a href="generar_certificado">Generar Certificado</a>
-                    </li>
+                    <li> <a href="../alumno/inicio.jsp"> Inicio </a> </li>
+                    <li> <a href="alumno_postulaciones"> Postulaciones </a> </li>
+                    <!--<li> <a href="seleccionar_familia.jsp"> Selección familia </a> </li>-->
+                    <!--<li> <a href="acuerdo.jsp"> Acuerdo </a> </li>-->
+                    <li> <a href="generar_certificado"> Generar certificado </a> </li>
                 </ul>
                 <!--<label class="nav navbar-nav navbar-right label label-default"
                        style="color: white; width: 10%; height: 50px">
@@ -54,7 +44,7 @@
                     <c:out value="${mensajeBienvenida}" />
                     <br/>
                     <br/>
-                    <form  class="label label-default" style="color: #204d74"
+                    <form class="label label-default" style="color: #204d74"
                            action="../salir" method="get">
                         <button type="submit" class="btn btn-default" style="height: 30px">
                             <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión

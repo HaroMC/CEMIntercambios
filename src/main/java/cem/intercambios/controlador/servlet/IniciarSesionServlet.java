@@ -75,11 +75,11 @@ public class IniciarSesionServlet extends HttpServlet {
                 break;
                 
             case "Cel":
-                resp.sendRedirect("cel/inicio.jsp");
+                resp.sendRedirect("cel/inscripciones");
                 break;
                 
             case "Alumno":
-                resp.sendRedirect("alumno/inicio.jsp");
+                resp.sendRedirect("inicializar_perfil");
                 break;
                 
             case "Familia":

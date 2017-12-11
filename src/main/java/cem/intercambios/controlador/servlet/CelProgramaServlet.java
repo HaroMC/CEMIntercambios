@@ -86,6 +86,7 @@ public class CelProgramaServlet extends HttpServlet {
 
         switch (accion) {
             case "ver_notas_alumno":
+                sesion.removeAttribute("alumnosDelPrograma");
                 String codigoPrograma = req.getParameter("codigoPrograma");
                 List<InscripcionAlumno> alumnosDelPrograma
                         = iaf.alumnosPorProgramaIniciado(codigoPrograma);

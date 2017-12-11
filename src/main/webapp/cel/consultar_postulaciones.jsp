@@ -32,30 +32,21 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
+
                     <c:forEach var="pd" items="${programasDisponibles}" >
                         <tr>
-                            <td>
-                                <c:out value="${pd.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pd.fechaInicio}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pd.fechaTermino}" />
-                            </td>
+                            <td> <c:out value="${pd.nombrePrograma}" /> </td>
+                            <td> <fmt:formatDate dateStyle="long" type="date" value="${pd.fechaInicio}" /> </td>
+                            <td> <fmt:formatDate dateStyle="long" type="date" value="${pd.fechaTermino}" /> </td>
                             <td>
                                 <c:if test="${pd.estado == 1}">
                                     Sin Cel Asignado
                                 </c:if>
                             </td>
                             <td>
-                                <form method="post" action="inscripciones?">
-                                    <input type="hidden" name="accion"
-                                           value="postular"/>" />
-                                    <input type="hidden" name="codigoPrograma"
-                                           value="<c:out value="${pd.codigo}"/>" />
+                                <form method="post" action="inscripciones">
+                                    <input type="hidden" name="accion" value="postular"/>
+                                    <input type="hidden" name="codigoPrograma" value="<c:out value="${pd.codigo}"/>" />
                                     <button type="submit" class="btn btn-primary">
                                         Postular
                                     </button>
@@ -63,6 +54,7 @@
                             </td>
                         </tr>
                     </c:forEach>
+
                 </tbody>
             </table>
         </div>
@@ -82,30 +74,20 @@
                 <thead>
                     <tr>
                         <th> Nombre </th>
-                        <th> Cantidad de Cupos </th>   
+                        <th> Cantidad de cupos </th>   
                         <th> Fecha de inicio </th>
-                        <th> Fecha de termino </th>
+                        <th> Fecha de término </th>
                         <th> Estado </th>
-                        <th> </th>
+                        <!--<th> </th>-->
                     </tr>
                 </thead>
                 <tbody id="myTable">
                     <c:forEach var="pi" items="${programasInscritos}" >
                         <tr>
-                            <td>
-                                <c:out value="${pi.programa.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <c:out value="${pi.programa.cupos}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pi.programa.fechaInicio}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pi.programa.fechaTermino}" />
-                            </td>
+                            <td> <c:out value="${pi.programa.nombrePrograma}" /> </td>
+                            <td> <c:out value="${pi.programa.cupos}" /> </td>
+                            <td> <fmt:formatDate dateStyle="long" type="date" value="${pi.programa.fechaInicio}" /> </td>
+                            <td> <fmt:formatDate dateStyle="long" type="date" value="${pi.programa.fechaTermino}" /> </td>
                             <td>
                                 <c:choose>
                                     <c:when test="${pi.estado == 1}">
@@ -121,28 +103,6 @@
                                         Definir
                                     </c:otherwise>
                                 </c:choose>
-                            </td>    
-                            <td>
-                                <c:if test="${pi.estado == 1}">
-                                    <form method="post" action="inscripciones">
-
-                                        <input type="hidden" name="accion"
-                                               value="cancelar_postulacion" />
-
-                                        <!--<input type="hidden" name="codigoPostulacion"
-                                               value="$//{pi.codigo}" />-->
-                                        
-                                        <input type="hidden" name="codPrograma"
-                                               value="${pi.inscripcionCelPK.codPrograma}" />
-                                        <input type="hidden" name="rutCel"
-                                               value="${pi.inscripcionCelPK.rutCel}" />
-
-                                        <button type="submit" class="btn btn-primary">
-                                            Cancelar postulación
-                                        </button>
-
-                                    </form>
-                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

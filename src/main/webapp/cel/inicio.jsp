@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CEL Home</title>       
+        <title> Inicio </title>       
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/estiloFinal.css">
     </head>
     <body>
@@ -16,10 +16,10 @@
             </div>
             <div class="col-sm-3 col-md-4">
                 <p> Nombre del alumno: "LLENAR CAMPO"</p>
-                <p> Pais: "LLenar Campo"</p>
-                <p>Ciudad: "LLenar Campo"</p>
-                <p>Correo: "LLenar Campo"</p>
-                <p>Telefono: "LLenar Campo"</p>
+                <p> País: "LLenar Campo"</p>
+                <p> Ciudad: "LLenar Campo"</p>
+                <p> Correo: "LLenar Campo"</p>
+                <p> Teléfono: "LLenar Campo"</p>
             </div>
         </div>
     </body>

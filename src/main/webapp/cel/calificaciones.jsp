@@ -54,20 +54,20 @@
                 <thead>
                     <tr>
                         <th> Alumno </th>
-                        <th> Algo más </th>
+                        <th> Programa </th>
                         <th> Notas </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
                     <c:forEach var="adp" items="${alumnosDelPrograma}">
                         <tr>
-                            <td> <c:out value="${adp.persona.nombreCompleto}" /> </td>
+                            <td> <c:out value="${adp.alumno.persona.nombreCompleto}" /> </td>
                             <td> <c:out value="${adp.programa.nombrePrograma}" /> </td>
                             <td>
                                 <form method="post" action="cel_programas">
                                     <input type="submit" value="Ver" class="btn btn-primary" />
                                     <input type="hidden" name="accion" value="agregar_notas" />
-                                    <input type="hidden" name="rut" value="${fn:escapeXml(adp.rutPersona)}" />
+                                    <input type="hidden" name="rut" value="${fn:escapeXml(adp.alumno.rutPersona)}" />
                                 </form>
                             </td>
                         </tr>

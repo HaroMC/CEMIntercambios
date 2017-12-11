@@ -94,15 +94,15 @@ public class AlumnoPostulacionesServlet extends HttpServlet {
                 String mensaje = "Se ha iniciado una nueva postulación.";
                 LOGGER.info(mensaje);
                 req.setAttribute("mensajeEstado", mensaje);
-                resp.sendRedirect("inicializar_perfil");
+                resp.sendRedirect("../inicializar_perfil");
                 break;
 
             case "cancelar_postulacion":
-                resp.sendRedirect("inicializar_perfil");
+                resp.sendRedirect("../inicializar_perfil");
                 break;
 
             default:
-                resp.sendRedirect("inicializar_perfil");
+                resp.sendRedirect("../inicializar_perfil");
         }
     }
     //</editor-fold>
