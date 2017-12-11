@@ -2,6 +2,7 @@ package cem.intercambios.controlador.servlet;
 
 import cem.intercambios.controlador.bean.InscripcionAlumnoFacade;
 import cem.intercambios.modelo.entidad.InscripcionAlumno;
+import cem.intercambios.modelo.entidad.InscripcionAlumnoPK;
 import cem.intercambios.modelo.entidad.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -36,44 +37,33 @@ public class InicializarPerfil extends HttpServlet {
             throws ServletException, IOException {
 
         Usuario usuarioActual = (Usuario) sesion.getAttribute("usuarioActual");
-
-        switch (usuarioActual.getPerfil()) {
-
+        /*switch (usuarioActual.getPerfil()) {
             case "Cem":
                 resp.sendRedirect("cem/cem_programas");
                 break;
-
             case "Cel":
                 resp.sendRedirect("cel/inicio.jsp");
                 break;
-
             case "Alumno":
-                
-                List<InscripcionAlumno> inscripcionesAlumno
-                        = iaf.verDetallesDelDestinoPorPrograma(
-                                usuarioActual.getRutPersona());
-                
-                if (inscripcionesAlumno != null) {
-                    sesion.setAttribute("inscripcionesAlumno",
-                            inscripcionesAlumno);
-                }
-                
-                
-                //List<InscripcionAlumno> 
-                // Buscar notas...
-                
-                
-                
-                resp.sendRedirect("alumno/inicio.jsp");
                 break;
-
             case "Familia":
                 resp.sendRedirect("familia/inicio.jsp");
                 break;
-
             default:
                 resp.sendRedirect("error/no_autorizado.jsp");
+        }*/
+
+        List<InscripcionAlumno> inscripcionesAlumno
+                = iaf.verDetallesDelDestinoPorPrograma(
+                        usuarioActual.getRutPersona());
+
+        if (inscripcionesAlumno != null) {
+            sesion.setAttribute("inscripcionesAlumno",
+                    inscripcionesAlumno);
+            resp.sendRedirect("alumno/inicio.jsp");
+
         }
+
     }
 
     private void obtenerSesionActiva(HttpServletRequest req,
@@ -84,6 +74,38 @@ public class InicializarPerfil extends HttpServlet {
         if (sesion.getAttribute("usuarioActual") == null) {
             resp.sendRedirect("../error/no_autorizado.jsp");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        HttpSession sesion = req.getSession();
+        String accion = (req.getParameter("accion") == null ? "" : req.getParameter("accion"));
+
+        switch (accion) {
+
+            case "consultar":
+
+                String rutAlumno = req.getParameter("rutAlumno");
+                String codPrograma = req.getParameter("codPrograma");
+                InscripcionAlumnoPK llave = new InscripcionAlumnoPK(rutAlumno, codPrograma);
+
+                try {
+                    InscripcionAlumno seleccionado = iaf.find(llave);
+                    sesion.setAttribute("inscPrograAsigCaliAlum", seleccionado);
+                    resp.sendRedirect("alumno/inicio.jsp");
+
+                } catch (Exception ex) {
+
+                }
+
+                break;
+
+            default:
+
+        }
+
     }
 
 }
