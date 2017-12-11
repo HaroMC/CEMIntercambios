@@ -28,11 +28,10 @@
                     <thead>
                         <tr>
                             <th>Codigo</th>
-                            <th>Nombre Programa</th>
-                            <th>Fecha de Inicio</th>
-                            <th>Fecha de Termino</th>
-                            <th>Cupos Disponibles</th>
-                            <th>Cupos Restantes</th>
+                            <th>Nombre del programa</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de término</th>
+                            <th>Cupos</th>
                             <th>Valor</th>
                             <th>Estado</th>
                             <th>Editar</th>
@@ -53,7 +52,6 @@
                                                     value="${p.fechaTermino}" />
                                 </td>
                                 <td> <c:out value="${p.cupos}" /> </td>
-                                <td> - </td>
                                 <td>
                                     <fmt:formatNumber type="currency"
                                                       currencySymbol="$"

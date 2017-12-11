@@ -74,6 +74,8 @@
                                 <form action="cem_alumnos" method="post">
                                     <input type="hidden" name="accion"
                                            value="<c:out value="ver_notas"/>"/>
+                                    <input type="hidden" name="rut"
+                                           value="<c:out value="${a.rutPersona}"/>"/>
                                     <button type="submit"
                                             class="btn btn-primary center-block">
                                         <i class=""> Notas </i>
@@ -106,6 +108,40 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
+                    <c:forEach var="ia" items="${inscripcionesAl}">
+                        <c:forEach var="asig" items="${inscripcionesAl.programa.asignaturaList}">
+                            <tr>
+                                <td> <c:out value="${inscripcionesAl.alumno.persona.nombreCompleto}" /> </td>
+
+                                <td> <c:out value="${inscripcionesAl.programa.nombrePrograma}" /> </td>
+
+                                <td> <c:out value="${asig.nombreAsignatura}" /> </td>
+
+                                <c:set var="totalNotas" value="0" scope="page"/>
+                                <c:forEach var="cal" items="${asig.calificacionList}">
+                                    <td> <c:out value="${cal.nota}" /> </td>
+                                    <c:set var="totalNotas" value="${totalNotas + 1}" scope="page"/>
+                                </c:forEach>
+                                <c:choose>
+                                    <c:when test="${totalNotas == 0}">
+                                        <td>-</td> <td>-</td> <td>-</td> <td>-</td>
+                                    </c:when>
+                                    <c:when test="${totalNotas == 1}">
+                                        <td>-</td> <td>-</td> <td>-</td>
+                                    </c:when>
+                                    <c:when test="${totalNotas == 2}">
+                                        <td>-</td> <td>-</td>
+                                    </c:when>
+                                    <c:when test="${totalNotas == 3}">
+                                        <td>-</td>
+                                    </c:when>
+                                </c:choose>
+
+                                <td> - </td>
+
+                            </tr>
+                        </c:forEach>
+                    </c:forEach>
                 </tbody>
             </table>           
         </div>

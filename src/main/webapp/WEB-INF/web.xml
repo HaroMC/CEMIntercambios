@@ -135,10 +135,10 @@
     </session-config>
     <error-page>
         <error-code>404</error-code>
-        <location>/error/no-encontrado.html</location>
+        <location>/error/no_encontrado.html</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/error/error-servidor.html</location>
+        <location>/error/error_servidor.html</location>
     </error-page>
 </web-app>

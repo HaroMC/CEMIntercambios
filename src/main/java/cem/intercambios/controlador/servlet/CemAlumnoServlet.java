@@ -3,8 +3,11 @@ package cem.intercambios.controlador.servlet;
 import cem.intercambios.controlador.bean.AlumnoFacade;
 import cem.intercambios.controlador.bean.AsignaturaFacade;
 import cem.intercambios.controlador.bean.CalificacionFacade;
+import cem.intercambios.controlador.bean.InscripcionAlumnoFacade;
 import cem.intercambios.modelo.entidad.Alumno;
+import cem.intercambios.modelo.entidad.InscripcionAlumno;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,12 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author HaroMC
- * @version 1.0.0
- * @since 2017-12-01
- */
 public class CemAlumnoServlet extends HttpServlet {
 
     private static final Logger LOGGER
@@ -31,12 +28,9 @@ public class CemAlumnoServlet extends HttpServlet {
 
     @EJB
     private AlumnoFacade af;
-    
+
     @EJB
-    private AsignaturaFacade asigf;
-    
-    @EJB
-    private CalificacionFacade caf;
+    private InscripcionAlumnoFacade iaf;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -74,19 +68,17 @@ public class CemAlumnoServlet extends HttpServlet {
                 LOGGER.info(mensaje);
                 sesion.setAttribute("mensajeEstado", mensaje);
                 break;
-                
+
             case "ver_notas":
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+                List<InscripcionAlumno> notasAlumnoSeleccionado
+                        = iaf.calificacionesPorAlumno(req.getParameter("rut"));
+
+                if (notasAlumnoSeleccionado != null) {
+                    sesion.setAttribute("inscripcionesAl",
+                            notasAlumnoSeleccionado);
+                }
+
                 break;
         }
         resp.sendRedirect("cem_alumnos");

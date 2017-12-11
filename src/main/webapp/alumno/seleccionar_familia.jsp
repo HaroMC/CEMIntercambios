@@ -22,16 +22,16 @@
         <br/>
         <div class="container" id="content" style="display: none;">
             <h2>
-                Seleccione una familia con la cual quedarse  </h2>
-            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:
+                Selecciona una familia con la que te alojarás  </h2>
+            <p> Filtra la búsqueda desde aquí
             </p>
             <input class="form-control" id="myInput2" type="text"
-                   placeholder="Escribe aca lo que buscas..">
+                   placeholder="Escribe lo que buscas.">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th> Codigo </th>
+                        <th> Código </th>
                         <th> Nombre del representante familiar </th>  
                         <th> País de residencia </th>
                         <th> Ciudad </th>

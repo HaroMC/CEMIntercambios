@@ -26,36 +26,35 @@
                 </thead>
                 <tbody id="myTable2">
                     <c:forEach var="p" items="${listadoProgramas}" >
-                        <tr>
-                            <td>
-                                <c:out value="${p.programa.codigo}" />
-                            </td>
-                            <td>
-                                <c:out value="${p.programa.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <c:out value="${p.programa.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <c:out value="${p.programa.nombrePrograma}" />
-                            </td>
-                            <td>
-                                <form method="get" action="alumno_postulaciones">
-                                    
-                                    <input type="hidden" name="accion"
-                                           value="${fn:escapeXml("seleccionar_familia")}" />
-                                    <input type="hidden" name="pais"
-                                           value="${fn:escapeXml(p.centroEstudiosLocal.persona.pais)}" />
-                                    <input type="hidden" name="programa"
-                                           value="${fn:escapeXml(p.programa.codigo)}" />
-                                    
-                                    <button type="submit" class="btn btn-primary">
-                                        Postular
-                                    </button>
-                                    
-                                </form>
-                            </td>
-                        </tr>
+                        <c:if test="${listadoProgrmas.estado != 1}">
+                            <tr>
+                                <td>
+                                    <c:out value="${p.programa.codigo}" />
+                                </td>
+                                <td>
+                                    <c:out value="${p.programa.nombrePrograma}" />
+                                </td>
+                                <td>
+                                    <c:out value="${p.programa.nombrePrograma}" />
+                                </td>
+                                <td>
+                                    <c:out value="${p.programa.nombrePrograma}" />
+                                </td>
+                                <td>
+                                    <form method="get" action="alumno_postulaciones">
+                                        <input type="hidden" name="accion"
+                                               value="${fn:escapeXml("seleccionar_familia")}" />
+                                        <input type="hidden" name="pais"
+                                               value="${fn:escapeXml(p.centroEstudiosLocal.persona.pais)}" />
+                                        <input type="hidden" name="programa"
+                                               value="${fn:escapeXml(p.programa.codigo)}" />
+                                        <button type="submit" class="btn btn-primary">
+                                            Postular
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:if>
                     </c:forEach>
                 </tbody>
             </table>

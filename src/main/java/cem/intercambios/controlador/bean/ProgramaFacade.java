@@ -28,10 +28,10 @@ public class ProgramaFacade extends AbstractFacade<Programa> {
         super(Programa.class);
     }
 
-    public List<Programa> programasInscritosCel(String rutPersona) {
+    public List<Programa> programasInscritosCel(String rutCel) {
         try {
             return em.createNamedQuery("Programa.programasInscritosCel")
-                    .setParameter("rutPersona", rutPersona)
+                    .setParameter("rutCel", rutCel)
                     .setParameter("estado", 2)
                     .getResultList();
         } catch (NoResultException ex) {

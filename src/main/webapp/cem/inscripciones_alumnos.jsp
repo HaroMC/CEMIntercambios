@@ -11,7 +11,7 @@
         <div class="container">
             <h2> Listado de alumnos postulantes a programas</h2>
             <p>
-                Si necesita buscar qlgo, 
+                Si necesita buscar algo, 
                 puedes hacerlo aquí:
             </p>
             <input class="form-control" id="myInput2" type="text"
@@ -26,8 +26,8 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Cod.</th>
-                        <th>Fecha Inscripcion</th>
+                        <th>Alumno</th>
+                        <th>Programa inscrito</th>
                         <th>Estado</th>
                         <th></th>
                     </tr>
@@ -35,14 +35,10 @@
                 <tbody id="myTable2">
                     <c:forEach var="ia" items="${inscripcionesAlumnos}" >
                         <tr>
-                            <td> <c:out value="${ia.codigo}" /> </td>
-
+                            <td> <c:out value="${ia.alumno.persona.nombreCompleto}" /> </td>
+                            <td> <c:out value="${ia.programa.codigo}" /> </td>
                             <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${ia.fechaInscripcion}" />
-                            </td>
-
-                            <td> <c:choose>
+                                <c:choose>
                                     <c:when test="${ia.estado == 1}">
                                         Postulando
                                     </c:when>
@@ -54,12 +50,24 @@
                                     </c:otherwise>
                                 </c:choose>                           
                             </td>
-                            <td>                               
-                                <button type="submit"
-                                        class="btn btn-primary center-block">
-                                    <i>Aceptar</i>
-                                </button>                              
-                            </td>                      
+                            <td>
+                                <form method="post" action="inscripciones_alumnos">
+
+                                    <input type="hidden" name="accion"
+                                           value="${fn:escapeXml("modificar")}" />
+
+                                    <input type="hidden" name="codigoPrograma"
+                                           value="${fn:escapeXml(ic.inscripcionAlumnoPK.codPrograma)}" />
+
+                                    <input type="hidden" name="rutAlumno"
+                                           value="${fn:escapeXml(ic.inscripcionAlumnoPK.rutAlumno)}" />
+
+                                    <button type="submit" id="btn-aceptar"
+                                            class="btn btn-primary center-block">
+                                        <i> Ver detalles </i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

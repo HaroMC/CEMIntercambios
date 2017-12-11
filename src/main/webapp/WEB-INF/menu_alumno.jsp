@@ -19,9 +19,9 @@
                     <a class="navbar-brand" href="#"> WebSiteName </a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li>
+                    <!--<li>
                         <a href="../alumno/inicio.jsp"> Perfil </a>
-                    </li>                    
+                    </li>-->
                     <li>
                         <a href="alumno_postulaciones"> Postulaciones </a>
                     </li>

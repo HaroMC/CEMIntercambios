@@ -31,7 +31,11 @@ import javax.xml.bind.annotation.XmlRootElement;
             query = "SELECT c FROM Calificacion c WHERE c.nota = :nota")
     ,
     @NamedQuery(name = "Calificacion.findByFechaCalificacion",
-            query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")})
+            query = "SELECT c FROM Calificacion c WHERE c.fechaCalificacion = :fechaCalificacion")
+        ,
+    @NamedQuery(name = "Calificacion.codigoAutoIncremental",
+            query = "SELECT MAX(c.codigo) FROM Calificacion c")
+})
 public class Calificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;

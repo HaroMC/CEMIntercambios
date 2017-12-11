@@ -93,18 +93,18 @@
                     <c:forEach var="pi" items="${programasInscritos}" >
                         <tr>
                             <td>
-                                <c:out value="${pi.codPrograma.nombrePrograma}" />
+                                <c:out value="${pi.programa.nombrePrograma}" />
                             </td>
                             <td>
-                                <c:out value="${pi.codPrograma.cupos}" />
-                            </td>
-                            <td>
-                                <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pi.codPrograma.fechaInicio}" />
+                                <c:out value="${pi.programa.cupos}" />
                             </td>
                             <td>
                                 <fmt:formatDate dateStyle="long" type="date"
-                                                value="${pi.codPrograma.fechaTermino}" />
+                                                value="${pi.programa.fechaInicio}" />
+                            </td>
+                            <td>
+                                <fmt:formatDate dateStyle="long" type="date"
+                                                value="${pi.programa.fechaTermino}" />
                             </td>
                             <td>
                                 <c:choose>
@@ -124,12 +124,23 @@
                             </td>    
                             <td>
                                 <c:if test="${pi.estado == 1}">
-                                    <form method="post" action="inscripciones?accion=cancelar_postulacion">
-                                        <input type="hidden" name="codigoPostulacion"
-                                               value="${pi.codigo}" />
+                                    <form method="post" action="inscripciones">
+
+                                        <input type="hidden" name="accion"
+                                               value="cancelar_postulacion" />
+
+                                        <!--<input type="hidden" name="codigoPostulacion"
+                                               value="$//{pi.codigo}" />-->
+                                        
+                                        <input type="hidden" name="codPrograma"
+                                               value="${pi.inscripcionCelPK.codPrograma}" />
+                                        <input type="hidden" name="rutCel"
+                                               value="${pi.inscripcionCelPK.rutCel}" />
+
                                         <button type="submit" class="btn btn-primary">
                                             Cancelar postulación
                                         </button>
+
                                     </form>
                                 </c:if>
                             </td>

@@ -27,17 +27,23 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Alumno.findAll",
-            query = "SELECT a FROM Alumno a"),
+            query = "SELECT a FROM Alumno a")
+    ,
     @NamedQuery(name = "Alumno.findByRutPersona",
-            query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona"),
+            query = "SELECT a FROM Alumno a WHERE a.rutPersona = :rutPersona")
+    ,
     @NamedQuery(name = "Alumno.findByNumeroMatricula",
-            query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula"),
+            query = "SELECT a FROM Alumno a WHERE a.numeroMatricula = :numeroMatricula")
+    ,
     @NamedQuery(name = "Alumno.findByFechaMatricula",
-            query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula"),
+            query = "SELECT a FROM Alumno a WHERE a.fechaMatricula = :fechaMatricula")
+    ,
     @NamedQuery(name = "Alumno.findByNombreCarrera",
-            query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera"),
+            query = "SELECT a FROM Alumno a WHERE a.nombreCarrera = :nombreCarrera")
+    ,
     @NamedQuery(name = "Alumno.findByEsMoroso",
-            query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso"),
+            query = "SELECT a FROM Alumno a WHERE a.esMoroso = :esMoroso")
+    ,
     @NamedQuery(name = "Alumno.obtenerRuts",
             query = "SELECT a.rutPersona FROM Alumno a")
 })

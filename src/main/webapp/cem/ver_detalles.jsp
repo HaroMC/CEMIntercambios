@@ -87,7 +87,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">
-                            Fecha en la que postula
+                            Fecha en la que postuló
                         </label>
                         <div class="col-md-8">
                             <label class="form-control">
@@ -136,14 +136,13 @@
                                 <c:when test="${inscripcion.estado == 1}">
                                     <select name="estado" required="true"
                                             class="selectpicker form-control">
-                                        <option value="${fn:escapeXml("1")}"
-                                                selected>
+                                        <option value="1" selected>
                                             Postulando
                                         </option>
-                                        <option value="${fn:escapeXml("2")}">
+                                        <option value="2">
                                             Inscrito
                                         </option>
-                                        <option value="${fn:escapeXml("3")}">
+                                        <option value="3">
                                             Rechazado
                                         </option>
                                     </select>
@@ -151,14 +150,13 @@
                                 <c:when test="${inscripcion.estado == 3}">
                                     <select name="estado" required="true"
                                             class="selectpicker form-control">
-                                        <option value="${fn:escapeXml("1")}">
+                                        <option value="1">
                                             Postulando
                                         </option>
-                                        <option value="${fn:escapeXml("2")}">
+                                        <option value="2">
                                             Inscrito
                                         </option>
-                                        <option value="${fn:escapeXml("3")}"
-                                                selected>
+                                        <option value="3" selected>
                                             Rechazado
                                         </option>
                                     </select>

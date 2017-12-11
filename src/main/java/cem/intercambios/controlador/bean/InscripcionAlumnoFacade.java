@@ -1,7 +1,7 @@
 package cem.intercambios.controlador.bean;
 
+import cem.intercambios.modelo.entidad.Alumno;
 import cem.intercambios.modelo.entidad.InscripcionAlumno;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
 
-    private static final Logger LOGGER
+    private static final Logger LOG
             = Logger.getLogger(InscripcionAlumnoFacade.class.getName());
 
     @PersistenceContext(unitName
@@ -37,7 +37,7 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
                     .setParameter("rutAlumno", rutAlumno)
                     .getResultList();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+            LOG.log(Level.WARNING, "Búsqueda sin resultados.\n"
                     + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionAlumno>) "
                     + "programasInscritosYPostulados",
@@ -54,7 +54,7 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
                     .setParameter("rutAlumno", rutAlumno)
                     .getResultList();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+            LOG.log(Level.WARNING, "Búsqueda sin resultados.\n"
                     + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionAlumno>) "
                     + "verDetallesDelDestinoPorPrograma",
@@ -71,10 +71,26 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
                     .setParameter("rutAlumno", rutAlumno)
                     .getResultList();
         } catch (NoResultException ex) {
-            LOGGER.log(Level.WARNING, "Búsqueda sin resultados.\n"
+            LOG.log(Level.WARNING, "Búsqueda sin resultados.\n"
                     + "Clase: " + InscripcionAlumnoFacade.class.getName() + "\n"
                     + "Método: (List<InscripcionAlumno>) "
                     + "calificacionesPorAlumno",
+                    ex);
+            return null;
+        }
+    }
+
+    public List<InscripcionAlumno> alumnosPorProgramaIniciado(String codigoPrograma) {
+        try {
+            return em.createNamedQuery(
+                    "InscripcionAlumno.alumnosPorProgramaIniciado",
+                    InscripcionAlumno.class)
+                    .setParameter("codigoPrograma", codigoPrograma)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            LOG.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + AlumnoFacade.class.getName() + "\n"
+                    + "Método: (List<InscripcionAlumno>) alumnosPorProgramaIniciado",
                     ex);
             return null;
         }

@@ -43,9 +43,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     ,
     @NamedQuery(name = "InscripcionAlumno.verDetallesDelDestinoPorPrograma",
             query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.alumno al INNER JOIN ia.rutFamilia fa INNER JOIN ia.programa pr INNER JOIN pr.inscripcionCelList ic INNER JOIN ic.centroEstudiosLocal ce INNER JOIN ce.persona pe WHERE al.rutPersona = :rutAlumno")
-        ,
+    ,
     @NamedQuery(name = "InscripcionAlumno.calificacionesPorAlumno",
             query = "SELECT ial FROM InscripcionAlumno ial INNER JOIN ial.alumno alu INNER JOIN alu.persona per INNER JOIN ial.programa pro INNER JOIN pro.asignaturaList asi INNER JOIN asi.calificacionList cal WHERE ial.estado = 2 AND ial.inscripcionAlumnoPK.rutAlumno = :rutAlumno")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.alumnosPorProgramaIniciado",
+            query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.programa pr INNER JOIN ia.alumno al WHERE ia.estado = 2 AND pr.codigo = :codigoPrograma")
 })
 public class InscripcionAlumno implements Serializable {
 
@@ -99,7 +102,7 @@ public class InscripcionAlumno implements Serializable {
         this.inscripcionAlumnoPK
                 = new InscripcionAlumnoPK(rutAlumno, codPrograma);
     }
-    
+
     public InscripcionAlumno(InscripcionAlumnoPK llaveCompuesta,
             Date fechaPostulacion, Programa programa, Alumno alumno,
             FamiliaAnfitriona familia, short estado) {
@@ -118,7 +121,7 @@ public class InscripcionAlumno implements Serializable {
     public void setInscripcionAlumnoPK(InscripcionAlumnoPK inscripcionAlumnoPK) {
         this.inscripcionAlumnoPK = inscripcionAlumnoPK;
     }
-    
+
     public Date getFechaPostulacion() {
         return fechaPostulacion;
     }
@@ -170,8 +173,8 @@ public class InscripcionAlumno implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (inscripcionAlumnoPK != null ?
-                inscripcionAlumnoPK.hashCode() : 0);
+        hash += (inscripcionAlumnoPK != null
+                ? inscripcionAlumnoPK.hashCode() : 0);
         return hash;
     }
 
