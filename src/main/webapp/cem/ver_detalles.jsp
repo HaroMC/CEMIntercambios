@@ -20,14 +20,14 @@
             <br />
             <c:choose>
                 <c:when test="${tipo == 'alumno'}">
-                    <c:set var="accion" value="inscripciones_alumnos" />
+                    <c:set var="servlet_url" value="inscripciones_alumnos" />
                 </c:when>
                 <c:when test="${tipo == 'CEL'}">
-                    <c:set var="accion" value="inscripciones_cel" />
+                    <c:set var="servlet_url" value="inscripciones_cel" />
                 </c:when>
             </c:choose>
             <div class="col-md-8 col-md-offset-3">
-                <form method="post" action="<c:out value="${accion}"/>">
+                <form method="post" action="<c:out value="${servlet_url}"/>">
 
                     <input type="hidden" name="accion"
                            value="${fn:escapeXml("modificar")}" />
@@ -166,9 +166,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4 control-label">
+                        </label>
                         <div class="col-md-8">
-                            <input type="submit" class="btn btn-primary"
-                                   onclick="location.href = '<c:out value="${accion}"/>';"
+                            <input type="button" class="btn btn-primary"
+                                   onclick="location.href = '<c:out value="${servlet_url}"/>';"
                                    value="Regresar">
                             <c:choose>
                                 <c:when test="${inscripcion.estado != 2}">

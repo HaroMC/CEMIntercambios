@@ -65,6 +65,7 @@
                                             class="btn btn-primary center-block">
                                         <i> Ver detalles </i>
                                     </button>
+                                    
                                 </form>
                             </td>
                         </tr>

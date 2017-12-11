@@ -62,25 +62,26 @@ public class CemInscripcionAlumnoServlet extends HttpServlet {
                 switch (confirmarModificacion) {
 
                     case "si":
-                        inscripcionEditar
-                                = (InscripcionAlumno) sesion.getAttribute("inscripcion");
+                        inscripcionEditar = (InscripcionAlumno) sesion
+                                .getAttribute("inscripcion");
                         try {
                             inscripcionEditar.setEstado(
-                                    Short.parseShort(req.getParameter("estado")));
+                                    Short.parseShort(
+                                            req.getParameter("estado")));
                         } catch (NumberFormatException ex) {
 
                         }
                         paf.edit(inscripcionEditar);
                         sesion.removeAttribute("inscripcion");
-                        resp.sendRedirect("inscripciones_alumno");
+                        resp.sendRedirect("inscripciones_alumnos");
                         break;
 
                     default:
-                        inscripcionEditar = paf.find(
-                                new InscripcionAlumnoPK(
-                                        req.getParameter("rutAlumno"),
-                                        req.getParameter("codigoPrograma"))
-                        );
+                        String codigoPrograma
+                                = req.getParameter("codigoPrograma");
+                        String rutAlumno = req.getParameter("rutAlumno");
+                        inscripcionEditar = paf.find(new InscripcionAlumnoPK(
+                                rutAlumno, codigoPrograma));
                         sesion.setAttribute("inscripcion", inscripcionEditar);
                         sesion.setAttribute("tipo", "alumno");
                         resp.sendRedirect("ver_detalles.jsp");
@@ -88,4 +89,5 @@ public class CemInscripcionAlumnoServlet extends HttpServlet {
                 break;
         }
     }
+
 }

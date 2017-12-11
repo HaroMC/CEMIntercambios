@@ -15,19 +15,19 @@
             </div>
             <div class="col-sm-3 col-md-4">
                 <p>
-                    Alumno: <c:out value="${usuarioActual.persona.nombreCompleto}" />
+                    Alumno: < c:out value="$ {usuarioActual.persona.nombreCompleto}" />
                 </p>
                 <p>
-                    País de residencia: <c:out value="${usuarioActual.persona.pais}" />
+                    País de residencia: < c:out value="$ {usuarioActual.persona.pais}" />
                 </p>
                 <p>
-                    Ciudad: <c:out value="${usuarioActual.persona.ciudad}" />
+                    Ciudad: < c:out value="$ {usuarioActual.persona.ciudad}" />
                 </p>
                 <p>
-                    Correo: <c:out value="${usuarioActual.persona.correo}" />
+                    Correo: < c:out value="$ {usuarioActual.persona.correo}" />
                 </p>
                 <p>
-                    Teléfono: <c:out value="${usuarioActual.persona.telefono}" />
+                    Teléfono: < c:out value="$ {usuarioActual.persona.telefono}" />
                 </p>
             </div>
         </div>-->
@@ -37,13 +37,13 @@
                 <fieldset>
                     <legend>Datos del Usuario</legend>
                     <div class="col-md-6 text-right">
-                        <p> Alumno: <c:out value="${usuarioActual.persona.nombreCompleto}" /> </p>
-                        <p> País de residencia: <c:out value="${usuarioActual.persona.pais}" /> </p>
-                        <p> Ciudad: <c:out value="${usuarioActual.persona.ciudad}" /> </p>
+                        <p> <b>Alumno:</b> <c:out value="${usuarioActual.persona.nombreCompleto}" /> </p>
+                        <p> <b>País de residencia:</b> <c:out value="${usuarioActual.persona.pais}" /> </p>
+                        <p> <b>Ciudad:</b> <c:out value="${usuarioActual.persona.ciudad}" /> </p>
                     </div>
                     <div class="col-md-6 text-left">
-                        <p> Correo: <c:out value="${usuarioActual.persona.correo}" /> </p>
-                        <p> Teléfono: <c:out value="${usuarioActual.persona.telefono}" /> </p>
+                        <p> <b>Correo:</b> <c:out value="${usuarioActual.persona.correo}" /> </p>
+                        <p> <b>Teléfono:</b> <c:out value="${usuarioActual.persona.telefono}" /> </p>
                     </div>
                 </fieldset>
             </div>
@@ -53,7 +53,7 @@
 
         <div class="container">
             <h3>Selecciona un programa</h3>      
-            <p>Filtra tu busqueda aqui:</p>
+            <p>Filtra tu búsqueda aquí:</p>
             <input class="form-control" id="myInput" type="text"
                    placeholder="Escribe aca lo que buscas..">
             <br />
@@ -62,7 +62,7 @@
                     <tr>
                         <th> Programa </th>
                         <th> Centro de estudios </th>
-                        <th> Localización </th>
+                        <th> Ubicación </th>
                         <th> Fecha de inicio </th>
                         <th> Fecha de término </th>
                         <th> Valor </th>

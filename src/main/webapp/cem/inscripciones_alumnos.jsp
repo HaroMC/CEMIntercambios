@@ -52,16 +52,21 @@
                             </td>
                             <td>
                                 <form method="post" action="inscripciones_alumnos">
+                                    
                                     <input type="hidden" name="accion"
                                            value="${fn:escapeXml("modificar")}" />
-                                    <input type="hidden" name="codigoPrograma"
-                                           value="${fn:escapeXml(ic.inscripcionAlumnoPK.codPrograma)}" />
+                                    
+                                    <input type="hidden" name="codigoPrograma"                                           
+                                           value="${fn:escapeXml(ia.inscripcionAlumnoPK.codPrograma)}" />
+                                    
                                     <input type="hidden" name="rutAlumno"
-                                           value="${fn:escapeXml(ic.inscripcionAlumnoPK.rutAlumno)}" />
+                                           value="${fn:escapeXml(ia.inscripcionAlumnoPK.rutAlumno)}" />
+                                    
                                     <button type="submit" id="btn-aceptar"
                                             class="btn btn-primary center-block">
                                         <i> Ver detalles </i>
                                     </button>
+                                    
                                 </form>
                             </td>
                         </tr>

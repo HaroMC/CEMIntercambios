@@ -19,7 +19,7 @@
          <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Centro de Estudios Montreal con logo bonito :V </a>
+                    <label class="navbar-brand"> Centro de Estudios Montreal </label>
                 </div>
             </div>
         </nav>
