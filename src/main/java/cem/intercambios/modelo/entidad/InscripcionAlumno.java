@@ -49,6 +49,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     ,
     @NamedQuery(name = "InscripcionAlumno.alumnosPorProgramaIniciado",
             query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.programa pr INNER JOIN ia.alumno al WHERE ia.estado = 2 AND pr.codigo = :codigoPrograma")
+    ,
+    @NamedQuery(name = "InscripcionAlumno.alumnoConsultaNotas",
+            query = "SELECT ia FROM InscripcionAlumno ia INNER JOIN ia.alumno al INNER JOIN ia.programa pr WHERE ia.alumno.rutPersona = :rutAlumno")
 })
 public class InscripcionAlumno implements Serializable {
 

@@ -59,7 +59,7 @@ public class InicializarPerfil extends HttpServlet {
                 }
                 
                 
-                
+                //List<InscripcionAlumno> 
                 // Buscar notas...
                 
                 

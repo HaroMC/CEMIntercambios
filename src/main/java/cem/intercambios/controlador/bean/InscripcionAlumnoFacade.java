@@ -96,4 +96,20 @@ public class InscripcionAlumnoFacade extends AbstractFacade<InscripcionAlumno> {
         }
     }
 
+    public List<InscripcionAlumno> alumnoConsultaNotas(String rutAlumno) {
+        try {
+            return em.createNamedQuery(
+                    "InscripcionAlumno.alumnoConsultaNotas",
+                    InscripcionAlumno.class)
+                    .setParameter("rutAlumno", rutAlumno)
+                    .getResultList();
+        } catch (NoResultException ex) {
+            LOG.log(Level.WARNING, "Búsqueda sin resultados.\n"
+                    + "Clase: " + AlumnoFacade.class.getName() + "\n"
+                    + "Método: (List<InscripcionAlumno>) alumnoConsultaNotas",
+                    ex);
+            return null;
+        }
+    }
+
 }

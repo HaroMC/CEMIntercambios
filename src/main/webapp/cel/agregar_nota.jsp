@@ -31,8 +31,8 @@
                                 Programa
                             </label>
                             <div class="col-md-8">
-                                <label class="col-md-4 control-label">
-
+                                <label class=form-control">
+                                    <c:out value="${programaSe.nombrePrograma}" />
                                 </label>
                             </div>
                         </div>
@@ -42,8 +42,8 @@
                                 Alumno
                             </label>
                             <div class="col-md-8">
-                                <label class="col-md-4 control-label">
-
+                                <label class=form-control">
+                                    <c:out value="${alumnoSe.persona.nombreCompleto}" />
                                 </label>
                             </div>
                         </div>
@@ -52,39 +52,59 @@
                     <fieldset>
                         <legend> Asignaturas </legend>
 
+                        <c:set var="largoLista" value="0" scope="page"/>
+                        <c:forEach var="asi" items="${programaSe.asignaturaList}">
+                            <c:set var="largoLista" value="${largoLista + 1}" scope="page"/>
+                            <c:choose>
+                                <c:when test="${largoLista == 1}">
+                                    <c:set var="asigna1" value="${asi.nombreAsignatura}" />
+                                    <c:set var="asigCod1" value="${asi.codigo}" />
+                                    <input type="hidden" name="asigCod1" value="${fn:escapeXml(asi.codigo)}" />
+                                </c:when>
+                                <c:when test="${largoLista == 2}">
+                                    <c:set var="asigna2" value="${asi.nombreAsignatura}" />
+                                    <c:set var="asigCod2" value="${asi.codigo}" />
+                                    <input type="hidden" name="asigCod2" value="${fn:escapeXml(asi.codigo)}" />
+                                </c:when>
+                                <c:when test="${largoLista == 3}">
+                                    <c:set var="asigna3" value="${asi.nombreAsignatura}" />
+                                    <c:set var="asigCod3" value="${asi.codigo}" />
+                                    <input type="hidden" name="asigCod3" value="${fn:escapeXml(asi.codigo)}" />
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
+
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Asignatura # 1
+                                <c:out value="${asigna1}" />
                             </label>
                             <div class="col-md-8">
                                 <input type="number" class="form-control"
                                        step="0.1" min="1" max="7"
-                                       name="asignatura1" style="width: 80px" />
+                                       name="nota1" style="width: 80px" />
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Asignatura # 2
+                                <c:out value="${asigna2}" />
                             </label>
                             <div class="col-md-8">
                                 <input type="number" class="form-control"
                                        step="0.1" min="1" max="7"
-                                       name="asignatura2" style="width: 80px"/>
+                                       name="nota2" style="width: 80px" />
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="col-md-4 control-label">
-                                Asignatura # 3
+                                <c:out value="${asigna3}" />
                             </label>
                             <div class="col-md-8">
                                 <input type="number" class="form-control"
                                        step="0.1" min="1" max="7"
-                                       name="asignatura3" style="width: 80px"/>
+                                       name="nota3" style="width: 80px" />
                             </div>
                         </div>
-
+                        <!--RESP-->
                     </fieldset>
 
                     <div class="form-group">
@@ -92,7 +112,15 @@
                             <c:out value="${mensajeEstado}" />
                         </label>
                         <div class="col-md-8">
-                            <input type="hidden" name="accion" value="agregar" />
+
+                            <input type="hidden" name="rutAlumno"
+                                   value="${fn:escapeXml(alumnoSe.rutPersona)}" />
+                            <input type="hidden" name="codigoPrograma"
+                                   value="${fn:escapeXml(programaSe.codigo)}" />
+                            <input type="hidden" name="accion"
+                                   value="${fn:escapeXml("agregar_notas")}" />
+                            <input type="hidden" name="confirmar"
+                                   value="${fn:escapeXml("si")}" />
                             <input type="submit" class="btn btn-primary"
                                    value="Agregar" />
                             <input type="button" class="btn btn-primary"
@@ -100,7 +128,6 @@
                                    onclick="location.href = 'cem_programas';"/>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

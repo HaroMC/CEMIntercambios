@@ -67,7 +67,7 @@
                         <th> Fecha de término </th>
                         <th> Valor </th>
                         <th> Estado de la inscripción </th>
-                        <th> Cancelar </th>
+                        <!--<th> Cancelar </th>-->
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -102,11 +102,11 @@
                                     </c:when>
                                 </c:choose>
                             </td>
-                            <td>
+                            <!--<td>
                                 <button type="submit" class="btn btn-primary center-block">
                                     <i class="glyphicon glyphicon-remove"></i>
                                 </button>
-                            </td>
+                            </td>-->
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -135,66 +135,18 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <tr>
-                        <td>Cecilia Fernanda Moreno Lira</td>
-                        <td>Programa1</td>  
-                        <td>Terminado</td>
-                        <td>Asignatura 1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 3</td> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Cecilia Fernanda Moreno Lira</td>
-                        <td>Programa2</td>  
-                        <td>Cursando</td>
-                        <td>Asignatura 1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Asignatura 3</td> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <c:forEach var="insal" items="${inscPrograAsigCaliAlum}">
+                        <tr>
+                            <td> </td>
+                            <td> </td>  
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>           
         </div>

@@ -35,10 +35,10 @@
                                     <c:out value="${p.programa.nombrePrograma}" />
                                 </td>
                                 <td>
-                                    <c:out value="${p.programa.nombrePrograma}" />
+                                    <c:out value="${p.programa.valor}" />
                                 </td>
                                 <td>
-                                    <c:out value="${p.programa.nombrePrograma}" />
+                                    <c:out value="${p.centroEstudiosLocal.persona.pais}" />
                                 </td>
                                 <td>
                                     <form method="get" action="alumno_postulaciones">

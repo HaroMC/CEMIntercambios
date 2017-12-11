@@ -79,6 +79,14 @@ public class Calificacion implements Serializable {
         this.fechaCalificacion = fechaCalificacion;
     }
 
+    public Calificacion(BigDecimal codigo, BigDecimal nota, Date fechaCalificacion, Alumno rutAlumno, Asignatura codAsignatura) {
+        this.codigo = codigo;
+        this.nota = nota;
+        this.fechaCalificacion = fechaCalificacion;
+        this.rutAlumno = rutAlumno;
+        this.codAsignatura = codAsignatura;
+    }
+    
     public BigDecimal getCodigo() {
         return codigo;
     }
